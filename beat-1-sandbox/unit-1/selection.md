@@ -3,11 +3,7 @@
 Path: `beat-1-sandbox/unit-1/selection.md`
 
 Record of the issue carried into Unit 2, and of the evaluation runs that produced
-`eval-run.txt`. This file is graded at the path above; a copy kept anywhere else in
-the repository is not read.
-
-Complete every labelled field below. Each is graded on its own; content placed under the
-wrong label is not graded.
+`eval-run.txt`.
 
 ---
 
@@ -15,72 +11,61 @@ wrong label is not graded.
 
 **Issue link**
 
-[The individual Path Review issue page. A link to the repository or the issue list
-does not satisfy this field.]
+<!-- FILL-IN: individual issue URL from codepath/pathreview-ai301-fa26-s1 (not the repo root). Candidates: #73, #72, #69 -->
+REPLACE_ME_ISSUE_URL
 
 **Verdict output**
 
-[Your skill's live-mode output for this issue, pasted verbatim and ending with the
-fenced JSON verdict block. A summary does not satisfy this field.]
-
-**The verdict must record `accept` for this issue.** Choose an issue your own skill
-accepts. If your skill rejects every candidate you try, that is a signal about your
-rubric rather than about the issues: revise it and re-run — retries are unlimited and a
-partial re-run costs about $0.20 — or run the skill on different candidates. Output
-recording `reject` for the issue you chose earns no credit for this field.
+<!-- FILL-IN: paste FULL live-mode skill output verbatim. Must end with fenced JSON and verdict accept. -->
 
 ```
-paste the output here, including the closing JSON block
+REPLACE_ME_LIVE_VERDICT_OUTPUT
 ```
+
+**The verdict must record `accept` for this issue.**
 
 ---
 
 ## Eval iterations
 
-Quote source text directly in each field below. Paraphrase does not satisfy them.
-
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+<!-- FILL-IN: list agreement scores in order. Last score MUST match eval-run.txt. -->
+REPLACE_ME_RUN_HISTORY
+<!-- Example shape:
+1. first full run — agreement 14/20 (categories: …)
+2. after tightening not-already-taken — --only issue-03,issue-05
+3. confirming full run — agreement N/20 (this is eval-run.txt)
+-->
 
 **Issue analysis**
 
-[One scored issue, identified by id (`issue-01` through `issue-20`; the `calib-`
-issues are not scored). State your rubric's decision, the gold label, and the
-reasoning that produced your rubric's result.]
+<!-- FILL-IN: one scored id issue-01..issue-20. State your verdict, gold verdict, why. -->
+REPLACE_ME_ISSUE_ANALYSIS
 
 **Check rationale**
 
-[One check from the `rubric.md` uploaded to `tools/issue-select/`, quoted as it is
-currently written, with the reasoning behind its current form.]
+<!-- FILL-IN: quote ONE check from your uploaded rubric.md exactly, explain why that wording. -->
+REPLACE_ME_CHECK_RATIONALE
 
 **Trade-offs**
 
-[What the quoted check gives up. Any one of these is a complete answer: an issue whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+<!-- FILL-IN: what that check gives up (an issue it changes, a canary, a miss you accept, or why nothing else moved). -->
+REPLACE_ME_TRADEOFFS
 
 ---
 
 ## Selection rationale
 
-Graded on whether all three are answered, in your own words. Not on how good the
-reasoning is, and not on length — a short honest answer to each earns the full marks.
-This is also the basis for the claim comment you write in Unit 2.
-
 **Selection rationale**
 
-[Answer all three:
-
-1. The issue's fit to your interests and to the time available.
-2. What the verdict identified correctly, and what you weighed that the rubric could
-   not.
-3. The anticipated difficulty in claiming it.]
+1. <!-- FILL-IN --> Fit to interests / time:
+   REPLACE_ME_FIT
+2. <!-- FILL-IN --> What the verdict got right vs what you weighed by hand:
+   REPLACE_ME_HUMAN_JUDGMENT
+3. <!-- FILL-IN --> Anticipated difficulty claiming it:
+   REPLACE_ME_CLAIM_DIFFICULTY
 
 ---
 
-Related paths: `eval-run.txt` in this directory; your skill's files in
-`tools/issue-select/`.
+Related paths: `eval-run.txt` in this directory; skill files in `tools/issue-select/`.
