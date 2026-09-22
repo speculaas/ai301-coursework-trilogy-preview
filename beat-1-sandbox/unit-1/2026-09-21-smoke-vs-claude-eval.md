@@ -18,24 +18,32 @@ The runnable starter lives beside your notes at
 Smoke answers: “Do my check *ideas* roughly track gold?”  
 Real answers: “Does **Sonnet executing my written rubric** hit the bar (≥18/20 + category floor)?”
 
+GitHub Mermaid does not layout two separate ```mermaid blocks truly “side by side.”
+Put **both flows in one diagram** as two subgraphs on a left–right (`LR`) chart
+(or use an HTML `<table>` with one diagram per cell — often stripped/ugly in GitHub).
+
 ```mermaid
 flowchart LR
-  subgraph smoke [Smoke — free]
-    R1[rubric.md ideas] --> S[simulate_rubric.py]
-    B1[frozen issues/*.md] --> S
-    G1[gold-labels.json] --> S
-    S --> O1[agreement printout<br/>no eval-run.txt]
+  subgraph S["Smoke — free estimate"]
+    direction TB
+    s1[rubric check ideas] --> s2[simulate_rubric.py]
+    s3[frozen issues + gold] --> s2
+    s2 --> s4["print agreement<br/>no eval-run.txt"]
   end
 
-  subgraph real [Real Claude eval — costs credit]
-    R2[installed rubric.md] --> H[run_eval.py]
-    SK[SKILL.md + refs] --> H
-    B2[frozen issues/*.md] --> H
-    H --> C["claude -p --model sonnet<br/>× up to 20 bundles"]
-    C --> O2[table + category floor]
-    O2 --> F["--save-run eval-run.txt<br/>only on full 20"]
+  subgraph R["Real Claude — graded"]
+    direction TB
+    r1[installed rubric + SKILL] --> r2[run_eval.py]
+    r3[frozen issues] --> r2
+    r2 --> r4["claude -p Sonnet<br/>per bundle"]
+    r4 --> r5[agreement + categories]
+    r5 --> r6["--save-run only on full 20"]
   end
+
+  S -.->|debug first| R
 ```
+
+On GitHub: open the file view (not raw) so Mermaid renders. In the editor preview, confirm both subgraphs appear left/right.
 
 ## Recommended loop
 
@@ -84,3 +92,33 @@ Sonnet may interpret borderline scope/policy wording differently than the Python
 - Smoke how-to: `ai301-unit1-starter/eval/README-simulate-rubric-offline.md`
 - Official harness: `ai301-unit1-starter/eval/README.md`
 - Unit 1 checklist: `2026-09-21-unit1-step-by-step.md` (same folder)
+
+## Does smoke reflect Claude faithfully?
+
+**No — estimate only, not a faithful replay.**
+
+| | Smoke | Claude harness |
+|---|---|---|
+| Judge | Fixed Python heuristics | Sonnet reading your prose rubric |
+| Same verdict always? | Yes (deterministic) | Usually stable, not bit-identical |
+| Borderline scope/policy | Often under-rejects | May pass/fail differently |
+| Submission artifact | None | Fingerprinted `eval-run.txt` |
+
+Use smoke to catch **obvious** dead-repo / claimed / archived misses before spending credit. Do **not** treat 17/20 smoke as “I’ll get 17 on Sonnet.”
+
+## Conserving Claude while aiming for a passable score (≥18/20 + category floor)
+
+1. **Re-copy** starter `skill/` → `~/.claude/skills/issue-select/` so live/eval use the filled rubric + real `scope.md` Repo/fit.
+2. **Tighten only what smoke already flags** — recently `issue-10`, `issue-15`, `issue-20` (all **scope** gold-rejects that smoke wrongly accepted). In `scope-fits-newcomer`, explicitly fail:
+   - self-described mega/tracking lists
+   - long design debates / abandoned-PR archaeology with no settled spec
+   - one-line feature wishes / product calls with no acceptance criteria
+3. **Spend credit in this order** (cheapest → dearest):
+   - `run_eval.py … --limit 3` once (sanity)
+   - `… --only issue-10,issue-15,issue-20` after each scope tweak (~$0.20 each)
+   - optional `--only` on any new disagreements
+   - **one** full run with `--save-run` when you believe you’re ≥18/20
+4. **Avoid** repeated full 20-issue runs while iterating wording.
+5. Keep Path Review app LLM on mock; don’t burn a second budget exploring the app.
+
+Passable ≠ perfect: the bar is **18/20** with every category represented — stop when the confirming full run clears that, then write `selection.md`.
