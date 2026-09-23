@@ -1,0 +1,529 @@
+And teach AI what proof looks like
+Reproduce It
+AI 301 · UNIT 2
+⏰ 2 mins. Unit 2 has the same double meaning unit 1 did: you will prove a bug is real, and you will build the AI system that judges whether proof is real. Both start today, on the issue you picked last week.
+
+AI 301 · WELCOME
+Welcome to Unit 2:
+Reproduce It
+1
+Turn on your camera
+2
+Answer tonight's question in the chat
+TONIGHT'S QUESTION · IN THE CHAT
+UPDATE ME! Add the chat question for this session.
+🌟 Purpose: Settle the room and get everyone ready before the session starts.
+
+✅ What should I be doing?
+Before class, update the two sample slots for this unit: the title and the chat question. Keep the slide up while students arrive.
+
+🎙️ What should I be saying?
+Welcome! While we get started: camera on, and drop your answer to the question in the chat.
+
+🙌🏽 How should I engage students?
+Greet students by name as they arrive and read a few chat answers aloud.
+
+OUR COMMUNITY
+As a community, we will...
+✱  Be present, physically and mentally
+✱  Actively build an inclusive community and space
+✱  Practice curiosity and adopt a learning mindset
+✱  Ask for help when we need it
+✱  Keep our cameras on
+🌟 Purpose: Set the shared expectations for how the community works together.
+
+✅ What should I be doing?
+Walk the five norms briskly; they are the same every session.
+
+🎙️ What should I be saying?
+These are the agreements we all signed up for: present, inclusive, curious, asking for help, cameras on.
+
+🙌🏽 How should I engage students?
+Ask for a thumbs-up or a +1 in the chat once the norms are on screen.
+
+ASK ANYTIME
+Add your questions to the Q&A
+✱  Our Tech Fellow team adds answers throughout the lesson
+✱  Chat questions may be missed or redirected to the Q&A
+Q&A, on the right
+🌟 Purpose: Route questions where they will actually get answered.
+
+✅ What should I be doing?
+Point at the highlighted Q&A button and remind students the Tech Fellow team is watching it all session.
+
+🎙️ What should I be saying?
+Drop questions in the Zoom Q&A any time; chat questions can get missed.
+
+🙌🏽 How should I engage students?
+Seed the Q&A with a first question if it is empty.
+
+AI 301 · UNIT 2 · 120 MINUTES
+Today, block by block
+01
+Intro   continuity, and what you ship this week
+10 min
+02
+Lecture   proof, your voice, and the repro-check skill
+45 min
+03
+Break
+5 min
+04
+Activity   repro calibration + the operator swap
+50 min
+05
+Wrap-up   what's due, where this is headed
+10 min
+⏰ 1 min. The night's shape, the same in every unit: intro, lecture, break, activity, wrap-up. Tonight the lecture feeds the activity twice: the two rubric checks and two voice rules you draft during lecture are exactly what the activity grades with, so nobody skips the drafting moments.
+
+THE ROADMAP · SANDBOX BEAT · UNITS 1-4
+Where this session sits
+UNIT 1
+Selection
+issue-select
+UNIT 2
+Reproduction
+repro-check
+UNIT 3
+Plan and build
+plan-check
+UNIT 4
+Pull request
+pr-precheck
+Sandbox
+units 1-4
+Real repos
+units 5-8
+Portfolio
+units 9-10
+⏰ 2 mins. The agenda was session-scale; this is course-scale. Four lockstep sandbox sessions, one workflow phase and one tool each; green marks tonight (Reproduction, and the repro-check skill you finish this week). Unit 1's selection handed you the issue; unit 3's fix loop starts from the proof you post this week. The track underneath is the whole course: sandbox now, real repos in units 5-8, portfolio to close. Then the continuity beat: everyone walked in with a vetted issue from unit 1's selection protocol. Anyone without a live issue gets set up with a house issue by a TF in the rooms, so nobody stalls this week on a dead pick.
+
+This Week You Ship
+A reproduced issue. A posted report.
+
+And a skill that checks proof:you write its judgment.
+THE DELIVERABLE
+repro-check/
+  SKILL.md
+  scope.md
+  references/
+rubric.md
+voice-guide.md
+evidence-guide.md
+you write the three dashed files
+⏰ 2 mins. One deliverable in three parts: the issue reproduced, the report posted upstream, and the repro-check skill finished. SKILL.md again arrives complete; the fade widens from one withheld file to three. Say it plainly: the judgment is the assignment.
+
+LECTURE · PART 1 OF 4
+Why proof
+Proof, not promises: why triage runs on it.
+⏰ breather. Lecture part 1 of 4: why proof. Proof, not promises: why triage runs on it. Reset the room, then move.
+
+THE WORKFLOW
+Why Maintainers Ask for Proof
+✱
+dozens of reports arrive every week
+most die unread
+✱
+one maintainer triages them, part-time
+evenings and weekends
+✱
+they cannot re-run every claim
+so the burden of proof is yours
+proof first is how triage survives.
+“
+Which version of hyperfine
+do you have?
+the maintainer's entire first reply  ·  hyperfine #630
+sharkdp asks for the version before anything else (real thread, Mar 2023)
+⏰ 2 mins. Phase 2 of the workflow you saw on the roadmap, and the reason it exists: maintainers triage dozens of reports with no time to re-run any of them, so the first reply is almost always a version check or a repro ask. The quote is the whole reply: hyperfine's maintainer, first response on a real bug. Proof first is how triage survives, not a politeness ritual.
+
+A REPRO REPORT
+Would you trust this report?
+devcontrib99   commented 2 days ago
+Confirmed! I reproduced this crash locally and it happens exactly as described. Great catch!
+Steps: I ran the tool on a file and it crashed, just like the issue says.
+$ tool check notes.txt
+error: invalid configuration (exit 2)
+Everything in the issue is accurate. This should be easy to fix. Happy to open a PR!
+⏰ 3 mins. Cold open, no guidance: give the room 60 seconds to read the comment and decide privately: post it or hold it. It is confident, friendly, and formatted. Reveal nothing yet; the next slide does the damage.
+
+THE REVEAL
+Three Questions It Can't Answer
+Where did you run it?
+“I reproduced this crash locally”
+NO ENVIRONMENT
+no version, no OS, no commit
+What did you run?
+“I ran the tool on a file”
+CANNOT RE-RUN
+steps a stranger cannot follow;
+no expected vs actual
+What did it show?
+error: invalid configuration (exit 2)
+WRONG FAILURE
+the issue reports a panic (exit 101),
+not a config error
+Confident is not faithful. Three questions, zero answers.
+⏰ 3 mins. The reveal, as the three questions a maintainer silently asks. Where did you run it: no version, OS, or commit anywhere. What exactly did you run: 'a file' is not a step a stranger can follow, and expected vs actual never appears. What did it show: the issue reports a panic, exit 101; the artifact shows a config error, exit 2. The report never showed the issue's behavior. Land the motto: confident is not faithful.
+
+LECTURE · PART 2 OF 4
+Real proof
+Evidence a stranger could re-run and check.
+⏰ breather. Lecture part 2 of 4: real proof. Evidence a stranger could re-run and check. Reset the room, then move.
+
+THE REPO
+Read the Repo Like a Contributor
+1
+2
+3
+4
+the 5-minute tour
+before you touch anything, walk these five stops
+1
+README
+what it does,
+how to run it
+2
+CONTRIBUTING
+how they take changes;
+flags AI-assisted PRs
+3
+LICENSE · CoC
+the terms
+you post under
+4
+AGENTS.md
+standing rules
+for AI tools
+5
+Releases
+the ‘latest’
+your repro runs on
+also on the tour: .github/ holds the issue and PR templates
+⏰ 2 mins. Before you can reproduce, you read the repo the way a contributor does. Walk the trail in order on the live lazygit page: README for what it is, CONTRIBUTING for how they take changes (this one explicitly flags AI-assisted PRs), LICENSE and the code of conduct as the terms you post under, AGENTS.md as the new home of standing AI ground rules, and Releases, because 'latest' is the version your repro must run on. Templates live in .github/; your report follows them. One row above AGENTS.md the crop shows CLAUDE.md, which you know from AI110/201: same job, Claude-specific; AGENTS.md is the tool-agnostic version repos are converging on. The screenshot repo is jesseduffield/lazygit, the repo behind calib-01, the first calibration package in the activity.
+
+THE PROOF
+Set It Up, Write It Down
+git clone sharkdp/hyperfine
+the repo's README shows how
+git checkout v1.20.0
+pin the version you test
+cargo build --release
+build it their way
+hyperfine --version
+confirm: 1.20.0
+setup from the repo's own docs: README, CONTRIBUTING
+environment record
+✓
+tool
+hyperfine 1.20.0
+os
+macOS 26.5 (arm64)
+build
+rustc 1.89.0
+commit
+e7f0f24 · tag v1.20.0
+four lines. thirty seconds.
+posted with every report. without it, nobody can place your bug.
+⏰ 2 mins. Setup is part of the proof. Build from the repo's own docs, pin the version you are testing, and write the environment record before you reproduce anything: tool version, OS, toolchain, commit. Four lines, thirty seconds, posted with every report. Without it, nobody can place your bug. One exception to say out loud: a downloaded release build has no commit to record, the version tag alone places it. Draw the link between the two halves out loud: the record on the right is just the outputs of the commands on the left. git checkout pins the commit line, cargo build gives you the toolchain line, hyperfine --version fills the tool line, and your machine fills the OS line. Run the column, copy the outputs, and the record is done.
+
+THE PROOF
+Anatomy of Proof
+what devcontrib99 should have posted
+you   commented today
+hyperfine 1.20.0 · macOS 26.5 · commit e7f0f24
+Steps, from a fresh clone:
+clone → checkout v1.20.0 → build → run the issue's exact command
+expected:  exit 0, summary table prints
+actual:    panic before output (exit 101)
+$ hyperfine 'sleep 0.3'
+thread 'main' panicked at src/export/…
+full 14-line terminal log attached
+the environment
+so they can place it
+minimal steps
+so a stranger re-runs them
+expected vs actual
+the delta, explicit
+the artifact
+shown, not asserted
+every part is checkable by a stranger: that is what makes it proof
+⏰ 3 mins. The core slide, and a callback: this is the same comment card from the cold open, filled in right. Each part has a job. The environment places it; minimal steps let a stranger re-run it; expected vs actual makes the delta explicit; the artifact shows the behavior instead of asserting it. Everything the skill grades later hangs off these four parts, and worksheet phase 1 grades these same families.
+
+THE PROOF
+Faithful Beats Confident
+polish moves you left and right. the verdict only reads the rows.
+the eval punishes format-grading in both directions.
+plain
+polished
+READY
+faithful
+HOLD
+unfaithful
+“Could not reproduce on 1.20.0.”
+six lines: env, steps, log, control run
+ready, even as a cannot-repro
+“Reproduced on v1.20.0, log attached.”
+complete and correct
+“works on my machine”
+nothing a stranger can use
+“Reproduced! Analysis inside.”
+wrong command, different error, no env
+⏰ 2 mins. The grid does the arguing: columns are polish, plain on the left, polished on the right; rows are faithfulness, and the verdict only reads the row. Everything in the top row is ready to post, everything in the bottom row holds. Top-left is the terse cannot-repro that still passes, because an honest, evidenced cannot-reproduce is a ready outcome. Bottom-right is the long polished report that ran the wrong command and showed the wrong error. Polish moves you sideways, never up, and the eval set punishes formatting-graders in both directions.
+
+LECTURE · PART 3 OF 4
+Your voice
+First words upstream, under your own rules.
+⏰ breather. Lecture part 3 of 4: your voice. First words upstream, under your own rules. Reset the room, then move.
+
+YOUR VOICE
+You Talk to Humans Now
+read it the way a maintainer does: five claims on your issue, one worth answering
+issue #630 · new comments (5)
+Please assign me this issue!
+I can fix this quickly, please assign
+Very interested in this amazing project!!
++1 any update on this??
+Picking this up: --style is ignored on v1.20.0, exactly as described. I'm writing a repro report with my environment, steps, and log, then I'll attempt a fix. First contribution, so flagging that.
+why this one reads as signal
+✱
+names the version and the behavior
+nothing here fits any other issue
+✱
+promises the next artifact, not the merge
+a report, then a fix attempt
+✱
+honest about being new
+maintainers respect a flagged first
+house rule: a classmate's claim does not block you
+house rule: credit rides on the PR you open
+⏰ 4 mins. The claim beat: your first words upstream, posted before the repro work starts, shown from the maintainer's side of the screen. Read a couple of the grey ones aloud; they could be pasted on any issue anywhere. The highlighted one names the version, the behavior, and the next artifact, and admits it is a first contribution. Then the sandbox house rules: a classmate's claim never blocks you, and credit rides on the PR you open, because the course is the coordination channel.
+
+YOUR VOICE
+Your Voice, Written Down
+“Hi!! I will fix this by tomorrow, promise!! Please assign me!”
+no promised timelines   ‘by tomorrow!’ → ‘repro report on the way’
+name the version and the behavior   ‘this bug’ → ‘v1.20.0 ignores --style’
+say it like you would out loud   no ‘amazing project!!’, no bot voice
+“Picking this up: --style is ignored on v1.20.0, exactly as described.Repro report on the way.”
+three rules =
+your voice guide
+every draft passes through them
+DRAFT NOW
+two voice rules of your own · right now, silence is fine
+the draft
+what posts
+⏰ 3 mins. The voice guide is hole three: your own rules for how you talk upstream, and every draft passes through them like gates before it posts. Walk the slop draft through: the timeline promise dies at gate one, the vagueness at gate two, the bot voice at gate three, and what comes out is the claim from the last slide. THEN THE DRAFTING MOMENT: everyone writes two voice rules of their own, right now; silence is fine. The skill holds every live draft against these rules before anything gets posted.
+
+LECTURE · PART 4 OF 4
+Your skill
+Three components, one bar, one swap.
+⏰ breather. Lecture part 4 of 4: your skill. Three components, one bar, one swap. Reset the room, then move.
+
+YOUR SKILL
+The Skill: repro-check
+a repro package
+claim + report + issue
+SKILL.md  ·  already written for you
+evidence loop · output contract · scope.md
+you write these three ↓
+rubric.md
+your checks
+evidence-guide.md
+where proof lives
+voice-guide.md
+your rules
+verdict, with receipts
+per-check grades + evidence
+DRAFT NOW
+two rubric checks + your verdict rule · from proof's four parts
+⏰ 3 mins. The tool: repro-check, drawn as what it is, a machine with three empty sockets. SKILL.md comes already written: the evidence loop, the output contract, scope.md. The judgment is the assignment: rubric, evidence guide, and voice guide are yours to write; unit 1 withheld one file, this week three. SECOND DRAFTING MOMENT, on the slide now: everyone drafts two rubric checks plus their verdict rule from the anatomy slide's four parts; the worksheet grades with exactly those drafts in phase 1. The next slide names the two modes the skill runs in.
+
+YOUR SKILL
+Two Ways It Runs
+eval mode
+the harness grades the 20 frozen packages
+your verdicts vs the master's
+nothing ever posts
+live mode
+you run it on your real draft
+scope.md gates what can go upstream
+runs before anything posts
+scope.md: staff-written · where live mode may act and post (sandbox only, for now)
+⏰ 2 mins. First use of the pair, so name it cleanly. Eval mode: the harness grades the 20 frozen packages against the master's verdicts; nothing posts, and it never reads your live drafts. Live mode: the skill run on your own real draft, cheap and repeatable, with scope.md gating what can go upstream. Give scope.md its one line: the staff-written boundary file naming where live mode may act and post, sandbox only for now. The run on the next slide is live mode; the eval slides after it price eval mode.
+
+YOUR SKILL
+The Skill Runs
+$ claude 'repro-check: grade my draft package'
+  env-recorded      pass  1.20.0 · macOS · e7f0f24
+  steps-followable  pass  3 commands, fresh clone
+  behavior-matches  FAIL  exit 2 ≠ panic (101)
+  claim-specific    pass  names version + next step
+  verdict: reject   fix the artifact, then post
+  (JSON follows: the eval harness reads that)
+per-check grades, each with the evidence line that decided it
+behavior-matches · FAIL
+the log shows: exit 2 (config error)
+the issue says: panic (exit 101)
+the trap from the opening vote, caught before posting
+run
+fix
+re-run
+⏰ 2 mins. Running it feels like this: per-check grades, each with the evidence line that decided it, then one verdict. The pulled-out card is the point: this run catches the cold-open trap, a log that shows a different failure than the issue reports, before it gets posted. The JSON tail is what the eval harness parses. The loop on the right runs in live mode: check your own drafts before anything goes upstream, cheap enough to run every time.
+
+THE EVAL
+Same bar: 18 of 20
+pass line · 18
+16 loud calls
+4 arguable calls
+18 means you missed nothing loud and split on at most two arguable ones
+and every category scores at least once:
+clear accepts
+no evidence
+wrong target
+unfollowable
+disclosure
+$0.20 to re-run one package · about $4 a full run · unlimited retries
+⏰ 3 mins. Same bar as unit 1, new judgment: your skill and the master grade the same 20 frozen reproduction packages, and 18 matching verdicts pass. 16 packages carry loud signals a reasonable rubric never misses; 4 are genuinely arguable, and the two buttermilk cells beyond the line are the misses you can afford. The category floor has teeth this week: at least one match in every composition category, and it exists because of the single disclosure-wall package; a rubric with no conventions check cannot buy that miss back on volume. Revise cheap: --only re-runs one package for about twenty cents, a full run is about four dollars, and only a full run prints the submitted verdict.
+
+THE EVAL
+Rules That Survive a Re-run
+the test: run the same rule over the same 20 packages three times
+a rule you can argue with
+pass when: “the report has at least five sections”
+17
+/20
+17
+/20
+18
+/20
+what counts as a ‘section’? each run decides differently
+a rule you can only check
+pass when: “the artifact’s exit code matches the issue’s”
+20
+/20
+20
+/20
+20
+/20
+nothing to interpret, so every run agrees
+your grader passed 20/20 three times on Sonnet before it was allowed to grade you
+⏰ 2 mins. We graded the grader before it grades you. The left panel is unit 1's true story: the first stability pass wobbled 17, 17, 18, because checks were counting structure. Rewritten as decision rules about outcomes, it held 20/20 three times, and this week's grader held 20/20 three times on Sonnet before the bar was allowed to stand at 18. A check that counts sections wobbles; a check that compares exit codes does not. Production eval teams run exactly this protocol. Standing practice, spoken rather than shown: the 3-run check re-runs whenever the pinned model changes.
+
+THE SWAP
+Someone Else Runs Your Rules
+1
+the handoff
+2
+you go mute
+3
+the cold run
+you trade rubrics with a classmate
+MUTED
+…
+record your questions, don't ask them
+friction log
+go card by card and write down whatever trips you up
+a check that needs its author standing by is not finished.
+every friction line feeds a revision mark
+⏰ 2 mins. The operator swap, first of the course, told as three frames: every rubric sits in a member section of the group worksheet, everyone goes on mute (literally: mute yourselves in the breakout room), and each of you runs the rubric in the section after yours cold, card by card, typing into its Executor block. Every hesitation and every 'what does this mean' goes in the friction log, and phase 4's revision marks cite those lines by name. A rubric only counts as judgment if it runs without its author in the room.
+
+BREAK · 5 MINUTES
+Take five
+Stretch, refill your water, rest your eyes.
+🌟 Purpose: Give the room a real reset mid-session.
+
+✅ What should I be doing?
+Post the return time in the chat and start a timer. Update the eyebrow if this unit's agenda gives the break a different length.
+
+🎙️ What should I be saying?
+We are back at [time]. Step away from the screen if you can.
+
+🙌🏽 How should I engage students?
+Be back a little early and greet people as they return.
+
+THE ACTIVITY · 50 MINUTES · BREAKOUT ROOMS
+Repro calibration + the swap
+Setup   · 5 min · before the clock starts
+1
+Make your copy of the worksheet
+everyone
+2
+Paste the group copy's link in the room
+one member
+3
+Claim a member section, paste your rubric in
+everyone
+0:05 → 0:50
+the worksheet runs the clock · a timer on every phase
+⏰ 3 mins, and the slide stays up while rooms form. Launch: the worksheet template link is in chat; everyone makes a personal copy first. In each room one member makes the group copy, renames it Repro - Group <number>, and pastes the link; then everyone claims the next open member section and pastes their rubric in, because the section order is the swap rotation. From there the worksheet runs the clock: its Timeboxes table carries all five phases with minutes and modes (grade two shared packages, the operator swap, disagreements, revision marks, debrief), so hold each other to the timers there. calib-03 stays sealed until phase 2 and the room is silent for the whole swap: no questions to the author, no author commentary. Revision marks unfinished at the bell become homework, with the eval run. Go.
+
+BEFORE YOU GO
+Two things, due Sunday
+1
+tools/repro-check/
+✱  rubric, evidence guide, voice guide
+2
+beat-1-sandbox/unit-2/
+✱  reproduction.md: your written reflection
+✱  eval-run.txt: one complete run · written by --save-run
+25 PTS
+full rubric on the Grading Rubrics page
+unlimited retries before the deadline · the repo link is the submission
+⏰ 2 mins. Both graded pieces live in the one course repo; the link is the whole submission. The repo link is the same course repo every time; graders open tools/repro-check/ (rubric, evidence guide, voice guide, with SKILL.md and scope.md present) and beat-1-sandbox/unit-2/reproduction.md, where the claim, the repro comment links, and the new Your eval iterations write-up live. The harness writes the run file itself: pass --save-run eval-run.txt and commit what lands at beat-1-sandbox/unit-2/eval-run.txt: per-package table, category tallies, agreement line; a partial --limit or --only run refuses to write the file at all. 25 points: 8 on the repo and files, 3 on the committed eval run, 7 on the iterations write-up, 7 on the posted comments; the agreement number itself sets no points now, though 18 of 20 with every category matched is still the bar you aim at and still the acceleration gate. An honest, evidenced cannot-reproduce earns the repro points in full.
+
+UNIT 2 · NEXT UNIT
+Fix it
+Bring your reproduced issue. You write the plan; AI builds it under your direction.
+TONIGHT
+finish the skill · run the eval · claim + reproduce · submit
+⏰ 1 min. The send-off. Next unit is Fix It (Plan the Fix, Then Drive the Build): they bring the reproduced issue, write the plan before any code, and drive AI through the build; the fix loop starts from the proof they post this week. Tonight, in order: install the skill, finish the three components, run the eval until it clears the bar, claim and reproduce the issue with live-mode checks before each post, submit on the portal before Sunday.
+
+ONE GOOD THING
+Let's celebrate your wins
+Reflect on today's session. Maybe you got a question answered, overcame a coding challenge, or learned how to do something completely new.
+IN THE CHAT
+share one good thing you learned or experienced today
+🌟 Purpose: End the session on a positive note.
+
+✅ What should I be doing?
+Prompt students to share their reflections in the chat.
+
+🎙️ What should I be saying?
+Let's celebrate your wins. Share one good thing you learned or accomplished today!
+
+🙌🏽 How should I engage students?
+Read a few responses aloud and celebrate with enthusiasm.
+
+SESSION SURVEY · 3 MINUTES
+Tell us how tonight went
+Your feedback makes the next session better, and we read all of it.
+Take the survey · link in the chat
+🌟 Purpose: Gather feedback to improve future sessions.
+
+✅ What should I be doing?
+Share the survey link in the chat and emphasize its importance.
+
+🎙️ What should I be saying?
+Your feedback helps us make these sessions even better. Please take a moment to complete the survey.
+
+🙌🏽 How should I engage students?
+Thank students for their input and explain how feedback has been used in the past.
+
+BEFORE YOU GO
+Final reminders
+✱  Finish the skill · run the eval · claim + reproduce · submit
+✱  Next Unit: Fix it
+UPDATE ME
+Add any parting reminders: announcements worth repeating from the top of the session, or ones saved for the end.
+Delete this box when you're done.
+🌟 Purpose: Reinforce key tasks and deadlines.
+
+✅ What should I be doing?
+Summarize next steps and encourage continued engagement. Swap the sample bullets for this course's real reminders, then delete the buttermilk box.
+
+🎙️ What should I be saying?
+Don't forget to complete the problem sets and take the HackerRank assessment by Sunday!
+
+🙌🏽 How should I engage students?
+Encourage students to ask any lingering questions before signing off.
