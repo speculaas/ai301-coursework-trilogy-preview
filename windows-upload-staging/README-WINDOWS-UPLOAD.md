@@ -1,49 +1,69 @@
 # Windows upload pack → `speculaas/ai301-coursework`
 
+**Status (2026-09-22 night):** Unit 1 artifacts are **ready to upload**.
+`selection.md` is filled with Path Review **#73** live **accept** + write-ups;
+`eval-run.txt` is the 18/20 PASS harness file; skill files are under `tools/issue-select/`.
+
 Use this folder on Windows (clone/pull trilogy-preview, then open `windows-upload-staging/`).
+Or upload from Mac using the same GitHub web URLs below (paths match the course repo layout).
+
+---
 
 ## 1) Skill → `tools/issue-select/`
 
 Browser: https://github.com/speculaas/ai301-coursework/upload/main/tools/issue-select
 
-Upload everything under `tools/issue-select/` here:
+Upload everything under `windows-upload-staging/tools/issue-select/` (same files as repo `tools/issue-select/`):
+
 - `SKILL.md`
 - `rubric.md`
 - `scope.md`
-- `references/evidence-guide.md`
+- `references/evidence-guide.md` (keep subdirectory)
+
+If the folder is missing on `main`, create `tools/issue-select/.gitkeep` via **Add file → Create new file**, then open the upload URL again.
 
 ## 2) Unit 1 → `beat-1-sandbox/unit-1/`
 
 Browser: https://github.com/speculaas/ai301-coursework/upload/main/beat-1-sandbox/unit-1
 
-Upload:
-- `eval-run.txt` (**ready** — 18/20 PASS harness output)
-- `selection.md` (**not ready** — still FILL-IN; needs live accept paste + reflections)
+Upload **only** these LMS artifacts from `windows-upload-staging/beat-1-sandbox/unit-1/`:
 
-Do **not** upload `live-transcript-issue-73.NOT-READY.txt` as the verdict — it is a failed permission run, not an accept transcript.
+| File | Ready? |
+|---|---|
+| `eval-run.txt` | Yes — 18/20 PASS harness output (do not hand-edit) |
+| `selection.md` | Yes — #73 accept transcript + reflections filled |
 
-## Still needed before portal
+Optional personal backup (not required by LMS): `live-transcript-issue-73-accept.txt`.
 
-1. Re-run live `#73` on a machine where you can **approve** Claude’s `gh` / file prompts (see below).
-2. Paste accept transcript into `selection.md`, fill write-ups, then upload that file.
-3. Submit course-repo link on the portal (late OK with staff if required).
+Do **not** upload working notes (`2026-09-22-*.md`) or old debug permission logs as the verdict.
 
-## `gh` approval from Windows?
+If the folder is missing, create `beat-1-sandbox/unit-1/.gitkeep` first, then upload.
 
-Claude Code tool approvals are **local to the machine running `claude`**.
+## 3) Portal
 
-- GitHub **website** on Windows does not approve Mac `gh` prompts.
-- A Windows → Mac SSH/`sh` session **can** work **if** that session is interactive and you can answer Claude’s permission prompts in that same terminal.
-- Easiest: run the live `claude "issue-select: …"` command in **Terminal on the Mac** (or install Claude Code + `gh` on Windows and run it there).
+After GitHub has the files on `main`, submit **only the repo URL** on the course Assignment tab:
 
-```bash
-claude "issue-select: grade this candidate first issue: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73" \
-  2>&1 | tee live-transcript-issue-73.txt
-```
+https://github.com/speculaas/ai301-coursework
 
-## Live #73 debug log (not for upload)
+Confirm late submit with `@ai-help` if the printed deadline has passed.
 
-See:
-`beat-1-sandbox/unit-1/debug-live-select-issue-73-skill-read-denied-2026-09-22.txt`
-and `2026-09-22-debug-live-select-issue-73-permissions.md`.
-Permission-blocked run, not an accept transcript.
+## Quick checklist
+
+1. Logged into GitHub as **speculaas**
+2. Upload skill files → `tools/issue-select/`
+3. Upload `eval-run.txt` + `selection.md` → `beat-1-sandbox/unit-1/`
+4. Paste `https://github.com/speculaas/ai301-coursework` in the portal
+5. Do **not** claim #73 on Path Review yet (Unit 2)
+
+## Same files in the trilogy-preview tree
+
+| Staging | Canonical copy in this repo |
+|---|---|
+| `windows-upload-staging/tools/issue-select/*` | `tools/issue-select/*` |
+| `windows-upload-staging/beat-1-sandbox/unit-1/eval-run.txt` | `beat-1-sandbox/unit-1/eval-run.txt` |
+| `windows-upload-staging/beat-1-sandbox/unit-1/selection.md` | `beat-1-sandbox/unit-1/selection.md` |
+
+## Live #73 history (for your notes only)
+
+- Failed earlier: `beat-1-sandbox/unit-1/debug-live-select-issue-73-skill-read-denied-2026-09-22.txt` (non-interactive / permission deny) — **not** a portal verdict.
+- Success: `beat-1-sandbox/unit-1/live-transcript-issue-73-accept.txt` (session `b8970ca5…`, verdict accept) — already pasted into `selection.md`.
