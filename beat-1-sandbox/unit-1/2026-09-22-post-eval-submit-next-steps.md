@@ -186,3 +186,17 @@ claude "issue-select: grade this candidate first issue: https://github.com/codep
 
 Keep the `.txt` as a backup; the required paste is into `selection.md` **Verdict output**.
 
+---
+
+## Windows packaging (2026-09-22)
+
+Artifacts staged for Windows browser upload in repo root:
+
+`windows-upload-staging/` — see `windows-upload-staging/README-WINDOWS-UPLOAD.md`
+
+Also synced into LMS-shaped paths in this repo:
+- `tools/issue-select/` (current installed skill)
+- `beat-1-sandbox/unit-1/eval-run.txt` (real 18/20 harness file)
+
+`selection.md` still needs a successful live accept before upload to `ai301-coursework`.
+
