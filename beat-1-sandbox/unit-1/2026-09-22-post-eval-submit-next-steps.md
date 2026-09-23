@@ -92,3 +92,48 @@ Submit **only the link** to that public repo on the Assignment tab.
 - `2026-09-21-smoke-vs-claude-eval.md` — smoke vs `run_eval.py`  
 - `2026-09-22-issue-01-scope-false-reject.md` / `…-run-eval-only-issue-01-sequence.md` — cheap-loop history  
 - LMS scrape (outside this repo): `../unit-01/Overview-Activity-Assignment.txt` under zimmnotes `beat-1-sandbox/unit-01/`
+
+---
+
+## Live-select vs eval (clarified 2026-09-22)
+
+**Yes — live select is a separate `claude` CLI invocation**, not `run_eval.py`.
+
+| | Eval harness | Live select |
+|---|---|---|
+| Command | `python3 run_eval.py …` | `claude "issue-select: …"` |
+| Input | Frozen `eval/issues/*.md` | Real GitHub issue **URLs** |
+| Writes `eval-run.txt`? | Yes (full + `--save-run`) | No |
+| Output you paste | Keep the harness file | Full terminal **transcript** (ranked text + fenced JSON with `"verdict": "accept"`) |
+
+Browse issues at: https://github.com/codepath/pathreview-ai301-fa26-s1/issues
+
+### Suggested picks (fit: Python/backend/docs/tests, bounded, unassigned)
+
+Enough signal from your fit profile + open good-first issues to recommend:
+
+| Priority | Issue | Why |
+|---|---|---|
+| **Primary** | [#73](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73) README / `.env.example` API key mismatch | docs + config hygiene, tier-1, ~1–2h |
+| Alt | [#72](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/72) `verify_password` / malformed hash | small Python API bug + test |
+| Alt | [#61](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/61) health check `sqlalchemy.text()` | bounded API/SQLAlchemy fix |
+
+Avoid for first pick unless you want bigger scope: tier-3 devops (#50/#51), frontend a11y (#42).
+
+### Command to run (skill ranks; you still choose)
+
+From any directory (skill must be installed and in sync):
+
+```bash
+claude "issue-select: grade these candidate first issues: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73 https://github.com/codepath/pathreview-ai301-fa26-s1/issues/72 https://github.com/codepath/pathreview-ai301-fa26-s1/issues/61"
+```
+
+1. Confirm the skill **accepts** at least one (ideally #73).
+2. Copy the **entire** command output for the chosen issue into `selection.md` (that is the transcript).
+3. Do **not** post a claim comment yet.
+
+If you already know you want only #73:
+
+```bash
+claude "issue-select: grade this candidate first issue: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73"
+```
