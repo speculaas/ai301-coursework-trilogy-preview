@@ -137,3 +137,52 @@ If you already know you want only #73:
 ```bash
 claude "issue-select: grade this candidate first issue: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73"
 ```
+
+---
+
+## GitHub web upload paths (your `speculaas/ai301-coursework`)
+
+Course instruction: use **Add file → Upload files** inside the right folder.
+
+Open these URLs (must be logged into GitHub as `speculaas`):
+
+| What to upload | Open this folder in the browser | Files |
+|---|---|---|
+| Installed skill | https://github.com/speculaas/ai301-coursework/upload/main/tools/issue-select | From `~/.claude/skills/issue-select/`: `SKILL.md`, `rubric.md`, `scope.md`, and everything under `references/` (e.g. `evidence-guide.md`) |
+| Eval + selection | https://github.com/speculaas/ai301-coursework/upload/main/beat-1-sandbox/unit-1 | `eval-run.txt` (the **harness** file from `/tmp/eval-run.txt`, not the 551-byte stub), filled `selection.md` |
+
+If those folders don’t exist yet on `main`, create them first:
+
+1. https://github.com/speculaas/ai301-coursework → **Add file → Create new file**
+2. Type path `tools/issue-select/.gitkeep` → Commit  
+3. Type path `beat-1-sandbox/unit-1/.gitkeep` → Commit  
+4. Then use the upload URLs above
+
+Do **not** upload working notes (`2026-09-22-*.md`, `live-transcript-*.txt` unless you want them for yourself — graders only need the three LMS artifacts).
+
+### Local → upload checklist
+
+```bash
+# 1) real harness artifact (18/20 PASS) — overwrite any stub
+cp /tmp/eval-run.txt   ~/git/zimmnotes/chat/codepath/ai301/ai301-coursework-trilogy-preview/beat-1-sandbox/unit-1/eval-run.txt
+
+# 2) skill files to upload (browse this folder in Finder, or drag into GitHub upload UI)
+open ~/.claude/skills/issue-select
+```
+
+---
+
+## Live transcript status (issue #73) — check before paste
+
+File: `beat-1-sandbox/unit-1/live-transcript-issue-73.txt`
+
+**Not submission-ready yet.** It records a **failed** live run: Claude could not read the issue (`gh` / network permissions blocked in that session), so it refused to emit accept/reject JSON. Graders need a transcript that ends in fenced JSON with `"verdict": "accept"`.
+
+Re-run **interactively** and approve tool use for `gh` / skill reads:
+
+```bash
+claude "issue-select: grade this candidate first issue: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73"   2>&1 | tee ~/git/zimmnotes/chat/codepath/ai301/ai301-coursework-trilogy-preview/beat-1-sandbox/unit-1/live-transcript-issue-73.txt
+```
+
+Keep the `.txt` as a backup; the required paste is into `selection.md` **Verdict output**.
+
