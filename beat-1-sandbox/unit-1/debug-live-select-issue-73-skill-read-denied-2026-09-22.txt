@@ -1,0 +1,16 @@
+I can't proceed — the skill's own inputs are unreadable in this session.
+
+Both read paths were denied and this session is non-interactive, so the permission prompt can't be answered:
+
+- `Read` on `/Users/watney/.claude/skills/issue-select/scope.md` and `rubric.md` → permission not granted
+- `Bash` (`ls`/`cat`) on the same directory → the three operations each require approval
+
+The rubric is the part that decides the verdict — the skill is explicit that it cannot grade without one, and I won't substitute my own judgment for checks I haven't read. I also haven't fetched the issue yet, since `scope.md` governs whether `codepath/pathreview-ai301-fa26-s1` is even an in-scope source and what house rules apply to reading claim comments there.
+
+Also worth flagging separately: the MCP servers (Asana, Gmail, Google Calendar, Google Drive, Notion, Slack, Zoom) need authorization before their tools work. For claude.ai connectors that's done in your claude.ai connector settings; for others, via `claude mcp` or `/mcp` in an interactive session. None of them are needed for this task, but they're unavailable until then.
+
+To unblock the grading, either:
+
+1. Re-run this in an interactive session so you can approve the two reads, or
+2. Add a read permission for `/Users/watney/.claude/skills/issue-select/**` to your settings (I can do that with the `update-config` skill if you want), or
+3. Paste the contents of `scope.md` and `rubric.md` here and I'll grade issue #73 against them directly.

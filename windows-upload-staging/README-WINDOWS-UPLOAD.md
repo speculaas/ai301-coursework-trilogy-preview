@@ -40,3 +40,10 @@ Claude Code tool approvals are **local to the machine running `claude`**.
 claude "issue-select: grade this candidate first issue: https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73" \
   2>&1 | tee live-transcript-issue-73.txt
 ```
+
+## Live #73 debug log (not for upload)
+
+See:
+`beat-1-sandbox/unit-1/debug-live-select-issue-73-skill-read-denied-2026-09-22.txt`
+and `2026-09-22-debug-live-select-issue-73-permissions.md`.
+Permission-blocked run, not an accept transcript.
