@@ -71,3 +71,10 @@ sequenceDiagram
 
 Optional: `--only issue-10,issue-15,issue-20` to guard scope rejects.  
 Then **one** full run with `--save-run` when ready (and after any late-submit confirmation with staff).
+
+## Related: live select vs this harness path
+
+Live Path Review grading (interactive Claude + `gh`, session `b8970ca5…`) is a
+**different** sequence than `--only`. See
+[`2026-09-22-live-select-vs-eval-harness.md`](./2026-09-22-live-select-vs-eval-harness.md)
+for a companion Mermaid contrast and the #73 JSONL-derived flow.
