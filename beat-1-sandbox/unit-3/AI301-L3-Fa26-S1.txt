@@ -1,0 +1,489 @@
+PLAN & BUILD
+AI 301 · UNIT 3
+Fix It
+You drive, AI operates.
+⏰ 2 mins. Runs inside the intro. Continuity in one sentence: last week you posted the proof on your issue; this week you say what you will do about it before you do it, then you drive the build. For those of you who’ve taken a TIP class, this is the Plan and Implementation phases of UMPIRE.
+Students without a posted repro work the house issue from its repro pack; TFs set them up in the rooms. This week you ship a posted plan comment, a working change on a branch, and a skill whose grading procedure you wrote. Name the progression: unit 1 the rubric, unit 2 the evidence guide and voice guide, this unit the procedure, unit 4 the whole tool. Say the banner line: write the plan before you write the code.
+
+AI 301 · WELCOME
+Welcome to Unit 3:
+Fix It
+1
+Turn on your camera
+3
+Answer tonight's question in the chat
+TONIGHT'S QUESTION · IN THE CHAT
+What’s a habit or process change you made that really improved your life?
+
+2
+Rename yourself on Zoom if needed
+🌟 Purpose: Settle the room and get everyone ready before the session starts.
+
+✅ What should I be doing?
+Before class, update the two sample slots for this unit: the title and the chat question. Keep the slide up while students arrive.
+
+🎙️ What should I be saying?
+Welcome! While we get started: camera on, and drop your answer to the question in the chat.
+
+🙌🏽 How should I engage students?
+Greet students by name as they arrive and read a few chat answers aloud.
+
+OUR COMMUNITY
+As a community, we will...
+✱  Be present, physically and mentally
+✱  Actively build an inclusive community and space
+✱  Practice curiosity and adopt a learning mindset
+✱  Ask for help when we need it
+✱  Keep our cameras on
+🌟 Purpose: Set the shared expectations for how the community works together.
+
+✅ What should I be doing?
+Walk the five norms briskly; they are the same every session.
+
+🎙️ What should I be saying?
+These are the agreements we all signed up for: present, inclusive, curious, asking for help, cameras on.
+
+🙌🏽 How should I engage students?
+Ask for a thumbs-up or a +1 in the chat once the norms are on screen.
+
+Announcements & Reminders
+Don't Forget Our Standards of Engagement!
+Cameras on: visible in frame (head + shoulders in frame, well-lit) 
+Calling in from a computer 
+Calling in from a singular, stable location with stable access to internet 
+
+4
+
+5
+More surveys!
+Lecture topics
+Breakout was better
+Polls
+Feeling improvement
+Pacing was better, but still a bit fast
+Activity bumps
+More resources for some topics
+Reminder: this is anonymous
+About double the number of students thought it was too fast vs too slow, so we’re going to keep at or below that pace
+Twice as many survey submissions as week one! More people attending generally, too. Still not enough to get Kuhu’s joke, though, so let’s try to all submit that this week. 
+re: feeling improvement, comments like — “I was able to understand what is happening in the class better”
+Some of you asked me specific questions in your comments, like asking for access to materials, but I don’t know who said that because I can’t see whose comments these are. You can always ask those questions in Slack or via email to support@codepath.org, though! Some of those questions were about locating links shared in chat or links to the GitHub repositories we’re using for activities, so reminder: those are in the course portal.
+
+ASK ANYTIME
+Add your questions to the Q&A
+✱  Our Tech Fellow team adds answers throughout the lesson
+✱  Chat questions may be missed or redirected to the Q&A
+Q&A, on the right
+🌟 Purpose: Route questions where they will actually get answered.
+
+✅ What should I be doing?
+Point at the highlighted Q&A button and remind students the Tech Fellow team is watching it all session.
+
+🎙️ What should I be saying?
+Drop questions in the Zoom Q&A any time; chat questions can get missed.
+
+🙌🏽 How should I engage students?
+Seed the Q&A with a first question if it is empty.
+
+AI 301 · UNIT 3 · 120 MINUTES
+Agenda
+01
+Intro   continuing from proof to plan
+10 min
+02
+Lecture   plan and build
+45 min
+03
+Break
+5 min
+04
+Activity   Teach Claude to Grade a Plan, in groups
+50 min
+05
+Wrap-up   what's due, where this is headed
+10 min
+⏰ 1 min. The night's shape, the same in every unit: intro, lecture, break, activity, wrap-up.
+POLL: Are you in Slack yet? Yes, and I check in at least once a week. Yes, but I don’t check regularly. I set it up but haven’t gone back. Not yet. I’m locked out.
+
+
+THE ROADMAP · SANDBOX BEAT · UNITS 1-4
+Where this session sits
+UNIT 1
+Selection
+issue-select
+UNIT 2
+Reproduction
+repro-check
+UNIT 3
+Plan and build
+plan-check
+UNIT 4
+Pull request
+pr-precheck
+Sandbox
+units 1-4
+Real repos
+units 5-8
+Portfolio
+units 9-10
+⏰ 1 min. The agenda was session-scale; this is course-scale. Green marks tonight: unit 3, the sandbox arc's midpoint, the Plan and build phase and the plan-check skill. You walked in with a reproduced issue from unit 2; unit 4 turns tonight's branch into the sandbox pull request and hands you the whole tool. The track underneath is the whole course: sandbox now, real repos in units 5-8, portfolio to close.
+If you’re still working on unit two, that’s totally fine. You’re not behind in any way that puts your completion at risk.
+
+UNIT 2
+Say where, not just what
+one line from a unit-2 evidence guide, written twice
+what the guide said
+evidence to gather:
+- the logs
+stuck · which logs? where?
+add the where
+what Claude needed
+evidence to gather:
+- the logs: run
+  demo --items 6 --size 2
+  copy the full output
+runs in one paste · no questions
+To the author, both look done. 
+⏰ 3 mins. One line from a unit 2 evidence guide, written twice. The first version says only “the logs”, which leaves the reader asking which logs, and where. The second says exactly what to run and what to copy, and it runs in one paste with no questions. To the author, both look done. Land it this way: a check or a procedure step has to say where to look. Tonight’s worksheet has a box for exactly this, “Where we didn’t know where to look”.
+POLL: Which of these is ready to share? To reproduce, run the command. It crashes. ; To reproduce, run `cd hyperfine &&  cargo build --release`. The terminal does not display build progress.
+
+LECTURE · PART 1 OF 4
+The plan
+Scope, diagnosis, test, comment: what a maintainer can say yes to.
+⏰ breather. Lecture part 1 of 4: the plan. Scope, diagnosis, test, comment: what a maintainer can say yes to. Reset the room, then move.
+
+WHY PLAN FIRST
+The expensive no
+github.com/desktop/desktop · pull 22653
+codefirst
+562 lines14 files · 3 days
+closed
+planfirst
+one commentone thread
+read
+Review capacity is the scarcest thing a maintainer owns.
+⏰ 2 mins. A real PR, closed last month: 562 lines across 14 files, three days of work, closed with one line: please open an issue to discuss this feature first. GitHub Desktop automated the no because it arrives so often. Maintainers are not being precious; review capacity is the scarcest thing they own. The plan comment is how you spend minutes to save their days. That is the arithmetic on the right.
+https://github.com/desktop/desktop/pull/22653 
+This is a really common mistake for new contributors and especially students, because there’s that desire to show initiative and to do something that people will think is really worthwhile, but you’re also coming into a community space with its own goals and culture. Existing members of the community sometimes feel disrespected when a new person pops in and immediately tries to make sweeping changes.
+Show of hands: who’s ever done this? If you would be willing to share about a time it happened, post your examples in the chat.
+
+ROOT CAUSE VS SYMPTOM
+Your repro is the baseline
+parse
+merge
+cache
+render
+repro:  fails here
+posted, public, unit 2
+walk upstream, stage by stage
+the true break
+patch here = 
+symptom paint
+A diagnosis must follow from the reproduced behavior. Yours is already posted.
+⏰ 3 mins. The failure always surfaces at the end of the pipeline [lost things are always in the last place you look]; the cause almost never lives there. Your unit-2 repro evidence pins the surface, and the diagnosis is the walk upstream to the stage that actually broke. Patching at the surface is symptom paint: the wrong-cause trap, and the eval set punishes plans that do it. The rule: a diagnosis must follow from the reproduced behavior, and your posted repro IS that behavior. This is why unit 3 opens from unit 2's proof. Bridge to the running example: in the pager bug you meet next, the surface is the empty page 4 and the walk lands one function up, in page_count().
+
+THE SIX PARTS
+Anatomy of a plan
+PLAN.MD
+issue #12 · you · this week
+2
+scope
+in: page_count() rounding
+not in: the pagination API
+3
+files
+pager.py · test_pager.py
+4
+approach
+ceil-divide; drop the +1
+5
+test plan
+re-run repro: 6 items, size 2 -> page 3 of 3
+6
+risks
+callers that counted the ghost page
+The not-in line is the plan’s boundary.
+
+It is what a reviewer can hold the diff to.
+1
+diagnosis
+floor-divide + 1 makes a ghost page
+⏰ 4 mins. Six parts, read off the sheet: the diagnosis your repro evidence earned (root cause), scope as a pair (in and not-in), files, approach, test plan, risks. 
+Diagnosis leads because everything under it has to follow from it; a plan whose first line is a guess is a plan the build will overturn. 
+The not-in line is its own callout because it is the part maintainers actually hold you to: a plan that only says what it will do has no boundary. 
+The example is the off-by-one you will see planned live on slide 19.
+
+SCOPE CREEP
+The plan that eats the repo
+the bounded plan
+pager/
+  pager.py
+  cli.py
+  config.py
+  docs/
+    usage.md
+  tests/
+    test_pager.py
+touches 2 files
+the creep plan
+pager/
+  pager.py
+  cli.py
+  config.py
+  docs/
+    usage.md
+  tests/
+    test_pager.py
+touches everything it saw
+"while I’m here: rename the helpers"
+"quick config migration"
+"docs pass, why not"
+Maintainers reject this even when the code is good. The boundary is the point.
+⏰ 3 mins. Same repo, two plans. The bounded plan lights up two files: the fix and its test. The creep plan grew a rename, a config migration, and a docs pass on the way; every extra subtree has a while-I'm-here quote attached. Scope creep is the failure maintainers reject even when the code is good, because they cannot review a redesign disguised as a fix. Your not-in line from the last slide is the fence that keeps this from happening to you mid-build.
+I pretty frequently create at least one and often 3-5 other issues while I’m working on one opensource issue, because that lets you track the other things you notice while working without introducing scope creep.
+Padlet: What are some signs you’re maybe falling into scope creep, and what do you do to manage it?
+
+THE DECISIVE TEST
+How you’ll know it worked
+Write the expected output down first. Then anyone can run it and watch the fix work.
+written before you touch a line of code
+PLAN.MD · PART 5 · TEST PLAN
+run     demo --items 6 --size 2
+today   4 pages
+expect  3 pages  (6 items, 2 per page)
+“see if it works” is not a test plan. A number a stranger can check is.
+⏰ 3 mins. The decisive test plan is a before/after pair on the same observable behavior. Before: your posted unit-2 repro steps failing. After: the same steps with the expected output stated in advance. That is what decisive means: anyone can run it and watch the claim come true. 'Run the test suite' names no observable change, so it proves nothing about this fix. You already own the before side; the plan just states the after.
+
+THE PLAN COMMENT
+Read the thread first
+reporter
+extra page at exact multiples
+signal
+maintainer
+keep the current API, no new flags
+signal
+maintainer
+a repro in the thread gets reviewed first
+your comment, scaffolded
+what I found
+cause traced to page_count rounding
+what I’ll do
+fix inside the current API
+how I’ll prove it
+my posted repro, before and after
+“Hi, I can fix this,please assign me.”
+HOLD
+Promise only what the plan contains.
+Engage what the maintainer already said.
+⏰ 3 mins. Before the comment goes up, the thread gets read. Two maintainer lines here are signals: an API constraint and a stated review preference, and the scaffold quotes both back. A comment built this way promises only what the plan contains and engages the direction the maintainer already gave; where a thread carries explicit direction, ignoring it is one of the two walls in this unit's eval set. The boilerplate card is the contrast: enthusiasm, no plan; it reads as noise and earns the HOLD.
+
+LECTURE · PART 2 OF 4
+The build
+You drive, AI operates. No diff lands unread.
+⏰ breather. Lecture part 2 of 4: the build. You drive, AI operates. No diff lands unread. You are responsible for every line you submit, no matter where it came from. Reset the room, then move.
+
+THE OPERATING MODEL
+You drive, AI operates
+THE DRIVER · you
+THE OPERATOR · AI
+plan
+step
+diff
+decision
+the plan · the diff · accept / redo
+one bounded step at a time, diff back to you
+No diff lands unread.
+⏰ 4 mins. The build is homework, and this is how it runs. You hold two instruments: the plan and the diff under review, with two controls, accept and redo. The AI operates: it executes one bounded step from the plan at a time and hands the diff back. The loop is plan, step, diff, decision, and back to the plan. 
+The one rule on the slide: no diff lands unread. Your branch isn't graded this week, but next week your pull request is checked against plan.md, so record deviations as they happen.
+Spend one of the four minutes on the deviation move itself: pause the loop, record the deviation in plan.md, re-run plan-check, and comment on the issue if the posted plan is no longer true. It is the cannot-repro analog from unit 2.
+
+STANDARD PRACTICE
+The industry already works this way
+Claude Code plan mode, captured live.
+you approve here,
+before any edit
+⏰ 3 mins. This is not course ceremony. Plan-first agentic coding is how the tools themselves work: this is a real plan-mode session on the same off-by-one from slide 13, and the run stops with the plan written, waiting for a driver's yes before any edit. The approval you are practicing this week is the same one the industry builds into its tooling; design docs and RFCs are the same discipline at project scale. More about design docs: https://www.designdocs.dev/ and RFCs: https://www.ietf.org/process/rfcs/ [from IETF but other bodies and organizations use this process as well]
+If plan mode is new to you: it is a Claude mode (toggle with shift+tab in Claude Code; use the dropdown in VSCode or the Claude app) where Claude reads and plans, but edits nothing until you approve at this dialog. When you run your build tonight, you ARE this dialog. https://academy.claude.com/courses/ai-native-sdlc-playbook/plan-mode 
+
+LECTURE · PART 3 OF 4
+Your tool
+SKILL.md no longer lists the steps. You write them in procedure.md.
+⏰ breather. Lecture part 3 of 4: your tool. In previous weeks, our staff wrote SKILL.md for you. SKILL.md no longer lists the steps. You write them in procedure.md. Reset the room, then move.
+
+THIS UNIT'S TOOL
+plan-check: what's fixed, what you write
+the frame · fixed
+modes · scope.md· output contract
+judgment files · you write new ones for plans
+rubric.md · references/evidence-guide.md
+procedure.md
+the skill’s own operating steps
+you write the steps
+SKILL.md tells Claude to follow
+procedure.md
+⏰ 2 mins. The unit's tool, and what is withheld now. Outer layer: the fixed frame, modes, the scope.md seam, the boundary file you met in unit 2, the output contract; it stays fixed so harness feedback stays signal. Middle: the judgment files. You write them again this unit, for plans, including a new evidence guide. New: the core is dashed open. SKILL.md tells Claude to follow procedure.md, and procedure.md ships as stage headings with nothing under them. You write the steps.
+
+NEW THIS UNIT
+A procedure someone else can run
+1
+Read order
+What to read first
+2
+Evidence gathering
+How to gather the evidence
+3
+Check execution
+How to grade each check
+4
+Verdict assembly
+How to reach the verdict
+Claude can’t ask what a step means,
+so each step has to say it.
+⏰ 3 mins. The four stages are exactly the headings shipped empty in procedure.md, and the gray lines name the matching “Our procedure” boxes on tonight’s worksheet. Claude can’t ask what a step means, so each step has to say it. You can use these four stages as a chance to review for yourself how your skill development is going from a QA perspective.
+
+THE OUTPUT CONTRACT
+The skill runs
+plan-check · pkg-07
+eval mode
+bounded-scope
+pass
+“one change, limits stated”
+diagnosis-grounded
+fail
+plan: “the cache returns a stale page total”
+repro: “ran with the cache disabled; page 4 still empty”
+executable-by-a-stranger
+pass
+“files and approach named”
+test-decisive
+pass
+“expected-after stated”
+comment-faithful
+pass
+“promises only what the plan holds”
+the verdict quotes the submission’s own lines
+HOLD
+the deciding check is
+the grounding one
+⏰ 2 mins. What a graded practice submission looks like. Per check: a grade and one line of quoted evidence from the practice submission itself; the deciding check here is grounding, the plan's diagnosis contradicts the practice submission's own repro evidence, so the verdict is HOLD no matter how polished the prose is. 
+The skill must cite actual lines from the practice submission, not vibes; that is the output contract your procedure has to produce. 
+Walk the collision for thirty seconds: read the plan's diagnosis line, then the practice submission's repro-evidence line beside it. The repro ran with the cache disabled and still failed, so the diagnosis is unreachable from the evidence. That comparison is the grader's deciding move. In Phase 1 of the activity, groups find that the sample rubric misses exactly this.
+
+LECTURE · PART 4 OF 4
+The eval
+Same bar, third time: 18 of 20.
+⏰ breather. Lecture part 4 of 4: the eval. Same bar, third time: 18 of 20. This section is hopefully familiar, and if it’s not, you can always review recordings of prior lectures in the course portal! Reset the room, then move.
+
+THE EVAL
+Same bar, third time: 18 of 20
+target · 18
+16 loud calls
+4 arguable calls
+18 means you missed nothing loud and split on at most two arguable ones
+and every category scores at least once:
+clear accepts
+scope creep
+wrong cause
+unbuildable
+thread + convention
+$0.20 per practice submission · about $4 a full run · unlimited retries
+two accepts are scoped-down on purpose: deferring part of the issue, and saying so, is ready
+⏰ 2 mins. Third unit, same bar, same shape. The harness grades the same 20 practice submissions with your skill and compares each verdict with the gold labels (the staff answer key). Sixteen carry loud signals a reasonable rubric never misses; four are genuinely arguable calls, so 18 of 20 means missing nothing loud and splitting on at most two arguable ones. The composition: seven clear accepts including two honestly scoped-down plans, four scope creep, four wrong cause, three unbuildable, two thread-and-convention walls. The category floor has teeth this week: the two-submission thread-and-convention category is the live case, and a rubric with no comms checks cannot buy those misses back on volume. Say the credit math: about four dollars a full run, twenty cents a practice submission with --only, unlimited retries before the deadline. On the accepts: two of the seven are honestly scoped-down plans that defer part of the issue and say so; a rubric that equates smaller-than-the-issue with not-ready fails them, the same faithful-over-confident call as unit 2.
+
+BREAK · 5 MINUTES
+Take five
+Take 5 mins to step away from the computer. Feel free to turn off your camera and return promptly after 5 mins.
+🌟 Purpose: Give the room a real reset mid-session.
+
+✅ What should I be doing?
+Post the return time in the chat and start a timer. Update the eyebrow if this unit's agenda gives the break a different length.
+
+🎙️ What should I be saying?
+We are back at [time]. Step away from the screen if you can.
+
+🙌🏽 How should I engage students?
+Be back a little early and greet people as they return.
+
+THE ACTIVITY · 50 MINUTES · BREAKOUT ROOMS
+Teach Claude to Grade a Plan
+Setup   ·  5 min
+Getting started
+Pick a captain.
+The captain copies the worksheet and shares the link in the Zoom chat.
+Everyone works together in that one doc.
+You don’t need anything to start.
+The worksheet gives you a sample rubric and procedure for Phase 1.
+Every step is on the Activity tab.
+BEFORE ROOMS OPEN
+Open the Unit 3 Activity tab now.
+⏰ 2 mins. Leave this slide up until the rooms open.
+Before the rooms open, everyone opens the Unit 3 Activity tab; the worksheet link and every step are there.
+In the room, the captain copies the worksheet, shares it so anyone with the link can edit, and pastes the link in the Zoom chat. The whole group works in that one doc; there are no solo parts.
+Nobody needs anything from lecture to start. Phase 1 hands them a sample rubric and a sample procedure, and they grade calib-03's plan with them exactly as written, looking for the sample's weaknesses. Don't tell them what the weaknesses are.
+
+28
+Breakouts
+This is a placeholder for students to go to rooms
+
+BEFORE YOU GO
+One thing, due Sunday
+Your repo link · the same one you’ve submitted every unit
+tools/plan-check/ with your rubric, procedure, evidence guide, and voice guide
+beat-1-sandbox/unit-3/plan-and-implement.md: plan comment, branch, test evidence, and eval write-up
+beat-1-sandbox/unit-3/plan.md: your plan, with Deviations filled in
+beat-1-sandbox/unit-3/eval-run.txt: one complete run, from --save-run
+25 PTS
+full rubric on the Grading Rubrics page
+unlimited retries before the deadline
+⏰ 2 mins. Everything goes in the course repo, and the repo link is the whole submission. It's the same link students have submitted every unit.
+tools/plan-check/ holds the installed skill: rubric, procedure, evidence guide, and voice guide, next to SKILL.md and scope.md. beat-1-sandbox/unit-3/ holds plan-and-implement.md, plan.md, and eval-run.txt.
+plan-and-implement.md has the link to the posted plan comment with its text pasted underneath, the branch name, the before and after test output under Evidence, and the four eval write-up fields. plan.md goes in the course repo, not on the branch. "Nothing changed" under Deviations, in their own words, earns full points; blank earns nothing.
+Don't write eval-run.txt by hand: add --save-run eval-run.txt to a full run and upload the file it writes.
+25 points: 8 for the skill, 10 for the eval (3 for the run, 7 for the write-up), and 7 for the plan and build. The 18 of 20 target sets no points. The branch's contents aren't graded this week; unit 4 reads the pull request's diff against plan.md.
+
+UNIT 3 · NEXT UNIT
+Submit & Land It
+Bring your branch. It becomes your sandbox pull request, and this time you build the whole tool.
+TONIGHT
+run the eval · post the plan · build · submit on the portal
+⏰ 1 min. The send-off. Next unit is Submit & Land It, the sandbox finale: the branch becomes a submitted pull request held to Path Review's own standards, and the whole tool is theirs to build, every file from SKILL.md down. Tonight, in order: finish the three components and install the skill, run the eval, write plan.md from the posted repro, check it with the skill in live mode, post the plan comment, build on the branch, re-run the repro steps as the test, submit on the portal before Sunday.
+POLL: How are you feeling about unit 3? I’m still on unit 1. I’m still on unit 2. I’m going to try unit 3, but it feels shaky. I’m feeling good about unit 3. I worked ahead and unit 3 is already done.
+
+ONE GOOD THING
+Let's celebrate your wins
+Reflect on today's session. Maybe you got a question answered, overcame a coding challenge, or learned how to do something completely new.
+IN THE CHAT
+share one good thing you learned or experienced today
+🌟 Purpose: End the session on a positive note.
+
+✅ What should I be doing?
+Prompt students to share their reflections in the chat.
+
+🎙️ What should I be saying?
+Let's celebrate your wins. Share one good thing you learned or accomplished today!
+
+🙌🏽 How should I engage students?
+Read a few responses aloud and celebrate with enthusiasm.
+
+SESSION SURVEY · 3 MINUTES
+Tell us how tonight went
+Your feedback makes the next session better, and we read all of it.
+Take the survey · link in the chat
+I do read all of the survey submissions, and I’d really love to read even more of them this week! Let’s see if we can get that Kuhu joke this time!
+
+BEFORE YOU GO
+Final reminders
+✱  Run the eval · post the plan · build · submit on the portal by 11:59pm PT on Sunday
+✱  Fix-It Garages are over for the term, but you can still get setup help if needed during Study Halls, which run through the end of the term
+✱  If you haven’t yet, please fill out your session survey!
+✱  Next Unit: Submit & Land It
+🌟 Purpose: Reinforce key tasks and deadlines.
+
+✅ What should I be doing?
+Summarize next steps and encourage continued engagement.
+
+🎙️ What should I be saying?
+Run the eval, post the plan, build, and submit your repo link by 11:59pm PT Sunday.
+
+🙌🏽 How should I engage students?
+Encourage students to ask any lingering questions before signing off.

@@ -1,0 +1,154 @@
+---
+## tab: Overview
+---
+Unit 3: Plan the Fix, Then Drive the Build
+Write the plan before you write the code.
+
+Welcome to Unit 3, the arc's midpoint. You walk in with a claimed, reproduced issue (or the house issue) and the proof you posted last week. You walk out with a posted plan comment, a working change on a branch built with AI operating under your direction, and a plan-check skill that grades a plan package the way a maintainer would read it: against the evidence, not the formatting.
+
+If your reproduction did not land, you are not stuck: the staff keep the house-issue list with ready-made repro packs, and a TF will set you up in your room. Nothing this week depends on last week's miss.
+
+🧩 What you'll build
+The skill ships complete except for three authored components. The rubric and the evidence guide stay in your hands from unit 2. New this week: procedure.md, the skill's own grading procedure. In units 1 and 2, the skill's SKILL.md told the AI how to work, step by step; this week that workflow section is one line: execute procedure.md. You write the steps.
+
+By the end of the week you will have:
+
+A plan rubric: checks that decide whether a plan is ready to post and build from, drafted in lecture, calibrated in the activity.
+An evidence guide: your map of where evidence lives in a plan package, from the diagnosis-vs-repro grounding to the repo's stated conventions.
+A grading procedure: the skill's operating steps: read order, evidence gathering, check execution, verdict assembly. Someone who has never seen a plan package should be able to follow it without help; the operator swap tests exactly that.
+Your voice guide, carried over: paste your unit 2 guide into the labeled slot and extend it if the plan-comment register needs rules your claim and repro comments did not. It is not re-authored and not graded as new work.
+A plan and a build: plan.md for your own issue (it lives in your course repo, never on the branch), the plan comment posted upstream, and the planned change built on a branch of your fork, with your unit 2 repro steps re-run as the built-in test. The points are on the Assignment tab and the full rubric is on the Grading Rubrics page under Course Info; the activity protocol is on the Activity tab.
+🗓️ How this session works
+The session is 120 minutes:
+
+Block	Minutes
+Intro	10
+Lecture	45
+Break	5
+Activity (breakout rooms)	50
+Wrap-up	10
+Two parts of the lecture feed directly into your work: you will draft your own plan's scope pair (in and not-in) and two rubric checks, live. The activity grades with your drafted checks, and the scope pair seeds your own plan in homework step 4, so do not skip either moment.
+
+The build itself is homework, by design: the activity needs no local setup, and writing the plan before touching the code is the entire discipline this week teaches.
+
+🚀 Where this is headed
+Here is the progression: in Unit 1 you wrote the rubric. In Unit 2 you also wrote the evidence guide and your voice guide. This week you write the skill's grading procedure. In Unit 4 you build the whole tool.
+
+Unit 2's rubric swap runs its second round here under a new name, the operator swap. A classmate still runs your rubric exactly as written, but from this week that classmate is your executor, and each place they stalled is a friction line, the notes unit 2 kept in "Where the rubric was unclear". The swap also gains a new move: friction now has two destinations. When your executor stalls because your rubric does not say what to decide, that is a rubric gap. When they stall because nothing says HOW to find the evidence, that is a procedure gap, and it routes to procedure.md. The swap is the live demonstration of why the procedure is this unit's withheld component.
+
+Unit 4 turns this unit's branch into your sandbox pull request: test, submit, and review.
+
+Session Details
+Session Info
+🗓️ Wednesday, September 30th at 4:00PM MDT
+
+↗ Session Zoom Link | Passcode: codepath
+
+📊 Link to Slides
+
+Upcoming Due Dates
+🏁 Project 3 due by Monday, October 5th at 12:59AM MDT
+
+---
+## tab: Activity
+---
+Activity: Plan Calibration and Operator Swap, Round Two (50 minutes)
+Everyone grades the same plan packages with their own draft rubric, and then two groupmates grade with your rubric, in writing, while you grade with someone else's. The grading is the calibration protocol you know from units 1 and 2, applied to the hardest object to grade yet; the swap is round two, and this time the friction that comes back has two destinations: your rubric, or your procedure.
+
+This page is the only set of instructions for the activity. The plan worksheet contains labeled blanks and nothing else; every step for filling it in is written here.
+Phase	Minutes	Mode
+Setup: copies + sections	5	group
+1. Grade 2 shared packages	10	individual, in your own copy
+2. Operator swap on a fresh package	15	group worksheet, two silent rounds (10 + 5)
+3. Disagreement log + synthesis	10	group, in the group copy
+4. Revision marks	5	individual (finish as homework)
+5. Debrief	5	group, in the group copy
+📖 Terms this page uses
+Your rubric: the draft plan rubric you wrote during lecture. The finished form is the skill's rubric.md template (a checks table plus a verdict rule), but your lecture draft will be rougher, and that is fine: grade with it as it stands, and treat every check without a stated weight as required. If you left lecture without a verdict rule, use this fallback (it is also the example shape in the template): ready only if every required check passes; ? on a required check counts as a fail; preferred checks never change the verdict. Folding your draft into the template's full format (check, evidence, pass condition, weight) is homework.
+Package: one bundle under eval/packages/ in your Unit 3 materials: a .md file you read, plus a .json twin of the same snapshot for the harness (grade from the .md). Each package is frozen: a real issue's context (snapshotted on the date stamped at its top), including a repo-facts block (the repo's stated template asks and contribution policy, where any AI-use disclosure rule lives), a repro-evidence block (the reproduction the plan builds on, in the form of an accepted unit 2 report), a candidate plan, and a candidate plan comment. You are grading whether the plan is ready to post and build from, against the evidence in the bundle.
+Ready / hold: the verdict space. ready means post the comment and start the build (the skill's JSON calls it accept); hold means it needs work first (reject). There is no third verdict.
+Executor / author: swap roles. The author wrote the rubric; an executor runs it on a package, exactly as written, typing grades and friction instead of speaking. In the rotation everyone plays both roles at once: while you execute someone else's rubric, two other people execute yours.
+Rubric gap / procedure gap: the two friction destinations, new this week. A rubric gap is a check whose pass condition the executor could not decide (the rule is ambiguous). A procedure gap is a check the executor could not START: nothing said where to look or what to read first. Rubric gaps route to rubric.md; procedure gaps route to procedure.md.
+The worksheet: a Google Doc the instructor links in chat at activity start; you work in copies of it. Its canonical source is  plan_worksheet.md.
+🎒 What you need walking in
+Your two draft rubric checks and your own plan's draft scope pair (in and not-in), both from the lecture's drafting moments. If your rubric is thinner than 2 checks, spend the first minutes of phase 1 drafting checks from the failure families named in lecture: the diagnosis follows from the repro evidence, the change is one bounded thing, a stranger could start executing it, the test plan names an observable outcome, the unknowns are stated honestly, the comment respects the thread and the repo's conventions. Grade with whatever you have.
+
+🛠️ Setup: copies and sections (5 min)
+Everyone: open the template link from chat, then File, then Make a copy. This is YOUR worksheet. Phases 1 and 4 happen in it.
+One member per group: make one more copy, rename it Plan - Group <your group number>, set sharing so anyone with the link can edit (Share, then "Anyone with the link", then Editor), and paste its link in the room. This is the GROUP worksheet. Phases 2, 3, and 5 happen in it.
+Everyone: claim the next open member section in the GROUP worksheet, top to bottom: put your name on its Name line and paste your draft rubric into it (your checks, your verdict rule, and your read-order or procedure steps if you drafted any). The order of the sections is the rotation order for phase 2: you will execute the rubric in the section after yours, then the one two after, wrapping from the last section back to the first. Any room size from 3 to 6 runs this unchanged; a room of 2 runs both rounds on the one other member's section (round 2 uses a second package, phase 2 names it).
+If you cannot type into a doc, you are in the template, not a copy: make your copy.
+⏱️ Phase 1: grade two shared packages (10 min, individual, your worksheet)
+Name up to 3 checks at the top of the worksheet's phase 1 section, taken from your rubric's Check column, one per line. More than 3 checks? Grade with the 3 you would keep if forced to cut. Fewer? Leave lines blank and grade with what you have.
+Open eval/packages/calib-01.md and calib-02.md in your Unit 3 materials. Read each package in full before grading anything, in this order: the issue context, then the repro-evidence block, then the plan, then the comment. The deciding evidence is usually whether the plan's diagnosis follows from what the repro evidence actually shows.
+Fill in each package's block, one line per check: apply the check's pass condition to the package and write P, F, or ? (? means the package does not contain enough evidence to decide). Under the fallback verdict rule, F and ? on a required check produce the same verdict, so when evidence is simply absent, pick one reading and note it. Your homework rubric's verdict rule must state its own unclear treatment either way.
+On each block's Verdict line, combine your grades with your verdict rule and write ready or hold.
+Grade only what is in the package. Do not open the source issue's live page: the snapshot is the world you are grading, and the live thread has moved on since capture.
+🔁 Phase 2: the operator swap, round two (15 min, group worksheet, two silent rounds)
+This is unit 2's rubric swap under its unit 3 name, with two additions: two executors run your rubric instead of one, and every friction line gets a route. The package is eval/packages/calib-03.md, which nobody graded in phase 1. Everyone executes at the same time, in writing; the room stays silent through both rounds.
+
+Round 1 (10 min): open the member section AFTER yours in the group worksheet. Read calib-03 in full first (this round includes your one full read; use the phase-1 reading order), then run that rubric on calib-03, exactly as written: read each check's pass condition literally, type P / F / ? with a one-line evidence note into the section's Executor 1 block, then apply their verdict rule and type the verdict. Every stall, guess, or where-do-I-even-look goes in as a friction line, and new this week, tick the route on every one: rubric gap (the rule was ambiguous) or procedure gap (nothing said where to look or in what order). Every stall is data about the author's wording, not about the author.
+Round 2 (5 min): same steps on the member section TWO after yours, in its Executor 2 block. You already know the package, so this round runs faster: spend the slack making your friction lines specific enough to act on (name the check, quote the ambiguous words). Room of 2 only: there is no section two after yours, so run round 2 on the SAME section you ran in round 1, but on calib-04.md instead of calib-03; write the execution into its Executor 2 block and note the package on the block's first line. The rubric still gets executed twice, on two different packages.
+Two hard rules. The first you know from unit 2's rubric swap; the second is new this week. An executor may not ask the author anything: if a check is ambiguous, decide something, keep moving, and log the guess, because a skill running this rubric cannot ask either. Nobody speaks until phase 3 opens: no hints, no corrections, no "what I meant was." Your friction arrives in writing, under your own section, from your two executors.
+When round 2's timer ends, the swap is done: your section holds two independent executions of your rubric. Hold the verdict talk for phase 3's opening, so the swap's full 15 minutes stay on execution.
+
+🗣️ Phase 3: disagreement log + synthesis (10 min, group, group worksheet)
+Compare phase 1 verdicts package by package: every member states ready or hold for calib-01 and calib-02. Then read each member section's two executor verdicts on calib-03 against what the package actually shows. Two executors splitting on the SAME rubric is the loudest wording data in the room, and if a rubric graded the plan's polish instead of reading it against the repro evidence, say so out loud.
+For each split, fill one disagreement block: the package, the check that drove the split, who graded which way, and a one-line reason. Swap friction counts as a split: a check the executor read differently than the author meant goes in the log even if the verdicts happened to match.
+If the group agrees on everything, one of the packages fooled all of you: regrade calib-03 against the repro-evidence block inside the bundle, check by check, until you find what the plan's diagnosis contradicts.
+Groups that finish early: grade calib-04.md individually, in silence, then argue it. It is built to be defensible both ways, and the argument belongs in the log.
+Spend the last three minutes on the two synthesis boxes:
+Checks every plan rubric needs: checks the whole group would adopt, each stated with its evidence source and pass condition.
+Checks we could not agree on: name the check and the two positions. Your rubric has to pick one and write it down.
+✏️ Phase 4: revision marks (5 min, individual, your worksheet)
+Fill the revision-mark blocks: one block per change your components need (copy a blank block if you need more). First line, the kind of change: add, drop, tighten, demote, promote, or restructure. Second line, where it routes: rubric, evidence guide, or procedure. A stalled "where do I even look" from the swap routes to the procedure; an ambiguous pass condition routes to the rubric; a missing what-good-looks-like routes to the evidence guide. Third line, the check or stage it touches. Fourth line, what motivated it: a logged disagreement, or a friction line from your member section in the group worksheet (name which). Write marks only: the full rewrite is homework, and you can finish this phase there too.
+
+🎤 Phase 5: debrief (5 min, group, group worksheet)
+Agree on one answer and write it on the debrief line: which single friction line was a procedure gap and not a rubric gap? If your group genuinely logged none, "none, and here is why our stalls were all rubric-shaped" is a real answer: write that. The instructor samples 2-3 groups for a one-line report-out.
+
+🏠 After class (homework, in this order)
+Make your skill runnable: clone your Unit 3 materials (git clone https://github.com/codepath/ai301-unit3-starter.git, or Code, then Download ZIP on the repo page), then copy the whole skill/ folder from the clone to ~/.claude/skills/plan-check/ (create the folders if they do not exist). This is how a Claude Code skill is installed: claude finds any skill under ~/.claude/skills/ from whatever directory you run it in.
+Finish the three authored components: your rubric.md (with the revision marks folded in), your references/evidence-guide.md, and your procedure.md, all in the skill's template formats, all edited inside your installed copy at ~/.claude/skills/plan-check/. Then paste your unit 2 voice guide into voice-guide.md's carry-over slot, extending it if the plan-comment register needs new rules. That installed copy is your one canonical set: point the harness's --rubric and --evidence flags at those same files (the procedure is picked up automatically from next to the rubric), so eval runs and live runs always grade with the same judgment.
+Run the harness from the clone's eval/ directory: one full eval run, then read every disagreement with the gold labels and re-run just those packages with --only while you revise (the eval README in your Unit 3 materials has both commands and the canary rule for revisions that loosen a check). Repeat until you clear the bar.
+Write your plan: plan.md for your own issue, built from your posted repro evidence: diagnosis, scope pair, files or areas, approach, test plan (your unit 2 repro steps re-run, with the expected-after stated), risks and unknowns. Draft your plan comment. On the house issue, build from the house repro pack instead, and quote the evidence your plan uses into plan.md: the live check reads only what your drafts contain and quote, and without a posted repro comment of your own, those quotes ground your diagnosis.
+Check it with your own tool: run the skill in live mode on the plan package (plan plus draft comment). From the folder holding your drafts: claude "plan-check: grade my plan in plan.md and draft comment in comment.md for issue <URL>". A correct run reads your installed skill's files, prints a per-check summary, and ends with a fenced JSON block whose verdict is accept or reject. One designed stop to know about: if the run halts with a scope message instead of grading, the skill DID run; your installed scope.md still carries the staff placeholder, so get your cohort's scope file from the instructor, drop it into your installed copy, and re-run. If you see neither the JSON block nor that scope stop, the skill did not run. Revise until it passes.
+Post the plan comment on your issue.
+Build the change on a branch of your fork named fix/<issue-number>-<slug>. You drive, AI operates: bounded steps from the plan, and no diff lands unread. Keep plan.md OUT of your commits: it is a working note, not part of the change, and this branch becomes a pull request a maintainer reads. Check git status before you call the branch done. If the build honestly deviates from the plan, update plan.md with what changed and why, re-run the skill on the updated package, and update the thread if the posted intent changed. A deviation recorded in the plan is normal work; a silent one costs you the branch points.
+Run your test plan: re-run your unit 2 repro steps against the built change and capture the before and after. If your accepted repro cannot re-run against the change as-is (say it was a stand-in script that copied the failing behavior), turn its same inputs into a check that goes through the real code path and capture that before/after instead: evidence through the real path is the point.
+Update your course repo, then submit: push the branch to your fork (git push -u origin fix/<issue-number>-<slug> from your fork's clone). In your course repo, upload the current files from your installed copy into tools/plan-check/ (the same web "Add file" flow as earlier units), save your eval run to beat-1-sandbox/unit-3/eval-run.txt, upload your plan.md to beat-1-sandbox/unit-3/plan.md (the plan goes in the course repo, not on the branch), then fill beat-1-sandbox/unit-3/plan-and-implement.md: the link to your posted plan comment with the text of that comment pasted under it (the plan comment row is graded from the pasted text), the link to your branch, your before/after test evidence pasted into the file's Evidence block, and the file's reflection prompts. Then submit on the Assignment tab: your course repo link.
+Path Review house rules for the plan beat (your skill's scope.md carries the full statements): a classmate's plan comment does not block yours, post your own plan anyway; never piggyback a plan ("same approach as above" is not a plan comment); branch on your own fork, one branch per issue; credit attaches to the PR you open in unit 4.
+
+---
+## tab: Assignment
+---
+Assignment 3: Plan and Build
+One bounded change. A stranger could start it. The diff matches the plan.
+
+📦 What you submit
+Your course repo link, through the course portal. It is the same link every week, with this unit's additions in place.
+
+❗ IMPORTANT: Submit a link to your entire repo, not just a folder. (What does this mean?)
+Four places in it carry this unit's work:
+
+tools/plan-check/: sits alongside the earlier units' folders and holds your filled rubric.md, references/evidence-guide.md, and procedure.md (the new component: read order, evidence gathering, check execution, verdict assembly), plus SKILL.md, scope.md, and your carried-over voice-guide.md; upload the current files from your installed copy when you submit.
+beat-1-sandbox/unit-3/plan-and-implement.md: this unit's links and evidence, plus its prompted reflection lines: your GitHub username (which is how your posted comment is matched to you), the link to your posted plan comment on your issue (or the house issue), with the text of that comment pasted under it — the plan comment row is graded from the pasted text, so copy across what you posted; the name of your branch, recorded in the file's Branch field: a type prefix, then the issue number, then a short description (for example fix/1234-null-check); and your test evidence, pasted into the file's Evidence block: the before/after of re-running your unit-2 repro steps against the built change (or of the closest check through the real code path built from them; the Activity tab's homework step 8 names the move). It also carries the four eval-iteration fields — Run history, Package analysis, Check rationale, Trade-offs — the graded account of how your tool reached the run in eval-run.txt. Each is scored on its own.
+beat-1-sandbox/unit-3/plan.md: your plan as built, deviation notes included. The plan lives in your course repo, never on the branch: a planning document is a working note, not part of the change a maintainer reviews, so it never rides into a pull request.
+beat-1-sandbox/unit-3/eval-run.txt: one complete eval run (run from the eval/ directory of your Unit 3 materials), written by the harness rather than by you. Add --save-run eval-run.txt to your confirming full run and it writes the file itself, under a header recording the pinned model, the tool it graded, and a fingerprint of each file that went into the run; upload that file with the same web flow. A partial --limit or --only run refuses to write it. Never hand-edit it: the account of the runs it took belongs in your write-up.
+🎯 The points
+This assignment is worth 25 points. The full rubric is on the Grading Rubrics page under Course Info; every graded criterion is on it. In short: the skill you uploaded carries 8 points, the eval run and write-up 10, and your plan and build 7. The 10 eval points split two ways:
+
+3 for committing one complete run, written by the harness. A partial run, or none, earns 0.
+7 across four separate fields in beat-1-sandbox/unit-3/plan-and-implement.md, each scored on its own: Run history in order (2), Package analysis naming one scored package by id with both verdicts and your reasoning (2), Check rationale quoting the check as it now reads with the quote matching the file you uploaded (2), and Trade-offs (1).
+A first run that already agrees on all 20 is a complete answer, and loses nothing. The item you examine does not have to be one your rubric got wrong: name a scored item, say what your rubric decided and what the gold label said, and explain why it read it that way. Getting it right and knowing why is the whole answer. The score is for the account, not for having struggled.
+
+Why the bar is 18 (the number to aim at, no longer a grade tier): 16 of the 20 scored packages carry loud signals a reasonable rubric should never miss, and 4 are genuinely arguable calls. The category floor has teeth this week: the 2-package thread-and-convention category is the live case, and a rubric with no comms checks cannot buy those misses back on volume. The 4 calibration packages from the activity are never scored. An unmatched category is the best thing you can write about in your iterations: it names a surface your rubric cannot see.
+
+The plan-and-build points ask for what this week taught: a posted comment stating the plan you built from, a branch named to the convention, a committed plan.md whose deviations section is filled in, and pasted before/after evidence that the change worked. Honest mid-build deviation earns full points. Plans meet reality; when the build taught you something and you recorded what changed and why in plan.md (and updated the thread if the posted intent changed), that is the unit 2 cannot-repro analog: the honest report of what actually happened. Saying nothing changed, in your own words, earns those points too; leaving the section blank does not. What your branch contains is not graded this week — whether the change stayed inside your plan is read once, in unit 4, against the pull request's diff. On the house issue, the same criteria grade the same things.
+
+🔁 Retries
+Unlimited before the deadline. The full eval run costs about $4 of your course credit and the revise loop should not: after a full run, re-grade only the packages you disagreed on with --only pkg-07,pkg-12 (about $0.20 per package), and save full runs for confirming a component set you believe in. Partial runs never count as the submitted run, and they cannot show the category tallies. A revision that loosens a check can flip a package that agreed before, so when you loosen, add a canary to your --only list (one package from each small category your change could touch; the eval README shows the move) before you spend a confirming full run. For the plan itself, run your skill in live mode on the plan package before posting, and again after any deviation edit; posting a plan you never checked with your own tool is the avoidable failure mode.
+
+⏰ Deadline
+Due: Monday, October 5th at 12:59AM MDT
+
+Unit 4 turns this branch into your sandbox pull request: late work costs you twice.
