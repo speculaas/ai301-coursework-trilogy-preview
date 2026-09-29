@@ -172,3 +172,93 @@ Eval bar to aim at is 18/20 with category match; 18 itself scores no points —
 the 10 eval points are the harness-written complete run (3) plus four
 `reproduction.md` iteration fields (7). Comment points want a specific claim
 and a stranger-rerunnable repro (honest cannot-repro is full credit).
+
+## What an eval package is (2026-09-29)
+
+Kept in this note (not a separate file): same flowchart + session prep, so the
+definitions sit next to install/eval commands.
+
+Each file under the starter’s `eval/packages/*.md` is a **frozen fake upstream
+bundle**, not your live #73 work. Typical sections:
+
+- repo facts (bug template, contribution / AI policy)
+- issue text
+- candidate claim comment
+- candidate repro report
+
+Kinds:
+
+| Prefix | Role |
+|---|---|
+| `calib-01`…`calib-04` | Worksheet / free hand-grade practice; gold-labeled; `--include-calibration` can run them but they are **never scored** toward 18/20 |
+| `pkg-01`…`pkg-20` | Scored harness set Claude grades with your rubric + evidence guide |
+
+`eval/gold-labels.json` holds staff verdicts + categories (`clear-accept`,
+`no-evidence`, `wrong-target`, `unfollowable-comms`, `disclosure`). Pass bar is
+**18/20 and** at least one correct match in every category.
+
+### Worksheet vs homework
+
+- Live **rubric-swap worksheet** (Google Doc / local txt copy): ungraded activity.
+  Not a portal upload.
+- Flowchart node **“Fold activity edits into rubric plus evidence and voice
+  guides”**: homework — rewrite the three skill files from Phase 3 notes, then
+  calibrate.
+- Claude’s job in `run_eval.py`: act as the **judge** applying *your* rubric +
+  evidence guide to each package and scoring agreement with gold. It is not
+  reproducing #73 for you.
+
+### Hand-grade warm-up done (calib-02)
+
+Using the installed skill rubric on `calib-02` (Joplin me-too, no evidence):
+
+- Environment / Procedure / Artifact / Claim → **fail**
+- Repo communication policy → **pass** (no AI disclosure required)
+- **Verdict: reject** — matches gold (`category: no-evidence`)
+
+### Install + exact `run_eval.py` commands (Mac, 2026-09-29)
+
+Skill installed once from the local starter:
+
+```bash
+cp -R /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-02/ai301-unit2-starter/skill/. \
+  ~/.claude/skills/repro-check/
+```
+
+Verified tree: `SKILL.md`, `rubric.md`, `scope.md`, `voice-guide.md`,
+`references/evidence-guide.md`.
+
+Always `cd` into the starter’s `eval/` directory first:
+
+```bash
+cd /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-02/ai301-unit2-starter/eval
+
+# cheap smoke (~3 packages; does NOT write eval-run.txt)
+python3 run_eval.py \
+  --rubric ~/.claude/skills/repro-check/rubric.md \
+  --evidence ~/.claude/skills/repro-check/references/evidence-guide.md \
+  --limit 3
+
+# revise only disagreements (example ids; replace after you see the smoke output)
+python3 run_eval.py \
+  --rubric ~/.claude/skills/repro-check/rubric.md \
+  --evidence ~/.claude/skills/repro-check/references/evidence-guide.md \
+  --only pkg-07,pkg-12
+
+# optional: also grade calib-* while iterating (still never scored)
+python3 run_eval.py \
+  --rubric ~/.claude/skills/repro-check/rubric.md \
+  --evidence ~/.claude/skills/repro-check/references/evidence-guide.md \
+  --include-calibration \
+  --limit 3
+
+# confirming full run — ONLY this may write the submit log
+python3 run_eval.py \
+  --rubric ~/.claude/skills/repro-check/rubric.md \
+  --evidence ~/.claude/skills/repro-check/references/evidence-guide.md \
+  --save-run eval-run.txt
+```
+
+`--save-run` is refused on `--limit` / `--only` partial runs. Never hand-edit
+`eval-run.txt`. After a good confirming run, copy that file into coursework
+`beat-1-sandbox/unit-2/` (and web-upload `tools/repro-check/` as Unit 1).
