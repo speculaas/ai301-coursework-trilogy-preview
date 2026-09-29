@@ -292,3 +292,53 @@ grading each eval package. They are paths on disk, not magic names.
 - Not `eval-run.txt` — that is the **output** of a confirming full run (`--save-run`), not an input.
 
 **Practical rule:** always pass the installed skill paths shown above unless you intentionally point at a WIP copy for an experiment.
+
+
+## Inside `rubric.md` and `evidence-guide.md` (2026-09-29)
+
+Canonical copies for grading live under the installed skill:
+
+- `~/.claude/skills/repro-check/rubric.md`
+- `~/.claude/skills/repro-check/references/evidence-guide.md`
+
+(Starter originals: `ai301-unit2-starter/skill/…`. Re-`cp` after edits so harness and live Claude stay aligned.)
+
+### `rubric.md` — the five required checks + verdict
+
+Ask one question: **is this reproduction package ready to post?**
+
+| Check | Pass when… | Common fail |
+|---|---|---|
+| **Environment is placed** | Report names version/commit, OS, install/build when relevant; material diffs from the issue are **stated**, not silent | Missing env; silent version/OS drift |
+| **Procedure is independently followable** | A stranger can re-run *the candidate’s documented test* without private files or guesses; issue trigger preserved unless deviation is explicit; tiny syntax diffs can be material (`=` vs `:` in HCL) | Paraphrased commands; missing fixtures; unstated config |
+| **Artifact proves the reported outcome** | Raw log/output/trace supports the claimed outcome; for a claimed repro, issue-defining signals match; cannot-repro needs a shown failed attempt + named material diffs | Vibes / “exactly reproduced”; graceful parse error ≠ panic |
+| **Claim is specific and honest** | Names concrete behavior; does not overstate; promises only a next action under the author’s control | `+1!!`, invented root cause, guaranteed fix/deadline |
+| **Repository communication policy** | Follows stated contribution / AI disclosure rules in the package; **no invented** disclosure requirement when none exists | Missing required AI disclosure |
+
+**Verdict rule:** `accept` only if every required check is `pass`. Any `fail` or `unclear` → `reject`. Use `unclear` only when needed evidence is genuinely absent, not because the package is hard. Grade **proof**, not polish. Faithful cannot-repro can still `accept`.
+
+### `evidence-guide.md` — where to look for that proof
+
+Companion to the rubric: for each concern, **where it lives** (eval bundle vs live issue/draft) and **what good looks like**.
+
+| Guide section | Maps mainly to |
+|---|---|
+| Environment | Environment is placed |
+| Steps | Procedure is independently followable |
+| Behavior shown | Artifact proves the reported outcome |
+| Honesty | Claim is specific and honest |
+| Comms | Repository communication policy |
+
+Eval-mode rule at the top: the package is the **entire** evidence universe — do not fetch the live GitHub issue while grading harness packages.
+
+Notable teaching points baked into the guide:
+
+- Different env can still pass if stated and the attempt is faithful.
+- Repeatability of the candidate’s test ≠ faithfulness to the issue (that’s the artifact check).
+- Prefer raw artifacts over “confirmed.”
+- Graceful HCL syntax error ≠ decoder panic (calib-03 lesson).
+- Repeating a wrong test ten times ≠ relevance.
+
+### How the two work together
+
+`run_eval.py --rubric … --evidence …` hands **both** to Claude. The rubric names the gates; the evidence guide tells the model which blocks to read and how to compare signals. `voice-guide.md` is still live-only and not passed here.
