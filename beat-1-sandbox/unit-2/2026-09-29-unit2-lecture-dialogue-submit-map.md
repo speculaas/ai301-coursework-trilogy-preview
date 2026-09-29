@@ -177,16 +177,16 @@ sequenceDiagram
   participant Up as Path Review 73
   participant Repo as ai301-coursework
 
-  You->>M365: Polls + draft voice/rubric
-  M365-->>You: Outcome-based checks; next-artifact voice
-  You->>WS: Paste compact rubric; cold swap on calib-03
-  WS-->>You: Friction: followable vs faithful target
-  You->>M365: Where evidence guide? How continue homework?
-  M365-->>You: Guide in skill folder; expand to 5 checks + disclosure
-  You->>Skill: Write rubric evidence voice; run eval
-  Skill-->>You: 19/20; keep pkg-09 miss
+  You->>M365: Polls and draft voice or rubric
+  M365-->>You: Outcome-based checks and next-artifact voice
+  You->>WS: Paste compact rubric then cold swap on calib-03
+  WS-->>You: Friction followable vs faithful target
+  You->>M365: Where evidence guide and how continue homework
+  M365-->>You: Guide in skill folder then expand to 5 checks plus disclosure
+  You->>Skill: Write rubric evidence voice then run eval
+  Skill-->>You: 19 of 20 keep pkg-09 miss
   You->>Up: Live-checked claim then repro
-  You->>Repo: Commit skill + eval-run + reproduction.md
+  You->>Repo: Commit skill plus eval-run plus reproduction.md
 ```
 
 ---
