@@ -362,3 +362,42 @@ a rolled-up “never observed.”
 **Action:** leave rubric as-is (loosening risks flipping wrong-target /
 no-evidence). For live cannot-repro reports, show the exact probe command and
 its own artifact, plus named material diffs.
+
+
+## What `scope.md` is (2026-09-29)
+
+**Where it lives**
+
+- Starter: `ai301-unit2-starter/skill/scope.md`
+- Installed: `~/.claude/skills/repro-check/scope.md`
+- Submitted with the skill under coursework `tools/repro-check/` (web upload)
+
+Not in `Overview-Activity-Assignment.txt` itself — that file only *points* at
+“the Path Review repo named in your skill’s `scope.md`.”
+
+**Role (live mode only)**
+
+Staff-written field of view. Eval mode **ignores** this file (the package
+bundle is the whole world). Live mode uses it to answer: which repo’s issues
+are in scope, and what **Path Review house rules** apply.
+
+House rules (summary): a classmate’s claim does **not** block you; post your
+own claim and your own repro (no “same as above”); credit attaches to what
+you post. Full wording is in `scope.md`.
+
+You do **not** rewrite this file for the rubric swap / fold step. Staff ship
+it filled; do not treat it like `rubric.md` / evidence / voice.
+
+**Your Path Review repo name**
+
+The installed copy may still show the placeholder `<ORG>/<PATH-REVIEW-REPO>`.
+For this cohort the live Path Review repo (from Unit 1 Check-In / issue work)
+is:
+
+`codepath/pathreview-ai301-fa26-s1`
+
+Source of that string in this note: Unit 1 / Unit 2 continuity — chosen issue
+[#73](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73) and the
+same org/repo used for Path Review select/claim (not invented from `scope.md`,
+which still has the bracket placeholder). Fork **that** repo for Assignment
+step “Fork Path Review.”
