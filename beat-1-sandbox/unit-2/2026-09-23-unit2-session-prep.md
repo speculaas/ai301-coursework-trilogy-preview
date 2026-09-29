@@ -262,3 +262,33 @@ python3 run_eval.py \
 `--save-run` is refused on `--limit` / `--only` partial runs. Never hand-edit
 `eval-run.txt`. After a good confirming run, copy that file into coursework
 `beat-1-sandbox/unit-2/` (and web-upload `tools/repro-check/` as Unit 1).
+
+
+## What `--rubric` and `--evidence` are (2026-09-29)
+
+These two flags tell `run_eval.py` **which judgment files Claude must use** when
+grading each eval package. They are paths on disk, not magic names.
+
+```bash
+--rubric ~/.claude/skills/repro-check/rubric.md
+--evidence ~/.claude/skills/repro-check/references/evidence-guide.md
+```
+
+| Flag | File | What it does in the harness |
+|---|---|---|
+| `--rubric` | `rubric.md` | The **checks + verdict rule** (pass/fail/unclear → accept/reject). Eval mode grades with this. |
+| `--evidence` | `references/evidence-guide.md` | How to **read artifacts** (what counts as proof, how to treat cannot-repro, wrong-target, etc.). Paired with the rubric in eval mode. |
+
+**Why both point at `~/.claude/skills/repro-check/`**
+
+- That directory is the **installed** skill (from `cp -R skill/. ~/.claude/skills/repro-check/`).
+- Live `claude` sessions load the skill from there; the harness should grade with the **same** files so smoke/full runs match what live-check will do.
+- If you edit only the starter’s `skill/` copy and forget to re-`cp`, Claude and `run_eval.py` can diverge. After rubric edits: copy again (or edit in place under `~/.claude/skills/repro-check/` and sync back into coursework `tools/repro-check/` for submit).
+
+**What they are not**
+
+- Not the eval packages themselves (`eval/packages/*.md`).
+- Not `voice-guide.md` — voice is **live-only**; `run_eval.py` does not take a `--voice` flag.
+- Not `eval-run.txt` — that is the **output** of a confirming full run (`--save-run`), not an input.
+
+**Practical rule:** always pass the installed skill paths shown above unless you intentionally point at a WIP copy for an experiment.
