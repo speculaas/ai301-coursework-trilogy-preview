@@ -342,3 +342,23 @@ Notable teaching points baked into the guide:
 ### How the two work together
 
 `run_eval.py --rubric … --evidence …` hands **both** to Claude. The rubric names the gates; the evidence guide tells the model which blocks to read and how to compare signals. `voice-guide.md` is still live-only and not passed here.
+
+
+## Confirming run 2026-09-29 — pkg-09 false reject (do not loosen)
+
+Full `--save-run` scored **19/20 PASS** (bar 18/20; all categories hit). Sole
+disagreement: `pkg-09` (gold accept / clear-accept, `sharkdp/fd#2033` honest
+cannot-reproduce). Harness rejected on Procedure + Artifact.
+
+**Why the model rejected (from session jsonl
+`…/595faf8b-d88b-4f5e-9264-be39a6d1d7af.jsonl`):** Environment and claim passed.
+Procedure failed because the asymmetric ARG_MAX probe (“second command’s
+arguments padded ~40% longer”) was only described in prose — no exact modified
+command a stranger could re-run. Artifact was unclear/fail because the pasted
+`order.log` comes from the *symmetric* baseline (`true -- "$@"` both sides),
+while the padded run that actually targeted the issue had no raw artifact, only
+a rolled-up “never observed.”
+
+**Action:** leave rubric as-is (loosening risks flipping wrong-target /
+no-evidence). For live cannot-repro reports, show the exact probe command and
+its own artifact, plus named material diffs.
