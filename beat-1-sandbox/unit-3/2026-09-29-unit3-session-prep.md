@@ -216,6 +216,8 @@ not run.
 
 ## Related
 
+- Workstream board (homework arc only — not today's worksheet, not portal submit): [`../../docs/status/`](../../docs/status/)
+
 - Unit 2 session prep (install/eval/claim discipline this note mirrors):
   [`../unit-2/2026-09-23-unit2-session-prep.md`](../unit-2/2026-09-23-unit2-session-prep.md)
 - Unit 2 lecture / dialogue → submit map:

@@ -1,0 +1,200 @@
+{
+  "title": "AI301 Unit 3 Plan and Build \u2014 homework arc",
+  "caption": "Coach board in trilogy-preview for the Unit 3 homework arc (skill, eval, plan, build, submit). Not a substitute for today's live worksheet, and not the portal submit. Live session Wed Sep 30 2026 4:00 PM MDT. Project 3 due Mon Oct 5 2026 12:59 AM MDT. Continuity: Path Review issue 73 (README vs .env.example OPENROUTER_API_KEY). Only Unit 2 continuity and the preview notes are done.",
+  "mermaid": "gitGraph LR:\n    commit id: \"Claim and repro issue 73\"\n    commit id: \"Unit 2 repro of key docs mismatch\"\n    branch live_activity\n    checkout live_activity\n    commit id: \"Session prep note written\"\n    commit id: \"Activity-today drafts ready\"\n    commit id: \"OPEN grade calib-03 with sample\"\n    commit id: \"OPEN own rubric and procedure\"\n    commit id: \"OPEN test procedure on calib-01\"\n    checkout main\n    branch skill_plan_check\n    checkout skill_plan_check\n    commit id: \"OPEN author rubric file\"\n    commit id: \"OPEN author evidence guide\"\n    commit id: \"OPEN author procedure file\"\n    commit id: \"OPEN carry Unit 2 voice guide\"\n    checkout main\n    branch eval_confirm\n    checkout eval_confirm\n    commit id: \"OPEN install plan-check skill\"\n    commit id: \"OPEN cheap smoke not save-run\"\n    commit id: \"OPEN confirming save-run bar\"\n    commit id: \"OPEN thread-and-convention floor\"\n    checkout main\n    branch plan_build_73\n    checkout plan_build_73\n    commit id: \"OPEN plan file in course repo only\"\n    commit id: \"OPEN live check then post comment\"\n    commit id: \"OPEN build on fix N-slug branch\"\n    commit id: \"OPEN rerun Unit 2 repro before after\"\n    checkout main\n    branch submit\n    checkout submit\n    commit id: \"OPEN upload tools plan-check\"\n    commit id: \"OPEN fill unit-3 submit files\"\n    commit id: \"OPEN portal coursework repo root\"\n",
+  "branches": [
+    {
+      "id": "continuity_u2",
+      "label": "U2 continuity",
+      "status": "done",
+      "summary": "Issue 73 is claimed and the Unit 2 repro landed. Diagnosis for the plan must follow that posted evidence, not a fresh guess.",
+      "nodes": [
+        {
+          "id": "claim-73",
+          "title": "Claim and repro issue 73",
+          "status": "done",
+          "detail": "Continuity issue is codepath/pathreview-ai301-fa26-s1#73 (Yie Sheng Chen / speculaas): README Quick Start asks for OPENROUTER_API_KEY while .env.example only shows LLM_PROVIDER=mock and OPENAI_API_KEY. core/config.py already defines both key fields. House-issue track only if this path is blocked."
+        },
+        {
+          "id": "repro-landed",
+          "title": "Unit 2 repro of key docs mismatch",
+          "status": "done",
+          "detail": "Unit 2 repro is done and posted (grounded at commit f89c06f). Homework before-state is those same steps failing; after-state is the same steps with the expected output stated first. Do not reopen the live upstream issue pages during calibration \u2014 grade package snapshots only."
+        }
+      ]
+    },
+    {
+      "id": "live_activity",
+      "label": "Live activity",
+      "status": "open",
+      "summary": "Today's room is ungraded calibration (Teach Claude to Grade a Plan). Drafts are ready in the activity note. The Doc itself is still open. This board does not replace the worksheet.",
+      "nodes": [
+        {
+          "id": "prep-note",
+          "title": "Session prep note written",
+          "status": "done",
+          "detail": "beat-1-sandbox/unit-3/2026-09-29-unit3-session-prep.md is the coach note: timing, three skill components, install/eval commands, and the homework sequence. Portal submit stays the separate ai301-coursework repo root."
+        },
+        {
+          "id": "drafts-ready",
+          "title": "Activity-today drafts ready",
+          "status": "done",
+          "detail": "2026-09-30-unit3-activity-today.md has the ordered checklist and DRAFT paste fills, plus a lecture scope pair for issue 73 (docs/.env.example only; not core/config.py, providers, UI, or unrelated docs). Tonight's Doc shape is the downloaded worksheet + L3 breakout, not the older plan_worksheet.md member-section swap. Google Doc URL is still TBD \u2014 do not invent it."
+        },
+        {
+          "id": "phase-sample",
+          "title": "OPEN grade calib-03 with sample",
+          "status": "open",
+          "detail": "Phase 1 (~10 min): one reader says each sample-procedure step aloud; the group does only what that step says. Package is calib-03. Literal sample checks can yield ready while staff correct verdict is hold \u2014 the wrong cause (pager bindings vs highlighting timings) is the lesson. Do not grade the live GitHub issue."
+        },
+        {
+          "id": "phase-own",
+          "title": "OPEN own rubric and procedure",
+          "status": "open",
+          "detail": "Phase 2 (~15 min): fix every Phase 1 miss, starting with the check that let the wrong cause through. Each check needs what / where / pass condition / required-or-preferred, and the verdict rule must say what ? does. Procedure is four stages: read first, gather evidence, grade, verdict. Friction: ambiguous pass condition \u2192 rubric; no where-to-look \u2192 procedure."
+        },
+        {
+          "id": "phase-calib01",
+          "title": "OPEN test procedure on calib-01",
+          "status": "open",
+          "detail": "Phase 3 (~15 min): cold-execute your procedure on calib-01. Staff correct verdict is ready. If you held, name the rejecting check (often an over-tight automated-test demand). Last minutes: edit the rubric/procedure and list changes. Phase 4 is one debrief line. Optional calib-04 only if early \u2014 either verdict is defensible; do not start a confirming eval save-run in the room."
+        }
+      ]
+    },
+    {
+      "id": "skill_plan_check",
+      "label": "Skill plan-check",
+      "status": "open",
+      "summary": "Homework skill is three authored components plus a Unit 2 voice carry. Not started as graded files. Points: skill 8 of 25. Revision marks from the Doc fold in here; the worksheet itself is not a portal upload.",
+      "nodes": [
+        {
+          "id": "rubric",
+          "title": "OPEN author rubric file",
+          "status": "open",
+          "detail": "rubric.md: plan ready/hold checks plus a verdict rule. Failure families to cover include diagnosis vs repro evidence, one bounded change, stranger-executable steps, an observable test outcome, honest unknowns, and a comment that respects the thread and repo conventions. A rubric with no comms checks cannot buy back thread-and-convention misses."
+        },
+        {
+          "id": "evidence",
+          "title": "OPEN author evidence guide",
+          "status": "open",
+          "detail": "references/evidence-guide.md says where evidence lives in a plan package (issue/thread, repro block, diagnosis, scope pair, files, approach, test plan, risks, comment). Not a worksheet box tonight \u2014 write it when folding marks after class."
+        },
+        {
+          "id": "procedure",
+          "title": "OPEN author procedure file",
+          "status": "open",
+          "detail": "procedure.md is new this unit. Fill the four stage headings (read order, evidence gathering, check execution, verdict assembly). SKILL.md says execute procedure.md. Operator-swap friction routes here. Claude cannot ask mid-grade, so the steps have to be executable as written."
+        },
+        {
+          "id": "voice",
+          "title": "OPEN carry Unit 2 voice guide",
+          "status": "open",
+          "detail": "voice-guide.md is carry-over from Unit 2: paste into the labeled slot. Extend only if the plan-comment register needs new rules. Not re-authored as new graded work."
+        }
+      ]
+    },
+    {
+      "id": "eval_confirm",
+      "label": "Eval confirm",
+      "status": "open",
+      "summary": "Same 18/20 bar plus category floor. Cheap runs first. Only a full --save-run may write the submit log. Not done. Category with teeth: thread-and-convention (2 packages).",
+      "nodes": [
+        {
+          "id": "install",
+          "title": "OPEN install plan-check skill",
+          "status": "open",
+          "detail": "One canonical install after the three components and voice carry are actually filled. Starter skill/ copies to ~/.claude/skills/plan-check/. Cohort scope.md may still be the staff placeholder \u2014 a scope-message stop means the skill ran but needs the instructor scope file.",
+          "commands": [
+            "cp -R /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter/skill/. ~/.claude/skills/plan-check/"
+          ]
+        },
+        {
+          "id": "smoke",
+          "title": "OPEN cheap smoke not save-run",
+          "status": "open",
+          "detail": "From the starter eval/ directory. --limit 3 does not write eval-run.txt. procedure.md is picked up next to the rubric by default. Use --only on disagreements (~$0.20/pkg) and add canaries if you loosen a check. Do not hand-edit a future eval-run.txt.",
+          "commands": [
+            "cd /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter/eval",
+            "python3 run_eval.py --rubric ~/.claude/skills/plan-check/rubric.md --evidence ~/.claude/skills/plan-check/references/evidence-guide.md --limit 3"
+          ]
+        },
+        {
+          "id": "save-run",
+          "title": "OPEN confirming save-run bar",
+          "status": "open",
+          "detail": "Aim at 18/20 plus the category floor (no points attached to 18 itself). Eval + write-up is 10 of 25. ONLY the full run may write eval-run.txt (~$4). Do not start this in the live room.",
+          "commands": [
+            "python3 run_eval.py --rubric ~/.claude/skills/plan-check/rubric.md --evidence ~/.claude/skills/plan-check/references/evidence-guide.md --save-run eval-run.txt"
+          ]
+        },
+        {
+          "id": "thread-floor",
+          "title": "OPEN thread-and-convention floor",
+          "status": "open",
+          "detail": "thread-and-convention is two packages and is the category with teeth this week. Categories also include clear accepts (including honest scoped-down), scope creep, wrong cause, and unbuildable. Volume of other passes does not buy these misses back."
+        }
+      ]
+    },
+    {
+      "id": "plan_build_73",
+      "label": "Plan and build 73",
+      "status": "open",
+      "summary": "Plan and build is 7 of 25 and is homework, not the live activity. plan.md stays in the course repo. Build is one bounded step at a time; no diff lands unread. Not done.",
+      "nodes": [
+        {
+          "id": "plan-md",
+          "title": "OPEN plan file in course repo only",
+          "status": "open",
+          "detail": "Six parts: diagnosis, scope pair (in / not-in), files, approach, test plan, risks. Diagnosis must follow the posted Unit 2 repro. Draft in-scope is docs/.env.example alignment for OPENROUTER_API_KEY (and LLM_PROVIDER visibility); not-in includes core/config.py defaults, provider behavior, UI, and unrelated docs. Place plan.md in coursework beat-1-sandbox/unit-3/, never on the fix branch. Placeholders in this preview repo are not the submit copies."
+        },
+        {
+          "id": "plan-comment",
+          "title": "OPEN live check then post comment",
+          "status": "open",
+          "detail": "Read the thread. Promise only what the plan contains. Run live plan-check until accept JSON before posting. Scope-message stop is not a failed skill. Paste the posted comment under the link for grading. Do not post during the activity.",
+          "commands": [
+            "claude \"plan-check: grade my plan in plan.md and draft comment in comment.md for issue <URL>\""
+          ]
+        },
+        {
+          "id": "fix-branch",
+          "title": "OPEN build on fix N-slug branch",
+          "status": "open",
+          "detail": "Branch on your fork: fix/<issue-number>-<slug> (issue 73). You drive, the model operates: one bounded step, read the diff, accept or redo. If intent changes, update plan.md, re-run live plan-check, and update the thread. Branch contents are not graded this week; Unit 4 reads the PR diff against plan.md. Do not push the plan file onto the branch."
+        },
+        {
+          "id": "before-after",
+          "title": "OPEN rerun Unit 2 repro before after",
+          "status": "open",
+          "detail": "Decisive test: before = Unit 2 repro still showing the docs mismatch; after = the same steps with the expected output stated first. Record that evidence in plan-and-implement.md. Surface patches that ignore the repro are the wrong-cause failure."
+        }
+      ]
+    },
+    {
+      "id": "submit",
+      "label": "Submit",
+      "status": "open",
+      "summary": "Due Mon Oct 5 2026 12:59 AM MDT. Portal link is the coursework repo root, not this trilogy-preview repo and not a folder URL. Not done.",
+      "nodes": [
+        {
+          "id": "tools-upload",
+          "title": "OPEN upload tools plan-check",
+          "status": "open",
+          "detail": "Copy the installed skill into the submit repo at tools/plan-check/ (from ~/.claude/skills/plan-check/). This preview repo's docs/status board does not go in the submit repo."
+        },
+        {
+          "id": "unit3-files",
+          "title": "OPEN fill unit-3 submit files",
+          "status": "open",
+          "detail": "In ai301-coursework beat-1-sandbox/unit-3/: plan.md, plan-and-implement.md, and eval-run.txt written by the harness --save-run (not hand-edited). Preview copies under trilogy-preview are coach notes only."
+        },
+        {
+          "id": "portal",
+          "title": "OPEN portal coursework repo root",
+          "status": "open",
+          "detail": "Course portal wants the whole speculaas/ai301-coursework repository root URL, same pattern as Unit 2. Not a beat-1-sandbox/unit-3 folder URL, not the worksheet, and not ai301-coursework-trilogy-preview."
+        }
+      ]
+    }
+  ]
+}
