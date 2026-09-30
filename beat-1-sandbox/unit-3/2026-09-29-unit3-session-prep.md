@@ -13,7 +13,10 @@ same pattern as Unit 2 — graders want the whole repo URL, not a folder URL.
 |---|---|
 | LMS Overview / Activity / Assignment dump | `Overview-Activity-Assignment.txt` (this folder; also under `~/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/`) |
 | L3 session dump | `AI301-L3-Fa26-S1.txt` (this folder; original name `AI301 L3 · Fa26 S1.txt`) |
-| Plan calibration worksheet (canonical md) | `plan_worksheet.md` (this folder) — **Google Doc / sheet link TBD** (instructor posts template link in chat at activity start) |
+| Plan calibration worksheet (older md blanks) | `plan_worksheet.md` (this folder) — member-section / swap shape; Overview Activity tab still matches this |
+| Live worksheet download (2026-09-30) | `Copy-of-Unit-3-Activity-Worksheet.txt` — tonight's Doc blanks |
+| Activity-today note | [`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md) — checklist + DRAFTs + Mermaid |
+| Google Doc / sheet link | **TBD** (instructor posts template link in chat at activity start) |
 | Unit 3 starter (local clone) | `/Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter` (`codepath/ai301-unit3-starter`) |
 | Unit 2 session prep (template / continuity) | [`../unit-2/2026-09-23-unit2-session-prep.md`](../unit-2/2026-09-23-unit2-session-prep.md) |
 | Unit 2 lecture→submit map | [`../unit-2/2026-09-29-unit2-lecture-dialogue-submit-map.md`](../unit-2/2026-09-29-unit2-lecture-dialogue-submit-map.md) |
@@ -28,9 +31,17 @@ Coursework placeholders already in this folder (not filled for Unit 3 yet):
 | **Live session** | Wed Sep 30, 2026 · 4:00 PM MDT |
 | **Project 3 due** | Mon Oct 5, 2026 · 12:59 AM MDT |
 
-Tomorrow is the **live session**, not the homework deadline. Leave class with
-revision marks (and friction → rubric vs procedure routes) from the operator
-swap. The **build** is homework by design: activity needs no local setup.
+**Today is the live session** (Wed Sep 30), not the homework deadline. Leave
+class with revision marks (and friction → rubric vs procedure routes). The
+**build** is homework by design: activity needs no local setup.
+
+**Today's activity note (use this in the room):**
+[`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md) —
+ordered during-activity checklist, DRAFT paste-ready worksheet fills, #73 scope
+pair, and GitHub-safe Mermaid sequence. Live Doc shape follows the downloaded
+worksheet + L3 breakout (*Teach Claude to Grade a Plan*), not the older
+member-section swap still printed on the Overview Activity tab /
+`plan_worksheet.md`. Worksheet copy: `Copy-of-Unit-3-Activity-Worksheet.txt`.
 
 Continuity from Unit 2: claimed + reproduced issue
 [#73](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73)
@@ -87,18 +98,23 @@ outcome, honest unknowns, comment respects thread + repo conventions.
 
 ## Plan worksheet role
 
-- **Canonical local copy:** `plan_worksheet.md` in this folder (fill-in blanks;
-  every instruction is on the Activity tab / `activity_3.md` in the course repo).
-- **Live form:** Google Doc the instructor links in chat — **File → Make a copy**.
-  Work in copies, never the template. Personal copy = phases 1 + 4; group copy =
-  phases 2, 3, 5.
+- **Tonight's live blanks:** `Copy-of-Unit-3-Activity-Worksheet.txt` (downloaded
+  2026-09-30) + filled DRAFTs in
+  [`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md).
+  L3 breakout: one group Doc, sample rubric/procedure on calib-03, then own
+  rubric/procedure, then calib-01. Cold-execute = one reader aloud, do only what
+  each step says (rotate reader if useful).
+- **Older blank structure still in tree:** `plan_worksheet.md` (member sections /
+  personal+group copies / Phase 1 on calib-01/02). Matches Overview Activity tab
+  wording; **not** the Doc shape on the L3 activity slides / download.
+- **Live form:** Google Doc the instructor links in chat — captain **File → Make
+  a copy**, Share Editor, paste in Zoom. Work in copies, never the template.
 - **Not a portal upload.** Revision marks fold into skill files for homework.
-- **Google sheet / Doc URL:** not captured yet (TBD when chat link lands).
+- **Google Doc URL:** not captured yet (TBD when chat link lands) — do not invent.
 
-Operator swap (Unit 2 rubric swap, round two): two executors run your rubric
-silently; every friction line gets a **route** — rubric gap → `rubric.md`,
-procedure gap → `procedure.md`. Package for swap: `eval/packages/calib-03.md`
-(phase 1 grades `calib-01` / `calib-02`).
+Friction still has two destinations: rubric gap → `rubric.md`, procedure gap →
+`procedure.md`. Tonight Phase 1 package is `calib-03` (sample); Phase 3 tests on
+`calib-01`.
 
 ## Sequence — tomorrow's session → homework
 
@@ -161,12 +177,15 @@ not run.
 
 ## Light checklist for 4 PM (Wed Sep 30)
 
-1. Draft **scope pair (in / not-in)** for your own plan and **two rubric checks**
-   during lecture (Activity grades with those drafts).
-2. Know where Unit 2 repro evidence lives for #73 (or house repro pack quotes).
-3. After class: install into `~/.claude/skills/plan-check/`, finish three
+1. Draft **scope pair (in / not-in)** for #73 and **two rubric checks** during
+   lecture (seed homework + Phase 2; Phase 1 tonight uses the **sample**).
+2. Open [`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md)
+   for the during-activity checklist and paste-ready DRAFTs; listen for the
+   Google Doc link in chat.
+3. Know where Unit 2 repro evidence lives for #73 (or house repro pack quotes).
+4. After class: install into `~/.claude/skills/plan-check/`, finish three
    components + voice carry-over, then cheap `--limit` only after they are filled.
-4. Live `plan-check` **before** posting the plan comment; keep `plan.md` out of
+5. Live `plan-check` **before** posting the plan comment; keep `plan.md` out of
    branch commits; name branch `fix/<issue-number>-<slug>`.
 
 ## What not to confuse
@@ -188,9 +207,10 @@ not run.
   live mode may stop with a scope message until instructor file is dropped in.
 - **House-issue track:** only if #73 path is blocked; TF sets up in room —
   confirm at session if needed.
-- Lecture dump's breakout slide mentions a sample rubric for Phase 1; **Activity
-  tab** (authoritative) says grade with **your lecture drafts**. Prefer Activity
-  tab wording if they diverge.
+- **Resolved for 2026-09-30 live Doc:** downloaded worksheet + L3 breakout use
+  sample rubric/procedure in Phase 1 (not lecture drafts). Overview Activity tab
+  still prints the older lecture-draft / member-section protocol — treat as
+  stale relative to tonight's Doc; see activity-today note.
 - Branch contents are **not** graded this week; Unit 4 reads the PR diff against
   `plan.md`.
 
