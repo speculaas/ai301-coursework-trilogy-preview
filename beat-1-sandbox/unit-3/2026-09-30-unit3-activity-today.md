@@ -326,3 +326,10 @@ sequenceDiagram
   [`2026-09-29-unit3-session-prep.md`](2026-09-29-unit3-session-prep.md)
 - Unit 2 dialogue sequence style:
   [`../unit-2/2026-09-29-unit2-lecture-dialogue-submit-map.md`](../unit-2/2026-09-29-unit2-lecture-dialogue-submit-map.md)
+
+---
+
+## Post-class (2026-09-30 evening)
+
+Live filled worksheet: [`2026-09-30-live-worksheet-PizzaHut.txt`](2026-09-30-live-worksheet-PizzaHut.txt).  
+Homework kickoff (checklist + fold map + DRAFTs): [`2026-09-30-unit3-homework-kickoff.md`](2026-09-30-unit3-homework-kickoff.md).

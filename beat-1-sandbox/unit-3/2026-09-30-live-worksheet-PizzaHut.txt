@@ -1,0 +1,103 @@
+﻿Teach Claude to Grade a Plan
+One copy per group. Gray text in a box shows what goes there; replace it with your answers. Full instructions here.
+Setup · 5 minutes
+1. The captain clicks Make a copy, then Share, and sets "Anyone with the link" to Editor.
+2. The captain pastes the link in the Zoom chat and shares their screen.
+3. Everyone else opens the doc from the Zoom chat. Open calib-03 and calib-01 from the Activity tab.
+Can’t type? You’re in the template, or the copy wasn’t shared as Editor.
+	Group Name (Have fun with this!)
+PizzaHut
+	Date
+Sep 30 2026
+	Schedule (45 minutes)
+1. Grade with the sample · 10 min · grade calib-03 with the provided sample rubric
+	2. Write your own · 15 min · your rubric and procedure
+	3. Test and fix · 15 min · grade calib-01 with the rubric you just built
+	4. Debrief · 5 min · one answer, in the Phase 4 box
+	Phase 1: grade with the sample
+Phase 1 · As a Group · 10 minutes · calib-03
+Follow the sample procedure, step by step, to grade calib-03 with the sample rubric. One person reads each step aloud. Do only what each step says, like Claude would.
+The staff have graded calib-03 with their own rubric, and that verdict is correct. If your verdict doesn’t match the staff’s verdict, then the sample rubric or procedure has at least one problem. Identify as many as you can!
+Fill in the boxes below, in order.
+	Sample rubric
+diagnosis (required): passes if the plan says what causes the bug.
+scope (required): look where the plan says what it will change; passes if it names each file it will change and says what it won’t touch.
+test (required): passes if the plan adds an automated test.
+Verdict rule: ready if every required check passes.
+	Sample procedure
+1. What to read first: Read the candidate plan.
+2. How to gather the evidence: Find the evidence for each check.
+3. How to grade each check: Grade each check P, F, or ?.
+4. How to reach the verdict: Apply the verdict rule.
+	Grades for calib-03
+one line per check: its name, P / F / ?, and why
+Diagnosis: P
+Scope: P
+Test: ?
+	Verdict
+ready or hold
+HOLD
+	Compare with the correct verdict
+the correct verdict for this plan is hold. Now read the Repro evidence. Write what the plan got wrong and why the sample rubric and procedure didn’t catch it
+	What was unclear
+a check where you had to guess what it meant or whether it passed
+Test was unclear
+	Where we didn’t know where to look
+a check or step that didn’t say where in the file to find the evidence
+2. How to gather the evidence: Find the evidence for each check. (where?)
+	Phase 2: write your own
+Phase 2 · As a Group · 15 minutes
+Write your own rubric and procedure. Fix every problem you found in Phase 1, starting with the one that let calib-03’s wrong cause through.
+Each check says what to check, where in the file to look, and what has to be true to pass. Mark it required (a fail means hold) or preferred (it never changes the verdict).
+	Our rubric
+at least three checks, one per line: name (required or preferred): look in ___; passes if ___. Then your verdict rule, including what a ? does.
+
+
+diagnosis (required): passes if the plan says what causes the bug.
+scope (required): look where the plan says what it will change; passes if it names each file it will change and says what it won’t touch.
+test (preferred): passes if the plan adds an automated test.
+Verdict rule: ready if every required check passes.
+
+
+	Our procedure
+1. What to read first
+which parts of the file, in what order
+Read the candidate plan.
+	2. How to gather the evidence
+what to pull from each part of the file, and what to compare it with
+Read diagnosis section, scope, and test sections, and compare with rubric.
+	3. How to grade each check
+what to do for each check, including when the evidence is missing
+Grade each check P, F, or ?.
+	4. How to reach the verdict
+how the grades become ready or hold
+Apply the verdict rule.
+	Phase 3: test and fix
+Phase 3 · As a Group · 15 minutes · calib-01
+Now test your own rubric the same way. Follow your own procedure, step by step, to grade calib-01 with your rubric. One person reads each step aloud; do only what it says.
+Then fill in the boxes below, in order.
+Last 5 minutes: fix “Our rubric” and “Our procedure” above, and list the changes below.
+	Grades for calib-01
+one line per check from YOUR rubric (Phase 2): its name, P / F / ?, and why
+diagnosis (required): P
+scope (required): P
+test (preferred): F
+	Verdict
+ready or hold
+	Compare with the correct verdict
+the correct verdict is ready. If your rubric said hold, name the check that rejected it and what calib-01 does instead. Is the check asking for the wrong thing?
+	What we changed
+one line per change: what you changed, and whether it’s in the rubric or the procedure
+Changed automated test to preferred
+Step 2 to be more specific as to where to find evidence. 
+	Phase 4: debrief
+Phase 4 · As a Group · 5 minutes
+Agree on one answer and write it below.
+	What would Claude have gotten wrong without your procedure?
+How to gather evidence
+	Finished early?
+Finished early? · As a Group
+Grade calib-04 with your rubric and procedure. It’s built so either verdict can be defended. Discuss which verdict you think is better with your group, and why.
+Then start your homework: step 1 on the Assignment tab.
+	calib-04 challenge
+your verdict, and the check that would have to change to flip it

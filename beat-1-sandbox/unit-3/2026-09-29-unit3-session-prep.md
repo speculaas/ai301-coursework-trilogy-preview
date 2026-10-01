@@ -14,7 +14,9 @@ same pattern as Unit 2 — graders want the whole repo URL, not a folder URL.
 | LMS Overview / Activity / Assignment dump | `Overview-Activity-Assignment.txt` (this folder; also under `~/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/`) |
 | L3 session dump | `AI301-L3-Fa26-S1.txt` (this folder; original name `AI301 L3 · Fa26 S1.txt`) |
 | Plan calibration worksheet (older md blanks) | `plan_worksheet.md` (this folder) — member-section / swap shape; Overview Activity tab still matches this |
-| Live worksheet download (2026-09-30) | `Copy-of-Unit-3-Activity-Worksheet.txt` — tonight's Doc blanks |
+| Live worksheet download (2026-09-30) | `Copy-of-Unit-3-Activity-Worksheet.txt` — blank Doc template |
+| **Live filled worksheet (PizzaHut)** | [`2026-09-30-live-worksheet-PizzaHut.txt`](2026-09-30-live-worksheet-PizzaHut.txt) — room fills after class |
+| **Homework kickoff (post-class)** | [`2026-09-30-unit3-homework-kickoff.md`](2026-09-30-unit3-homework-kickoff.md) — checklist, fold map, #73 seed, DRAFT stubs |
 | Activity-today note | [`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md) — checklist + DRAFTs + Mermaid |
 | Google Doc / sheet link | **TBD** (instructor posts template link in chat at activity start) |
 | Unit 3 starter (local clone) | `/Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter` (`codepath/ai301-unit3-starter`) |
@@ -31,17 +33,22 @@ Coursework placeholders already in this folder (not filled for Unit 3 yet):
 | **Live session** | Wed Sep 30, 2026 · 4:00 PM MDT |
 | **Project 3 due** | Mon Oct 5, 2026 · 12:59 AM MDT |
 
-**Today is the live session** (Wed Sep 30), not the homework deadline. Leave
-class with revision marks (and friction → rubric vs procedure routes). The
-**build** is homework by design: activity needs no local setup.
+**Live session was Wed Sep 30** (done). Homework deadline: Mon Oct 5 · 12:59 AM
+MDT. Leave-class marks are in the PizzaHut live worksheet; fold into skill
+files via the kickoff note. The **build** is homework by design.
 
-**Today's activity note (use this in the room):**
+**Post-class kickoff (use this tonight):**
+[`2026-09-30-unit3-homework-kickoff.md`](2026-09-30-unit3-homework-kickoff.md) —
+Assignment-order checklist, live-vs-DRAFT diff, fold map into rubric /
+procedure / evidence-guide, smoke commands, #73 `plan.md` seed, DRAFT stubs
+under `drafts/`.
+
+**During-activity note (archive):**
 [`2026-09-30-unit3-activity-today.md`](2026-09-30-unit3-activity-today.md) —
-ordered during-activity checklist, DRAFT paste-ready worksheet fills, #73 scope
-pair, and GitHub-safe Mermaid sequence. Live Doc shape follows the downloaded
-worksheet + L3 breakout (*Teach Claude to Grade a Plan*), not the older
-member-section swap still printed on the Overview Activity tab /
-`plan_worksheet.md`. Worksheet copy: `Copy-of-Unit-3-Activity-Worksheet.txt`.
+pre-class DRAFT fills + Mermaid. Live Doc shape was Teach-Claude (sample →
+own → calib-01), not Overview member-section swap. Blank template:
+`Copy-of-Unit-3-Activity-Worksheet.txt`. Filled:
+`2026-09-30-live-worksheet-PizzaHut.txt`.
 
 Continuity from Unit 2: claimed + reproduced issue
 [#73](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73)
