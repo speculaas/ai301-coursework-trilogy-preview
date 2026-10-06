@@ -102,6 +102,14 @@ believe the component set; do not treat token burn as progress.
 
 ---
 
+## 3b. Coach take (from chat, kept verbatim)
+
+Partly agree. The eval tokens mostly buy **rubric/harness feedback** (did your checks catch wrong-cause / thread rules?), not deep Path Review skill from the toy pkgs themselves. Organic Claude use teaches more about *your* #73 and debugging. Still, designing procedure + seeing accept/reject on calib packages is the intended lesson — cheap if you treat the run as a unit test for *your* skill, expensive if you expect to “learn OpenRouter” from pkg-01…20.
+
+Reading those eval JSONL logs: useful for **spot-checking one disagreeing package** (what the grader cited), not for linear “study the whole dump.” You’ll learn more from your own `rubric.md`/`procedure.md` and the live #73 plan than from replaying 20 Sonnet transcripts.
+
+---
+
 ## 4. Does reading the eval JSONL help?
 
 Path (local Claude project for the starter eval cwd):
