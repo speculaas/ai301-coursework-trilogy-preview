@@ -130,33 +130,40 @@ Status blanks: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked / 
 - [x] **A3** Carry Unit 2 voice → installed `voice-guide.md`  
   source: `ai301-coursework/tools/repro-check/voice-guide.md`  
   (optional: one plan-comment rule — promise only what `plan.md` contains)
-- [ ] **A4** Confirm live skill is the only place you iterate (preview stays notes/drafts)
+- [x] **A4** Confirm live skill is the only place you iterate (preview stays notes/drafts)
 
 ### B. Eval loop (tokens)
-- [ ] **B1** Smoke from starter `eval/`: `--limit 3` · **no** `--save-run` (cheap sanity)
-- [ ] **B2** Revise disagreements with `--only pkg-…` (~**$0.20**/pkg); add canaries if loosening a check (esp. `thread-convention`)
-- [ ] **B3** Confirming full run **only** when you believe the set: `--save-run eval-run.txt` (~**$4**); do not hand-edit the file
-- [ ] **B4** Aim bar **18/20** + category floor (thread-and-convention has teeth)
+- [x] **B1** Smoke from starter `eval/`: `--limit 3` · **no** `--save-run` (cheap sanity)
+- [x] **B2** Revise disagreements with `--only pkg-…` (~**$0.20**/pkg); add canaries if loosening a check (esp. `thread-convention`)
+- [x] **B3** Confirming full run **only** when you believe the set: `--save-run eval-run.txt` (~**$4**); do not hand-edit the file
+- [x] **B4** Aim bar **18/20** + category floor (thread-and-convention has teeth)
 
 ### C. Plan #73 (coursework path, not fix branch)
-- [ ] **C1** Write `plan.md` from [`drafts/plan-73.SEED.md`](drafts/plan-73.SEED.md) into  
+- [x] **C1** Write `plan.md` from [`drafts/plan-73.SEED.md`](drafts/plan-73.SEED.md) into  
   `ai301-coursework/beat-1-sandbox/unit-3/plan.md`
-- [ ] **C2** Live plan-check until JSON `accept` (plan.md + draft comment.md for #73)
-- [ ] **C3** Post plan comment on upstream #73 **from your account**
-- [ ] **C4** Keep `plan.md` **out** of fix-branch commits
+- [x] **C2** Live plan-check until JSON `accept` (plan.md + draft comment.md for #73)
+- [x] **C3** Post plan comment on upstream #73 **from your account**
+- [x] **C4** Keep `plan.md` **out** of fix-branch commits
 
 ### D. Build + evidence
-- [ ] **D1** Branch on **your** fork: `fix/73-<slug>` (e.g. `fix/73-openrouter-env-example`)
-- [ ] **D2** You drive, AI operates; no unread diffs
-- [ ] **D3** Re-run Unit 2 repro as before/after; paste into `plan-and-implement.md` Evidence
-- [ ] **D4** Fill `plan-and-implement.md` (username, comment link + pasted text, branch name, Evidence, four eval-iteration fields)
+- [x] **D1** Branch on **your** fork: `fix/73-<slug>` (e.g. `fix/73-openrouter-env-example`)
+- [~] **D2** You drive, AI operates; no unread diffs
+- [x] **D3** Re-run Unit 2 repro as before/after; paste into `plan-and-implement.md` Evidence
+- [x] **D4** Fill `plan-and-implement.md` (username, comment link + pasted text, branch name, Evidence, four eval-iteration fields)
 
 ### E. Upload to submit repo + portal (last)
-- [ ] **E1** Copy filled **installed** skill → `ai301-coursework/tools/plan-check/`
-- [ ] **E2** Place under `ai301-coursework/beat-1-sandbox/unit-3/`:  
+- [x] **E1** Copy filled **installed** skill → `ai301-coursework/tools/plan-check/`
+- [~] **E2** Place under `ai301-coursework/beat-1-sandbox/unit-3/`:  
   `eval-run.txt` (harness-written) · `plan.md` · `plan-and-implement.md`
 - [ ] **E3** Portal submit = **coursework repo root** URL (not a folder; not this -preview repo)
-- [ ] **E4** Honesty check: contents are **yours** — do not ship Genie eval/skill as yours
+- [x] **E4** Honesty check: contents are **yours** — do not ship Genie eval/skill as yours
+
+### Status log — Tue Oct 6, 2026 ~4:20 AM MDT
+- B: confirming full run 20/20 PASS (eval-run.txt committed `2bf6467`); partial runs pkg-01 (1/1), pkg-04..06 (3/3); two early smoke attempts errored. B2: no revisions needed.
+- C2: live plan-check → **accept** (output: `drafts/plan-check-live-73.OUTPUT.txt`); comment draft `drafts/comment-73.DRAFT.md`.
+- C3: posted https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73#issuecomment-6014087169
+- D1: `fix/73-openrouter-env-example` @ `4fdcf49` pushed to `speculaas/pathreview-ai301-fa26-s1` (`.env.example` +2 lines only).
+- E2: coursework commits `2bf6467`, `b0703b1`, `9522cd0` are **local only** — `git push origin main` (no force) before E3 portal submit.
 
 ### F. Tangential / skip unless needed
 - [!] **F1** dojo-notes / JSONL split archives under `docs/claude-scratchpad-archives/` — tangential; skip for Project 3 unless debugging a session dump

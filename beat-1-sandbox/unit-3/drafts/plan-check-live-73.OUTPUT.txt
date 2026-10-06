@@ -1,0 +1,37 @@
+## Grading summary — Plan package for issue #73
+
+**Issue & repro context:** Issue #73 asks to make `.env.example` and `README.md` agree on OpenRouter config. This is a heavily-claimed issue (14+ students have posted claim/repro comments), but **no OWNER/MEMBER/COLLABORATOR has commented at all** — I confirmed this with a direct search of the full comment thread. The student's own repro comment (`#issuecomment-5886156672`, quoted correctly in `plan.md`) is a static file comparison: README/`docs/SETUP.md` tell you to set `OPENROUTER_API_KEY`, `.env.example` only has `OPENAI_API_KEY`, and `core/config.py` defines both fields with `case_sensitive = False`. I re-verified all of this live against the repo (`main` is still `f89c06f`, `.env.example` and `core/config.py` match the plan's quoted excerpts exactly, `docs/SETUP.md:47` matches). I also checked `docs/CONTRIBUTING.md` and the PR template — **no AI-disclosure policy exists anywhere in the repo**, for comments or PRs.
+
+| Check | Grade | Evidence |
+|---|---|---|
+| diagnosis-grounded | **pass** | Student's own repro is a 4-step static file comparison; cause ("`.env.example` is incomplete, README is correct") fully explains the Actual and nothing in the repro's steps contradicts it. |
+| scope-bounded | **pass** | In-scope: one `.env.example` line fixes exactly the reproduced gap. Not-in list is extensive and explicit (config.py, README/SETUP.md, `OPENAI_API_KEY`, `LLM_PROVIDER` Options, base URL/model, Python code). |
+| executable | **pass** | Named file (`.env.example`), exact block, exact line text, branch name, commit message — a stranger could start immediately. |
+| test-observable | **pass** | Re-runs repro greps before/after with stated before (count `0`) and expected-after (count `1`, new line present, other files unchanged). |
+| comment-faithful | **pass** | Every promise in `comment.md` (diagnosis, scope, approach, test, unknowns) matches `plan.md` content; no overreach. |
+| thread-convention | **pass** | No maintainer direction exists to engage (verified absence), and no AI-disclosure policy exists in the repo — neither signal present. |
+| unknowns-honest (preferred) | pass | Risks section explicitly flags the unverified runtime path and the undemonstrated `LLM_PROVIDER` option, with reasoning. |
+| automated-test (preferred) | none, justified | Plan explicitly declines an automated test and explains why (no existing test reads `.env.example`). |
+
+**Voice-guide check:** no violations — the comment states only evidenced claims, promises actions not outcomes, is specific without filler, and correctly omits an AI-disclosure line since the repo requires none.
+
+**One interesting thread note (not a blocker):** student Anthony-Sin's reproduction found that even with `OPENROUTER_API_KEY` set, the embedding provider factory (`get_embedding_provider`) raises `ValueError` for `"openrouter"` — so OpenRouter isn't actually wired up end-to-end. The plan's Risk section already anticipates exactly this kind of gap and correctly declines to touch `LLM_PROVIDER`'s `Options:` line for lack of evidence the app reads it. This is good scope discipline, not a defect.
+
+Deciding evidence for the accept: diagnosis-grounded — "Actual: README says to add OPENROUTER_API_KEY... `.env.example` only shows `LLM_PROVIDER=mock` and `OPENAI_API_KEY=...` — no `OPENROUTER_API_KEY` line" (student's own posted repro), fully explained by the plan's stated cause with no repro step contradicting it.
+
+```json
+{
+  "item": "https://github.com/codepath/pathreview-ai301-fa26-s1/issues/73",
+  "checks": [
+    {"name": "diagnosis-grounded", "grade": "pass", "evidence": "Student's static 4-step repro (README names OPENROUTER_API_KEY, .env.example omits it, core/config.py defines it) fully supports the plan's cause; no step rules it out."},
+    {"name": "scope-bounded", "grade": "pass", "evidence": "In-scope: one placeholder line in .env.example; explicit not-in list covers config.py, README/SETUP.md, OPENAI_API_KEY, LLM_PROVIDER Options, base URL/model, Python code."},
+    {"name": "executable", "grade": "pass", "evidence": "Named file/block, exact line text, branch name fix/73-openrouter-env-example, and commit message given — no undecided language."},
+    {"name": "test-observable", "grade": "pass", "evidence": "Re-runs repro greps with stated before (count 0) and expected-after (count 1, line present, other files unchanged)."},
+    {"name": "comment-faithful", "grade": "pass", "evidence": "comment.md's diagnosis/scope/approach/test/unknowns all match plan.md contents with no added promises."},
+    {"name": "thread-convention", "grade": "pass", "evidence": "No OWNER/MEMBER/COLLABORATOR comment exists on the issue (verified by full-thread search), and no AI-disclosure policy exists in docs/CONTRIBUTING.md or the PR template."},
+    {"name": "unknowns-honest", "grade": "pass", "evidence": "Risks section labels the unverified runtime OpenRouter path and the LLM_PROVIDER Options question as unchecked, with reasoning."},
+    {"name": "automated-test", "grade": "fail", "evidence": "Plan explicitly adds no automated test (justified: no existing test reads .env.example), which is the preferred condition's named outcome."}
+  ],
+  "verdict": "accept"
+}
+```
