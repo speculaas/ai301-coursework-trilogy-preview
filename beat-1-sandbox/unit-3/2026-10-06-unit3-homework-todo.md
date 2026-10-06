@@ -274,3 +274,7 @@ python3 run_eval.py \
 ```
 
 Stop before `--save-run`, posting the plan comment, pushing `fix/73-*`, or portal submit until smoke + live plan-check both look good.
+
+## Harness patch (local starter)
+
+`ai301-unit3-starter/eval/run_eval.py` now surfaces `stderr or stdout` on non-zero `claude` exits (auth errors were blank before). Local commit in the starter repo — not part of portal submit unless you choose to vendor it.
