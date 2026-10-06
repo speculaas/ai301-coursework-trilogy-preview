@@ -55,19 +55,79 @@ preview drafts/*  ──paste──┘  (+ Unit 2 voice-guide.md)
 
 ---
 
+## How to run (install DONE Tue Oct 6, 2026 ~3:30 AM MDT)
+
+### Installed (live skill) — already in place
+`S=~/.claude/skills/plan-check`
+
+| File | Source |
+|---|---|
+| `$S/SKILL.md`, `$S/scope.md` | starter `skill/` (copied verbatim; `scope.md` repo line filled → `codepath/pathreview-ai301-fa26-s1`) |
+| `$S/rubric.md` | `drafts/rubric.DRAFT.md` (HTML comment header stripped through first `-->`) |
+| `$S/procedure.md` | `drafts/procedure.DRAFT.md` (header stripped) |
+| `$S/references/evidence-guide.md` | `drafts/evidence-guide.DRAFT.md` (header stripped) |
+| `$S/voice-guide.md` | Unit 2 `ai301-coursework/tools/repro-check/voice-guide.md` (byte-identical copy; eval ignores voice) |
+
+Edit **only** these installed files while iterating. Drafts here stay as history.
+
+### Exact commands
+
+```bash
+export PATH=$PATH:/opt/homebrew/bin          # claude CLI lives at /opt/homebrew/bin/claude
+S=~/.claude/skills/plan-check
+cd /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter/eval
+
+# 1) SMOKE — first 3 packages, cheap, never writes eval-run.txt
+python3 run_eval.py --rubric $S/rubric.md --evidence $S/references/evidence-guide.md \
+  --skill $S/SKILL.md --limit 3
+
+# 2) REVISE — only the disagreeing packages + canaries (~$0.20/pkg)
+python3 run_eval.py --rubric $S/rubric.md --evidence $S/references/evidence-guide.md \
+  --skill $S/SKILL.md --only pkg-07,pkg-12,pkg-04
+
+# 3) CONFIRMING FULL RUN (~$4) — only after smoke/revise look right
+python3 run_eval.py --rubric $S/rubric.md --evidence $S/references/evidence-guide.md \
+  --skill $S/SKILL.md --out results.json \
+  --save-run /Users/watney/git/zimmnotes/chat/codepath/ai301/ai301-coursework/beat-1-sandbox/unit-3/eval-run.txt
+```
+
+Notes:
+- `--procedure` is not needed: the harness picks up `procedure.md` next to `--rubric`.
+- `--skill` defaults to the **starter's** `skill/SKILL.md` (same text today); passing `$S/SKILL.md` makes the fingerprint match what you submit.
+- `--save-run` is refused on `--limit` / `--only` runs, so a partial run can't overwrite a saved full run. Never hand-edit `eval-run.txt`.
+- **Do not run `--save-run` until smoke is OK.**
+
+### Model — nothing to set
+- Harness pins it: `run_eval.py` line 36 `MODEL = "sonnet"`, and every package runs `claude -p --model sonnet` (line 78). README: "Every run grades with Sonnet … there is no model flag." Your local Claude Code default does **not** affect eval runs.
+- `eval-run.txt` records it automatically. GenieCode's (`classmates/GenieCode-ai301-coursework/beat-1-sandbox/unit-3/eval-run.txt`) header:
+  ```text
+  # eval run written by run_eval.py at 2026-09-29T01:37:48Z
+  # model: sonnet (pinned)
+  # graded: /Users/…/.claude/skills/plan-check
+  # packages: 20 scored
+  #   rubric.md / evidence-guide.md / procedure.md / SKILL.md  sha256:…
+  ```
+  plus the body line `grading 20 package(s) … model sonnet, 5 worker(s)...`. `graded:` is the rubric's folder.
+- Live mode (interactive `claude` using the skill) uses your CLI default. Yours is already `"model": "sonnet"` in `~/.claude/settings.json`. To change: `/model` inside a session, `claude --model sonnet` per run, or the `"model"` key in `~/.claude/settings.json` (env `ANTHROPIC_MODEL` also works).
+
+### Token cost
+Smoke `--limit 3` ≈ $0.60 · `--only` ≈ $0.20/package · full 20 ≈ $4. Budget one confirming full run.
+
+---
+
 ## Checklist
 
 Status blanks: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked / skip
 
 ### A. Skill install + fold DRAFTs
-- [ ] **A1** mkdir + copy starter skill → live install  
+- [x] **A1** mkdir + copy starter skill → live install  
   `mkdir -p ~/.claude/skills/plan-check`  
   `cp -R …/ai301-unit3-starter/skill/. ~/.claude/skills/plan-check/`
-- [ ] **A2** Paste preview DRAFTs into installed files (edit **inside** `~/.claude/skills/plan-check/`):  
+- [x] **A2** Paste preview DRAFTs into installed files (edit **inside** `~/.claude/skills/plan-check/`):  
   - `rubric.md` ← `drafts/rubric.DRAFT.md`  
   - `procedure.md` ← `drafts/procedure.DRAFT.md`  
   - `references/evidence-guide.md` ← `drafts/evidence-guide.DRAFT.md`
-- [ ] **A3** Carry Unit 2 voice → installed `voice-guide.md`  
+- [x] **A3** Carry Unit 2 voice → installed `voice-guide.md`  
   source: `ai301-coursework/tools/repro-check/voice-guide.md`  
   (optional: one plan-comment rule — promise only what `plan.md` contains)
 - [ ] **A4** Confirm live skill is the only place you iterate (preview stays notes/drafts)
@@ -196,14 +256,14 @@ Partial runs never count as the submitted run and cannot show category tallies. 
 ```bash
 export PATH=$PATH:/opt/homebrew/bin
 
-# 1) Install once from starter (not from -preview)
+# 1) Install once from starter (not from -preview) — DONE Oct 6
 mkdir -p ~/.claude/skills/plan-check
 cp -R /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter/skill/. \
   ~/.claude/skills/plan-check/
 
 # 2) Paste drafts/* into installed rubric / procedure / evidence-guide;
 #    paste Unit 2 voice into voice-guide.md
-#    (see Checklist A2–A3)
+#    (see Checklist A2–A3) — DONE Oct 6; smoke cmd in "How to run" adds --skill
 
 # 3) Smoke only
 cd /Users/watney/git/zimmnotes/chat/codepath/ai301/beat-1-sandbox/unit-03/ai301-unit3-starter/eval
