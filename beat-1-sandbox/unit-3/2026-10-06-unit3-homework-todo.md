@@ -278,3 +278,15 @@ Stop before `--save-run`, posting the plan comment, pushing `fix/73-*`, or porta
 ## Harness patch (local starter)
 
 `ai301-unit3-starter/eval/run_eval.py` now surfaces `stderr or stdout` on non-zero `claude` exits (auth errors were blank before). Local commit in the starter repo — not part of portal submit unless you choose to vendor it.
+
+
+## Smoke over SSH — Claude OAuth / macOS keychain
+
+Smoke (`run_eval.py --limit 3`) over **SSH often fails with `Not logged in`**: Claude Code OAuth tokens live in the **macOS login keychain**, which SSH sessions usually cannot unlock.
+
+**Workarounds (pick one):**
+1. Run smoke in **Terminal.app on the Mac** (GUI login session has keychain access).
+2. From the Mac session: `security unlock-keychain ~/Library/Keychains/login.keychain-db` (then retry SSH smoke while unlocked).
+3. Use a long-lived token: `claude setup-token`, then export `CLAUDE_CODE_OAUTH_TOKEN=…` in the shell that runs the eval.
+
+**Partial smoke ≠ submit run:** results from `--limit` / `--only` **cannot** be assembled into `--save-run`. A confirming full run **regrades all packages** (~$4); budget one after smoke/revise look good.
