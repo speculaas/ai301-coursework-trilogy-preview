@@ -19,7 +19,7 @@
 
 ## What the activity teaches
 
-1. **Switch sides.** Unit 3 graded the *plan*. Unit 4 grades the *PR* as the maintainer, then fixes it as the contributor.
+1. **Switch sides.** Unit 3 graded the *plan*. Unit 4 reviews an already-opened *PR* (a proposed fix, not yet merged) as the maintainer, then, as the contributor, fixes the PR itself (its code and description) until every claim is true.
 2. **Plan vs diff = scope.** Every file the diff changes needs a line in the plan's `Files:` that asked for it. A folder or "a changelog entry" counts. An unrelated change loses points even when it's explained.
 3. **Proof = a diff line or real printed output.** A sentence ("the suite passes") or a `# note` after a command is not proof. A negative claim ("no options added") is a yes if nothing in the diff adds it.
 4. **Fix by subtraction too.** You can make a description true by removing a claim you can't prove, not only by adding work.
