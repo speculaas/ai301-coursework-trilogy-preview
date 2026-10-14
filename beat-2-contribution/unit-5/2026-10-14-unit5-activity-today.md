@@ -207,3 +207,21 @@ Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-workshe
 **Draft Unit 5 Toolkit entry (rewrite in your own words):** Added a repo-policy gate to issue-scout. Checking yt-dlp showed that technical fit isn't enough: its CONTRIBUTING.md forbids any AI/LLM help, which rules out the whole course workflow. I added a required check to read a repo's contribution and AI-use rules before interacting, and to stop when they prohibit it.
 
 **Self-quiz answers:** search, then rank, then the top five, then rubric grading. Five graded at about $0.20 each is about $1 a scan. The real issue comes from the Issue Selection site. Assignment 5 is 30 + 50 + 50 + 60 + 40 + 20 = 250.
+
+## Live-session notes (2026-10-14, Phase 1)
+
+**Gotcha: use the right search page.** `github.com/issues` is your personal dashboard. Its sidebar views ("Assigned to me", "Created by me", "Mentioned") stay highlighted while you type a search, which is confusing, and the query may not run as typed. Use the global issue search instead: https://github.com/search?type=issues
+
+**What a dropped keyword looks like:** a run where `(csv OR json)` didn't apply returned **78,416** results. The top ten were new issues of every kind, and only 1 of 10 (myrtia#46, a CSV export test) fit line 1. Log row: "78k; top ten mostly don't fit line 1. Only 1/10 is CSV/JSON; the rest are any newly opened issue."
+
+**Search terms:**
+- `in:title`: the words must appear in the issue title, not just the body or comments. Results fit better but there are fewer. gh: `--match title`.
+- Combining filters: put them side by side with spaces (an implicit AND). Quote labels that contain spaces.
+- Suggested Phase 1 search: `is:issue is:open language:python (csv OR json) in:title label:"good first issue"`
+- "Do the top ten fit line 1?" means: do the first ten results match profile line 1 (Python + CSV/JSON data files)? Answer in one sentence, e.g. "8 of 10 are CSV/JSON bugs in Python repos."
+- Logging means adding a row (name, the whole search, result count, one-sentence fit) to the Search log in the **captain's** shared doc.
+
+**The same search in gh (homework form):**
+```
+gh search issues "csv OR json" --match title --language python --label "good first issue" --state open --limit 30
+```
