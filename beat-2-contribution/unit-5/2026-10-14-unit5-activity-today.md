@@ -176,3 +176,12 @@ Then pick a sort. **Recently updated** goes with the staff "newest first", and *
 
 ## Rehearsal worksheet
 Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-worksheet-mock.md](2026-10-14-unit5-worksheet-mock.md)
+
+## Candidate check: yt-dlp/yt-dlp (checked 2026-10-14, ~5:10 PM MDT)
+
+- Python, ~198k stars, ~2,700 open issues, active (last push 2026-10-10).
+- Only **1** open `good first issue`.
+- `CONTRIBUTING.md` has a **NO AI / NO LLM POLICY**: no LLMs, agents, or AI tools for any contribution, including issues, bug reports, patches, PRs, and PR descriptions.
+- Not on the AI301 Issue Selection site.
+
+**Take:** not a fit for AI301. The course workflow (issue-scout, voice-guard, ship-gate, the AI-use line in the PR) conflicts with the repo's written rules, so any PR would break them. It's a good discussion example for "read the repo's written rules before you post" (lecture: etiquette in writing), and a reason for a rubric or scope check on `CONTRIBUTING.md` AI policies.
