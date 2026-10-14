@@ -185,3 +185,25 @@ Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-workshe
 - Not on the AI301 Issue Selection site.
 
 **Take:** not a fit for AI301. The course workflow (issue-scout, voice-guard, ship-gate, the AI-use line in the PR) conflicts with the repo's written rules, so any PR would break them. It's a good discussion example for "read the repo's written rules before you post" (lecture: etiquette in writing), and a reason for a rubric or scope check on `CONTRIBUTING.md` AI policies.
+
+## Takeaways from the M365 Copilot study session (2026-10-14)
+
+**Search caution:** with `OR`, use parentheses: `is:issue is:open language:python (csv OR json) label:"good first issue"`. Without them, the `OR` can split the whole query.
+
+**Ranking rule or rubric check?** Rules that use free result fields are fine for ranking: drop assigned, drop quiet for 90 days, one per repo, fewest comments then newest update, prefer `bug` + `good first issue`. These are rubric checks in disguise, because you have to open the issue or repo to judge them:
+- clear repro steps
+- fix touches 1–2 files or is finishable in two weeks
+- responsive maintainers (profile line 3)
+- someone already claimed it in the comments
+- simple setup
+- unresolved design questions
+- repo forbids AI-assisted contributions
+
+**Repo policy gate (patch idea, from the yt-dlp check):**
+- scope.md: before grading a URL, claiming, commenting, or contributing, read `CONTRIBUTING.md`, `README.md`, `.github/`, the templates, and any AI/LLM policy. If the intended AI-assisted workflow is forbidden, stop and treat the repo as out of scope. If it's unclear, don't post until it's resolved.
+- rubric.md (required): *Repository contribution policy permits my intended workflow.* Pass if the written rules allow it, fail if they prohibit it, unclear if no policy is found.
+- Not search-strategy.md, because search results can't show a repo's policy.
+
+**Draft Unit 5 Toolkit entry (rewrite in your own words):** Added a repo-policy gate to issue-scout. Checking yt-dlp showed that technical fit isn't enough: its CONTRIBUTING.md forbids any AI/LLM help, which rules out the whole course workflow. I added a required check to read a repo's contribution and AI-use rules before interacting, and to stop when they prohibit it.
+
+**Self-quiz answers:** search, then rank, then the top five, then rubric grading. Five graded at about $0.20 each is about $1 a scan. The real issue comes from the Issue Selection site. Assignment 5 is 30 + 50 + 50 + 60 + 40 + 20 = 250.
