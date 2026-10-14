@@ -173,3 +173,6 @@ Then pick a sort. **Recently updated** goes with the staff "newest first", and *
 | Course fit | **not on the Issue Selection site**, so it needs instructor approval ("If your scan found an issue you'd rather do, ask your instructor") |
 
 **Take:** it's interesting as a scan target to practice on (it shows why `no:assignee`/`-linked:pr` and a "people answer questions" rubric check matter), but it's a poor *first* real issue. The maintainers aren't course partners, triage is unknown, and you'd be racing bots. Use the site for the graded pick. If you still want gridcraft, ask the instructor and log the reasoning in the Toolkit entry.
+
+## Rehearsal worksheet
+Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-worksheet-mock.md](2026-10-14-unit5-worksheet-mock.md)
