@@ -141,6 +141,19 @@ claude "issue-scout: grade <URL> <URL> <URL>"
 - What I changed: moved keywords unquoted after `--`, added a fewest-comments-then-bug ordering, and added a CONTRIBUTING.md AI-policy check to my rubric after the yt-dlp case.
 ```
 
+### 7b. Practice runs that exposed rubric gaps (material for step 10 and the Unit 9 portfolio)
+
+These were free web Claude dry runs plus read-only `gh` evidence, not the real scout. Say so honestly in the Toolkit entry.
+
+| Date | Practice run | Gap it exposed | Where the fix goes |
+|---|---|---|---|
+| 10-15 | Web dry run v1 on result fields only ([note](2026-10-15-unit5-web-dry-run.md)) | Five checks need the issue page, so a field-only grade is all "unclear". The sort key didn't discriminate because all results had 0 comments and bug. No per-repo cap, codepath sandbox repos leaked in, Q2 dominated, and the `--updated` date was hard-coded | `search-strategy.md` |
+| 10-15 | gh page evidence v2, top 10 | Resolved the NEEDS PAGE checks (7 accept, 3 reject). EvoScientist had open linked PRs that the search filter missed | ranking and rubric |
+| 10-15 | Site scan + web dry run v3 ([scan](2026-10-15-unit5-site-scan.md), [dry run](2026-10-15-unit5-site-dry-run-v3.md)) | The site's Language filter works per repo (7 of 10 were Rust/TS). not-already-taken ignores claim comments (mahout). Feasibility (QNX, GPU) and CLA/DCO costs aren't checked. Scoped AI bans (beets) and bot-opened issues need rules | `rubric.md` |
+| 10-15 | My evidence sampler | Maintainer-alive rested on commit dates only, because the response sampler returned empty. Fixed to count reviews and merges and flag bot commits | evidence tooling |
+
+One-line Toolkit seed: *"Free dry runs before paying for the scout showed my rubric was blind to claim comments, setup feasibility and CLA costs, so I logged those as rubric fixes before grading my real picks."*
+
 ## 8. What's left for you to actually do
 
 1. Copy your profile (section 2) somewhere safe, then run the two install commands from the Assignment tab yourself.
