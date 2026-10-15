@@ -54,7 +54,10 @@ gh search issues --language python --label "good first issue" --state open --no-
 
 ## Status board (update by adding commits/branches)
 
+> **Note for future updates:** To update the board, drop a step's `NEXT` prefix and add the date or commit hash. New work goes in as new `commit` lines, and side threads, like a rubric patch, as new `branch` lines.
+
 ```mermaid
+%% To update: drop NEXT prefix + add date/hash; new work = new commit lines; side threads = new branch lines
 gitGraph
   commit id: "U5 lecture + activity"
   commit id: "Activity: Phase 1 only"
