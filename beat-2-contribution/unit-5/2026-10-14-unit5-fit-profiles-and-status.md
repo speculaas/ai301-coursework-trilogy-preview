@@ -79,10 +79,12 @@ Ranking may only use fields the search returns (labels, comments, updated, assig
 
 ## Status board (update by adding commits/branches)
 
+`T` commits are TENTATIVE (pre-release pages, as of 2026-10-14; may change).
+
 > **Note for future updates:** To update the board, drop a step's `NEXT` prefix and add the date or commit hash. New work goes in as new `commit` lines, and side threads, like a rubric patch, as new `branch` lines.
 
 ```mermaid
-%% To update: drop NEXT prefix + add date/hash; new work = new commit lines; side threads = new branch lines
+%% T = TENTATIVE NEXT (pre-release pages, 2026-10-14). To update: drop NEXT prefix + add date/hash; new work = new commit lines; side threads = new branch lines
 gitGraph
   commit id: "U5 lecture + activity"
   commit id: "Activity: Phase 1 only"
@@ -98,7 +100,20 @@ gitGraph
   commit id: "NEXT 10: Toolkit entry"
   checkout main
   merge homework id: "Unit 5 done"
-  commit id: "U6: claim + voice-guard"
+  commit id: "T U6 Oct21 fresh scan + claim"
+  commit id: "T U6 rubric scope patch"
+  commit id: "T U6 voice-guard + upstream rules"
+  commit id: "T U6 CLAUDE.local.md"
+  commit id: "T U6 Why I Chose + Toolkit"
+  commit id: "T U7 Oct28 ship-gate + manifest"
+  commit id: "T U7 gate run, PR from fork"
+  commit id: "T U7 Toolkit entry"
+  commit id: "T U8 Nov4 pr-monitor + playbook"
+  commit id: "T U8 Toolkit + Learnings"
+  commit id: "NEXT A5 due Sun Nov 8" type: HIGHLIGHT
+  commit id: "T U9 Nov11 portfolio entries + arc"
+  commit id: "NEXT A6 due Mon Nov 16" type: HIGHLIGHT
+  commit id: "T U10 Nov18 Demo Day"
   branch explore-profile-2
   checkout explore-profile-2
   commit id: "LATER: Vue/full-stack scan"
@@ -117,3 +132,8 @@ gitGraph
 | Steps 8–9: 2–3 Issue Selection picks, graded | next |
 | Step 10: Unit 5 Toolkit entry | next |
 | Exploratory Vue/full-stack profile | later |
+| TENTATIVE U6 (Oct 21): fresh scan, claim, rubric patch, voice-guard, CLAUDE.local.md | next |
+| TENTATIVE U7 (Oct 28): ship-gate + ship-manifest.md, PR from fork when gate passes | next |
+| TENTATIVE U8 (Nov 4): pr-monitor + playbook; **A5 due Sun ~Nov 8** | next |
+| TENTATIVE U9 (Nov 11): portfolio; **A6 due Mon Nov 16, 12:59AM MST** | next |
+| TENTATIVE U10 (Nov 18): Demo Day, ungraded | next |
