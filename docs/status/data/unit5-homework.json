@@ -1,7 +1,7 @@
 {
   "title": "AI301 Unit 5 homework (steps 1-10)",
   "caption": "Conceptual workstreams, not literal git history. T = TENTATIVE (pre-release pages, as of 2026-10-14). NEXT = open.",
-  "mermaid": "gitGraph LR:\n  commit id: \"U5 lecture + activity\"\n  commit id: \"1: gh logged in (10-14)\"\n  branch hw-unit5\n  checkout hw-unit5\n  commit id: \"Simulated run (b623dd6)\" type: HIGHLIGHT\n  commit id: \"2: fit profile saved (10-15)\"\n  commit id: \"3: scout installed (10-15)\"\n  commit id: \"4: profile pasted (10-15)\"\n  commit id: \"5: search-strategy.md (10-15)\"\n  commit id: \"web dry run v1 (10-15)\"\n  commit id: \"NEXT 6: run one scan\"\n  commit id: \"NEXT 7: scan-output.md\"\n  commit id: \"NEXT 8: 2-3 site picks\"\n  commit id: \"NEXT 9: grade picks\"\n  commit id: \"NEXT 10: U5 Toolkit entry\"\n  checkout main\n  merge hw-unit5 id: \"Unit 5 homework done\"\n  branch side-explore\n  checkout side-explore\n  commit id: \"LATER: Vue/full-stack profile #2\"",
+  "mermaid": "gitGraph LR:\n  commit id: \"U5 lecture + activity\"\n  commit id: \"1: gh logged in (10-14)\"\n  branch hw-unit5\n  checkout hw-unit5\n  commit id: \"Simulated run (b623dd6)\" type: HIGHLIGHT\n  commit id: \"2: fit profile saved (10-15)\"\n  commit id: \"3: scout installed (10-15)\"\n  commit id: \"4: profile pasted (10-15)\"\n  commit id: \"5: search-strategy.md (10-15)\"\n  commit id: \"web dry run v1 (10-15)\"\n  commit id: \"site scan + gh evidence (10-15)\"\n  commit id: \"NEXT 6: run one scan\"\n  commit id: \"NEXT 7: scan-output.md\"\n  commit id: \"NEXT 8: 2-3 site picks\"\n  commit id: \"NEXT 9: grade picks\"\n  commit id: \"NEXT 10: U5 Toolkit entry\"\n  checkout main\n  merge hw-unit5 id: \"Unit 5 homework done\"\n  branch side-explore\n  checkout side-explore\n  commit id: \"LATER: Vue/full-stack profile #2\"",
   "branches": [
     {
       "id": "main",
@@ -70,6 +70,12 @@
           "title": "web dry run v1 (10-15)",
           "status": "done",
           "detail": "Claude web on the v1 bundle: all 5 unverified; 8 fixes. See 2026-10-15-unit5-web-dry-run.md. Step 6 (real scan) still open."
+        },
+        {
+          "id": "hw-unit5_site",
+          "title": "site scan + gh evidence (10-15)",
+          "status": "done",
+          "detail": "Issue Selection site Python+GFI: 1,000 rows read, 95 kept, top 10 with evidence. See 2026-10-15-unit5-site-scan.md. Steps 8-9 still open."
         },
         {
           "id": "hw-unit5_6",
