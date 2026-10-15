@@ -68,3 +68,38 @@ Only one manual step remains: copying the session cookie. No URL copying.
 5. Sign out of the site afterward to end the session.
 
 Output is dated automatically: `ext.py` writes `<prefix>-YYYY-MM-DD.json` using today's date, and `enrich.py` reads today's file by default (or pass a filename: `python3 enrich.py site-python-gfi-2026-10-15.json`). A run on the same day overwrites that day's file.
+
+## Sampler fix (2026-10-15, after the v3 dry run)
+
+Web Claude noticed that `maint_response_sample` was null for all 50 samples.
+
+**Root cause:**
+- **Too new:** the sampler took the **8 newest** items. In active repos these were 0-2 days old, so nobody had answered yet.
+- **Wrong place to look:** it read **issue comments only**. On those new PRs the comments were bots (codecov, github-actions), while maintainers answer PRs in **reviews / review comments** or by merging.
+
+**The fix** (`site-q/ev_site.py`, old version kept as `ev_site.py.bak`):
+- Sample 5 non-bot items created at least 7 days ago, reading up to 3 pages of 100 (high-volume repos fill the newest 100 with bots or same-week items).
+- Count the first non-author, non-bot response from OWNER/MEMBER/COLLABORATOR across comments, PR reviews, review comments and merges.
+- Also record the first human reply of any kind, and the last 5 commit authors with a bot flag.
+
+The re-run is saved as `evidence-raw-site-2026-10-15.json`.
+
+| # | Repo | maint replies (n/sampled) | maint latency days | via | first human reply days | commit authors (last 5) | bot commits |
+|---|---|---|---|---|---|---|---|
+| 1 | eclipse-iceoryx/iceoryx2 | 2/5 | [0.1, 0.1] | comment | [0.8, 0.1, 0.1, 0.1] | FerdinandSpitzschnueffler, elfenpiff | 0/5 |
+| 2 | code-charity/youtube | 2/5 | [3.1, 2.7] | comment, merge | [7.6, 0.6, 0.1, 0.0] | Arslan-TR, ImprovedTube2 | 0/5 |
+| 3 | librefang/librefang | 3/5 | [1.1, 6.0, 6.6] | merge | [1.1, 1.5, 2.1] | DaBlitzStein, houko | 0/5 |
+| 4 | beetbox/beets | 2/5 | [0.6, 1.7] | review, review-comment | [0.6, 1.7] | JOJ0, snejus | 0/5 |
+| 5 | HHS/simpler-grants-gov | 0/5 | [] |  | [] | github-actions[bot], kkrug, mikehgrantsgov, prasnava, sean-navapbc | 1/5 |
+| 6 | Snoww3d/jwst-data-analysis | 0/5 | [] |  | [] | Snoww3d, dependabot[bot] | 1/5 |
+| 7 | eclipse-opensovd/classic-diagnostic-adapter | 1/5 | [0.8] | merge | [1.8, 1.9, 0.7, 3.6] | alexmohr, floroks, msanjay888, theswiftfox | 0/5 |
+| 8 | finos/opengris-scaler | 0/5 | [] |  | [] | e117649, magniloquency | 0/5 |
+| 9 | apache/mahout | 2/5 | [8.0, 20.8] | review, review-comment | [8.0, 6.2, 20.8] | 400Ping, Howardisme | 0/5 |
+| 10 | monarch-initiative/dismech | 0/0 | [] |  | [] | ai4c-agent[bot], aleixpuigb, gingin77 | 1/5 |
+
+**Caveats:**
+- **Hidden maintainers:** `author_association` shows CONTRIBUTOR for maintainers whose org membership is private, so 0/5 (opengris-scaler, HHS, jwst) means "no visible maintainer reply", not "dead". All three have recent human commits.
+- **dismech:** it had no non-bot items older than 7 days in 300, which says how agent-driven it is.
+- **mahout:** maintainers replied in 8 and 20.8 days, so a claim question there may wait a week or more.
+
+Web Claude's read of these picks: [2026-10-15-unit5-site-dry-run-v3.md](2026-10-15-unit5-site-dry-run-v3.md).

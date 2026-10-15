@@ -44,4 +44,13 @@ In v2, the top 10 came out as 7 accepts and 3 rejects: cluv#200 (scope unclear),
 2026-10-15 search-strategy: Q4 "image" too broad -> opencv OR torchvision OR "computer vision" (verify phrase handling in gh).
 2026-10-15 search-strategy: replace fixed --updated ">2026-08-15" with a date 60 days before the scan.
 2026-10-15 rubric (candidate): who-filed check (bulk/agent-filed issues, e.g. created seconds apart or a ready-for-agent label) and outside-contributor merge history; decide after the real scan.
+2026-10-15 site/language: Language=Python on the site is repo-level; 7 of the site top 10 were Rust/TS/docs-only and the rubric ignores language. Add a language-fit preferred check or a repo-language ranking filter.
+2026-10-15 rubric not-already-taken: a live stranger claim comment (mahout#1468, 24 days old, with a plan) passes. Patch: claim comment <=30 days with no PR or maintainer reply => unclear/hold.
+2026-10-15 evidence: maint_response_sample was null for all 50 (sampler bug, fixed in ev_site.py); also record commit authors and exclude bot commits from maintainer-alive.
+2026-10-15 rubric: CLA (FINOS) and DCO (Eclipse OpenSOVD) newcomer costs aren't captured; add a note field or a preferred "no CLA/DCO" check.
+2026-10-15 rubric ai-policy-ok: scoped bans count when they cover the candidate (beets bans AI on good-first issues only).
+2026-10-15 rubric good-first-signal: don't count a bot opener (librefang#8590 had a gfi label and no ask).
+2026-10-15 rubric: feasibility (QNX toolchain, GPU) is invisible; consider a can-reproduce-locally check.
 ```
+
+Lines added 2026-10-15 from the [site dry run v3](2026-10-15-unit5-site-dry-run-v3.md). All 7 were kept: none repeats an earlier line. The bot-opener line narrows the earlier who-filed line, and the sampler line rewords Claude's to say the sampler is fixed.
