@@ -67,4 +67,4 @@ Only one manual step remains: copying the session cookie. No URL copying.
 4. Claude CLI can do steps 2–3 for you, or just read the JSON. It can't sign in to the site itself, so the cookie step stays manual.
 5. Sign out of the site afterward to end the session.
 
-Caveat: `ext.py` currently writes `<prefix>-2026-10-15.json` (date hard-coded), so rename the output or patch the date before the next run so it doesn't overwrite.
+Output is dated automatically: `ext.py` writes `<prefix>-YYYY-MM-DD.json` using today's date, and `enrich.py` reads today's file by default (or pass a filename: `python3 enrich.py site-python-gfi-2026-10-15.json`). A run on the same day overwrites that day's file.
