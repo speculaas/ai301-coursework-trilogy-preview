@@ -25,6 +25,7 @@ gitGraph
   commit id: "3: scout installed (10-15)"
   commit id: "4: profile pasted (10-15)"
   commit id: "5: search-strategy.md (10-15)"
+  commit id: "web dry run v1 (10-15)"
   commit id: "NEXT 6: run one scan"
   commit id: "NEXT 7: scan-output.md"
   commit id: "NEXT 8: 2-3 site picks"
