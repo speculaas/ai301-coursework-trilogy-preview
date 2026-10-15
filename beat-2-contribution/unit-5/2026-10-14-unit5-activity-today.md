@@ -225,3 +225,7 @@ Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-workshe
 ```
 gh search issues "csv OR json" --match title --language python --label "good first issue" --state open --limit 30
 ```
+
+## Homework rehearsal (simulated)
+
+See [2026-10-14-unit5-homework-simulated.md](2026-10-14-unit5-homework-simulated.md): a labeled-simulated walkthrough of steps 1–10, with real `gh` counts and a top five.
