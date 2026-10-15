@@ -50,3 +50,21 @@ That leaves 95 kept, 47 after 1 per repo. Order: fewest comments, then docs/size
 - **Best profile fit:** finos/opengris-scaler#235 (Python backend; confirm the approach with a maintainer first). Most of the others are Rust, TypeScript or frontend.
 
 Data, `ext.py` (cookie read from `AI301_SITE_SESSION`), evidence and `BUNDLE_unit5_scout_site_v3.txt` are in the gitignored `zimmnotes/.../unit-05/copilot-pack-unit5/site-q/`.
+
+## How to re-run the site scan (e.g. Unit 6 Claim Day fresh scan)
+
+Only one manual step remains: copying the session cookie. No URL copying.
+
+1. Sign in at the [Issue Selection site](https://open-source-issue-tracker.onrender.com/), set your filters, open Chrome DevTools → Application → Cookies, and copy the `session` value. Don't paste it into notes or chat.
+2. Run it in a terminal (the leading space keeps it out of zsh history if `HIST_IGNORE_SPACE` is set):
+   ```bash
+   cd ~/git/zimmnotes/chat/codepath/ai301/beat-2-contribution/unit-05/copilot-pack-unit5/site-q
+    read -s AI301_SITE_SESSION && export AI301_SITE_SESSION   # paste cookie, press Enter
+   python3 ext.py --language Python --tag "good first issue" --max-pages 10 --out site-python-gfi
+   unset AI301_SITE_SESSION
+   ```
+3. `enrich.py` then `ev_site.py` add the gh data and rubric evidence (gh at `/opt/homebrew/bin`).
+4. Claude CLI can do steps 2–3 for you, or just read the JSON. It can't sign in to the site itself, so the cookie step stays manual.
+5. Sign out of the site afterward to end the session.
+
+Caveat: `ext.py` currently writes `<prefix>-2026-10-15.json` (date hard-coded), so rename the output or patch the date before the next run so it doesn't overwrite.
