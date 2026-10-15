@@ -97,7 +97,8 @@ gitGraph
   commit id: "2: fit profile saved (10-15)"
   commit id: "3: scout installed (10-15)"
   commit id: "4-5: profile + strategy (10-15)"
-  commit id: "NEXT 6-7: scan, scan-output.md"
+  commit id: "6: scan + scan-output.md (10-15)"
+  commit id: "NEXT 7: scan-notes.md fixes"
   commit id: "NEXT 8-9: 2-3 site picks graded"
   commit id: "NEXT 10: Toolkit entry"
   checkout main
