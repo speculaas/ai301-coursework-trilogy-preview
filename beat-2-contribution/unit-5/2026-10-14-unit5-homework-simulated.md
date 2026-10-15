@@ -19,11 +19,11 @@ Tighter version: add `in:title`. For gh, see the gotcha in section 4. Quoting `"
 | # | Step | Status |
 |---|------|--------|
 | 1 | Check gh (`gh auth status`) | **Done for real.** gh 2.96, logged in as `speculaas`. Needs `export PATH=$PATH:/opt/homebrew/bin` (add it to `~/.zshrc`) |
-| 2 | Save the fit profile from `~/.claude/skills/issue-select/scope.md` | To do. The text is in section 2 below |
-| 3 | Install the scout (`cp ...` then `mv issue-select issue-scout`) | To do. Not run here |
-| 4 | Paste the profile into the new `issue-scout/scope.md` | To do. Use section 2 |
-| 5 | Write `search-strategy.md` | Draft in section 3. Queries tested in section 4 |
-| 6 | `claude "issue-scout: run a scan"` → `scan-output.md` (~$1) | To do. Simulated example in section 5 |
+| 2 | Save the fit profile from `~/.claude/skills/issue-select/scope.md` | **Done 2026-10-15.** Snapshot: [`../../beat-1-sandbox/unit-1/scope-unit1-snapshot-2026-10-15.md`](../../beat-1-sandbox/unit-1/scope-unit1-snapshot-2026-10-15.md); full backup at `~/.claude/skills-backup-2026-10-15/issue-select/` |
+| 3 | Install the scout (`cp ...` then `mv issue-select issue-scout`) | **Done 2026-10-15.** Exact `cp`/`mv` from the Assignment tab (starter at `27e3202`); `rubric.md` and `references/evidence-guide.md` kept |
+| 4 | Paste the profile into the new `issue-scout/scope.md` | **Done 2026-10-15.** Section 2 text (with the AI-policy sentence) replaces the placeholder; template comment kept |
+| 5 | Write `search-strategy.md` | **Done 2026-10-15.** Section 3 queries and filters in `~/.claude/skills/issue-scout/search-strategy.md` (template comments kept; `From:` line above each query). Re-run 10-15 ~1:30 AM MDT: each query returned 100 (cap); 397 unique, 259 after filters |
+| 6 | (Web dry-run bundle: `zimmnotes/.../unit-05/copilot-pack-unit5/BUNDLE_unit5_scout_for_claude_web.txt`, gitignored; not a substitute for the real scan) `claude "issue-scout: run a scan"` → `scan-output.md` (~$1) | To do. Simulated example in section 5 |
 | 7 | Fix rubric/strategy, log it in `scan-notes.md` | To do |
 | 8 | Pick 2–3 on the Issue Selection site | To do. Checklist in section 6 |
 | 9 | `claude "issue-scout: grade <URL> <URL>"` (~$0.20 each) | To do |

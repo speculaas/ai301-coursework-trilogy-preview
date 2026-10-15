@@ -21,10 +21,10 @@ gitGraph
   branch hw-unit5
   checkout hw-unit5
   commit id: "Simulated run (b623dd6)" type: HIGHLIGHT
-  commit id: "NEXT 2: save fit profile"
-  commit id: "NEXT 3: install scout (cp/mv)"
-  commit id: "NEXT 4: profile"
-  commit id: "NEXT 5: search-strategy.md"
+  commit id: "2: fit profile saved (10-15)"
+  commit id: "3: scout installed (10-15)"
+  commit id: "4: profile pasted (10-15)"
+  commit id: "5: search-strategy.md (10-15)"
   commit id: "NEXT 6: run one scan"
   commit id: "NEXT 7: scan-output.md"
   commit id: "NEXT 8: 2-3 site picks"
