@@ -56,7 +56,7 @@ cp -v "$SRC/app.js" "$SRC/styles.css" "$SRC/index.html" "$SRC/.nojekyll" "$DEST/
 
 ## Unit 5 / Beat 2 boards (added 2026-10-14)
 
-Boards: `unit3` stays (`?board=ai301-unit3`); default is now `unit5-homework`. Light theme only (the `dark` Mermaid theme was dropped from the cycle).
+Boards: `unit3` stays (`?board=ai301-unit3`); default is now `unit5-homework`. Code files are an exact copy of AI201 (theme button still cycles to `dark`; default is light). Mermaid strings must start `gitGraph LR:` (with colon) or the LR/TB toggle does nothing.
 
 Static workstream-board viewer reused from the AI201 `docs/status` board (ai201-lab6-grocerylist-starter). Conceptual workstreams only, **not** repo commit history. Light theme only.
 

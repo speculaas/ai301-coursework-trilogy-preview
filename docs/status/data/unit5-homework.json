@@ -1,7 +1,7 @@
 {
   "title": "AI301 Unit 5 homework (steps 1-10)",
   "caption": "Conceptual workstreams, not literal git history. T = TENTATIVE (pre-release pages, as of 2026-10-14). NEXT = open.",
-  "mermaid": "gitGraph\n  commit id: \"U5 lecture + activity\"\n  commit id: \"1: gh logged in (10-14)\"\n  branch hw-unit5\n  checkout hw-unit5\n  commit id: \"Simulated run (b623dd6)\" type: HIGHLIGHT\n  commit id: \"NEXT 2: save fit profile\"\n  commit id: \"NEXT 3: install scout (cp/mv)\"\n  commit id: \"NEXT 4: profile\"\n  commit id: \"NEXT 5: search-strategy.md\"\n  commit id: \"NEXT 6: run one scan\"\n  commit id: \"NEXT 7: scan-output.md\"\n  commit id: \"NEXT 8: 2-3 site picks\"\n  commit id: \"NEXT 9: grade picks\"\n  commit id: \"NEXT 10: U5 Toolkit entry\"\n  checkout main\n  merge hw-unit5 id: \"Unit 5 homework done\"\n  branch side-explore\n  checkout side-explore\n  commit id: \"LATER: Vue/full-stack profile #2\"",
+  "mermaid": "gitGraph LR:\n  commit id: \"U5 lecture + activity\"\n  commit id: \"1: gh logged in (10-14)\"\n  branch hw-unit5\n  checkout hw-unit5\n  commit id: \"Simulated run (b623dd6)\" type: HIGHLIGHT\n  commit id: \"NEXT 2: save fit profile\"\n  commit id: \"NEXT 3: install scout (cp/mv)\"\n  commit id: \"NEXT 4: profile\"\n  commit id: \"NEXT 5: search-strategy.md\"\n  commit id: \"NEXT 6: run one scan\"\n  commit id: \"NEXT 7: scan-output.md\"\n  commit id: \"NEXT 8: 2-3 site picks\"\n  commit id: \"NEXT 9: grade picks\"\n  commit id: \"NEXT 10: U5 Toolkit entry\"\n  checkout main\n  merge hw-unit5 id: \"Unit 5 homework done\"\n  branch side-explore\n  checkout side-explore\n  commit id: \"LATER: Vue/full-stack profile #2\"",
   "branches": [
     {
       "id": "main",
