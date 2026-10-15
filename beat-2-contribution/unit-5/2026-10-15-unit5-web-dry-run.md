@@ -68,3 +68,15 @@ The real scan ran 2026-10-15 ~2:48 AM MDT with Sonnet 5 ([snapshot](2026-10-15-s
 | Counts for the course | Practice only | Practice only | Yes, this goes in `scan-output.md` |
 
 Takeaway for the Toolkit entry: the free web runs were good at criticizing the strategy and rubric. Only the CLI could gather live evidence, so it is the real read-out.
+
+## Step 9: web v3 vs CLI grades
+
+| Issue | Web dry run v3 (Claude web, 2026-10-15 ~2:15 AM MDT) | Step 9 CLI (`claude "issue-scout: grade ..."`, claude-sonnet-5-5, 2026-10-15 ~1:12 PM MDT) | Why they differ |
+|---|---|---|---|
+| finos/opengris-scaler#235 | **accept**, primary pick; scope: "concrete proposed change"; noted CLA cost and "confirm approach" | **reject**; scope fail: body opens "Once numerical capabilities are supported (#233)", #233 still open (maintainer: "not implemented yet"), another maintainer says #951 "should be done before this"; queue_size in 8+ files | The CLI read the linked issues and comment thread live; the web run only had my 1,500-character body excerpt and no linked-issue state. The CLI said itself that no rubric condition named this, so I added fail (6) "blocked on an open prerequisite" |
+| HHS/simpler-grants-gov#5289 | accept (fallback); 3 acceptance criteria | accept, with caveat: confirm the warning still appears before claiming (issue from 2025-06) | Agree. The CLI also found maintainer replies within minutes to hours, where my sampler had shown 0/5 |
+| Both, ai-policy-ok | pass | pass; CLI also flagged opengris AGENTS.md "no agent Co-authored-by trailer" and said to strip the scout's own trailer | Same verdict, more practical detail live |
+
+**Model info:** the CLI transcript records `"model": "claude-sonnet-5-5"` (with `advisorModel: claude-opus-5-5`). The web dialogue export (`dialogue-dlg-m365-04920039-turn32.json`) has no model field (keys: id, question, answer, reasoning, timestamps). It was Claude web per my run, but the export doesn't record which model.
+
+**Lesson:** a dry run grades only the evidence it's handed. The prerequisite chain sat in the linked issues, which my evidence bundle never fetched. The real scout caught it, so the paid grade was worth its $0.40.
