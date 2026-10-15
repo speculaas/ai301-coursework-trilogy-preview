@@ -229,3 +229,7 @@ gh search issues --match title --language python --label "good first issue" --st
 ## Homework rehearsal (simulated)
 
 See [2026-10-14-unit5-homework-simulated.md](2026-10-14-unit5-homework-simulated.md): a labeled-simulated walkthrough of steps 1–10, with real `gh` counts and a top five.
+
+## Fit profiles + status board
+
+See [2026-10-14-unit5-fit-profiles-and-status.md](2026-10-14-unit5-fit-profiles-and-status.md): Vue/TypeScript/Node/full-stack notes, an exploratory profile diagram, and a gitGraph status board.
