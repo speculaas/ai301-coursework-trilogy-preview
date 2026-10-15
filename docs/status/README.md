@@ -79,3 +79,47 @@ python3 -m http.server 8766   ## file:// cannot fetch the JSON
 - Blocked: `BLOCKED: ...` + `type: REVERSE` in mermaid, `status: "blocked"` on the node.
 - New board: add the JSON and register `id`/`file`/`label` in `data/boards.json`.
 - Keep the Markdown copy in `beat-2-contribution/unit-5/2026-10-14-ai301-status-boards.md` in sync.
+
+## How the LR/TB bug was found (2026-10-15)
+
+Honest account: it was not trial and error, and I didn't see it right away either. The diff ruled out the code, and then the toggle's regex showed the cause on the first read. I did the "before" repro *after* the fix, as a control.
+
+1. **Diff the code against AI201** (`diff` of `index.html`, `app.js`, `styles.css`, `.nojekyll`). The only differences were the `<title>`, the three `localStorage` key names, and `dark` removed from `MERMAID_THEMES`. None of these touch orientation, so they're irrelevant. The same check showed the local AI201 folder is 4 commits behind origin, but those commits only add data files, so the code matches what's deployed.
+2. **Read the toggle code.** In the same command I grepped `app.js` for `detectOrient`/`gitGraph`, which led to:
+   ```js
+   function withOrient(code, orient) {
+     const dir = orient === "TB" ? "TB" : "LR";
+     const src = String(code || "");
+     if (/^\s*gitGraph\b/i.test(src)) {
+       return src.replace(/^\s*gitGraph\s*(LR|TB|BT|RL)?\s*:/i, `gitGraph ${dir}:`);
+     }
+     return `gitGraph ${dir}:\n${src}`;
+   }
+   ```
+   The replace regex needs a **colon** after `gitGraph [dir]`. The guard `gitGraph\b` matches a bare `gitGraph`, but then the replace finds nothing, and the source comes back unchanged.
+3. **Compare the first lines of the board JSON.** `workstream.json` (Unit 3, which worked) starts with `gitGraph LR:\n`. My three new boards started with `gitGraph\n`, with no direction and no colon.
+4. **Hypothesis:** with a bare header, the toggle is a no-op, so TB renders identically to LR.
+5. **Fix:** `gitGraph LR:` headers in `unit5-homework.json`, `beat2-a5.json` and `roadmap-gitgraph.json`. I also copied the code files back exactly from AI201.
+6. **Verify** with headless Chromium (puppeteer) on a served copy, clicking `#orient-lr` and then `#orient-tb` and measuring the SVG bounding box. As a control, I put the bare `gitGraph` header back on unit5-homework, and it stayed 840×313 for both LR and TB, which reproduced the bug.
+
+| Board | LR (w×h) | TB (w×h) |
+|---|---|---|
+| unit5-homework | 840×313 | 374×807 |
+| beat2-a5 | 1130×486 | 717×1189 |
+| roadmap-gitgraph | 998×385 | 541×1001 |
+| ai301-unit3 | 1271×591 | 824×1215 |
+| unit5-homework, bare header (control) | 840×313 | 840×313 |
+
+```mermaid
+%%{init: {'theme': 'default'}}%%
+flowchart TB
+  A["TB toggle does nothing on new boards"] --> B{"Code differs from AI201?"}
+  B -- "only title, storage keys, theme list" --> C["Read toggle code: withOrient()"]
+  C --> D{"Replace regex needs 'gitGraph DIR:'?"}
+  D -- yes --> E{"Do the new boards start with 'gitGraph LR:'?"}
+  E -- "no: bare 'gitGraph'" --> F["Hypothesis: replace is a no-op"]
+  F --> G["Fix: headers to 'gitGraph LR:'"]
+  G --> H["Verify: SVG sizes change LR vs TB; bare-header control unchanged"]
+```
+
+**Lesson (contract):** every board's `mermaid` string must start with `gitGraph LR:` (or `TB:`), with a direction and a colon. A bare `gitGraph` is valid Mermaid, but the viewer's LR/TB toggle silently ignores it.
