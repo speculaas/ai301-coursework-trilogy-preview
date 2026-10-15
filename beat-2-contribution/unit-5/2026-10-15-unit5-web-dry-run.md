@@ -54,3 +54,17 @@ In v2, the top 10 came out as 7 accepts and 3 rejects: cluv#200 (scope unclear),
 ```
 
 Lines added 2026-10-15 from the [site dry run v3](2026-10-15-unit5-site-dry-run-v3.md). All 7 were kept: none repeats an earlier line. The bot-opener line narrows the earlier who-filed line, and the sampler line rewords Claude's to say the sampler is fixed.
+
+## Web dry runs vs the real CLI scan (step 6)
+
+The real scan ran 2026-10-15 ~2:48 AM MDT with Sonnet 5 ([snapshot](2026-10-15-scan-output-snapshot.md)).
+
+| | Web dry run v1 (field-only bundle) | Web dry run v3 (site bundle + gh evidence) | CLI `claude "issue-scout: run a scan"` |
+|---|---|---|---|
+| Search | Used results I collected and pasted | Used the site list I scraped | Ran your 4 `gh` queries live: 397 unique, 255 after filters |
+| Issue pages / policy files | None, so everything was NEEDS PAGE | Only what I bundled from `gh` | Read each issue, repo facts and CONTRIBUTING/AGENTS.md itself |
+| Verdicts on the top 5 | All "reject (unverified)" | Real verdicts (7 accept / 3 reject of 10) | 4 accept (automatos #1059, #1057, cubrid #361, dataquality #190), 1 reject (cluv #200, unsettled scope) |
+| Unique catch | Ranking-filter gaps (sort key, per-repo cap, date drift) | Rubric gaps (claim comments, feasibility, CLA/DCO, repo-level language) | Flagged cubrid's AGENTS.md as oddly aimed at AI agents. Eyeball it before choosing that repo |
+| Counts for the course | Practice only | Practice only | Yes, this goes in `scan-output.md` |
+
+Takeaway for the Toolkit entry: the free web runs were good at criticizing the strategy and rubric. Only the CLI could gather live evidence, so it is the real read-out.
