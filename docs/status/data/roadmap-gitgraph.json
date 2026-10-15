@@ -1,0 +1,123 @@
+{
+  "title": "AI301 roadmap as gitGraph (cross-beat cherry-picks)",
+  "caption": "Conceptual workstreams, not literal git history. T = TENTATIVE (pre-release pages, as of 2026-10-14). NEXT = open. Cherry-picks (tags) stand in for cross-beat arrows.",
+  "mermaid": "gitGraph\n  commit id: \"AI301 start\"\n  branch beat-1\n  checkout beat-1\n  commit id: \"U1 issue-select\" tag: \"rubric.md\"\n  commit id: \"U2 repro-check\" tag: \"voice-guide\"\n  commit id: \"U3 plan-check\"\n  commit id: \"U4 pr-precheck\" tag: \"PR #181\"\n  checkout main\n  merge beat-1 id: \"Beat 1 done\"\n  branch beat-2\n  checkout beat-2\n  cherry-pick id: \"U1 issue-select\" tag: \"rubric carries over\"\n  commit id: \"U5 issue-scout\" type: HIGHLIGHT tag: \"NOW\"\n  cherry-pick id: \"U2 repro-check\" tag: \"voice-guide to U6\"\n  commit id: \"U6 Claim Day Oct21 (T)\"\n  cherry-pick id: \"U3 plan-check\" tag: \"repro/plan return U7\"\n  cherry-pick id: \"U4 pr-precheck\" tag: \"wrapped by ship-gate\"\n  commit id: \"U7 ship-gate Oct28 (T)\"\n  commit id: \"U8 pr-monitor Nov4 (T)\"\n  checkout main\n  merge beat-2 id: \"A5 due Nov 9 12:59AM MST\" type: HIGHLIGHT\n  branch beat-3\n  checkout beat-3\n  commit id: \"U9 portfolio Nov11 (T)\" tag: \"Toolkit entries to Arc\"\n  commit id: \"U10 Demo Day Nov18 (T)\"\n  checkout main\n  merge beat-3 id: \"A6 due Nov 16 12:59AM MST\"",
+  "branches": [
+    {
+      "id": "main",
+      "label": "main",
+      "status": "done",
+      "summary": "Beat merges and due dates.",
+      "nodes": [
+        {
+          "id": "main_1",
+          "title": "AI301 start",
+          "status": "done",
+          "detail": "Beat merges and due dates."
+        },
+        {
+          "id": "main_2",
+          "title": "Beat 1 done",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_3",
+          "title": "A5 due Nov 9 12:59AM MST",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_4",
+          "title": "A6 due Nov 16 12:59AM MST",
+          "status": "done",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "beat-1",
+      "label": "Beat 1 sandbox (U1-U4)",
+      "status": "done",
+      "summary": "Tools later cherry-picked into Beat 2.",
+      "nodes": [
+        {
+          "id": "beat-1_1",
+          "title": "U1 issue-select",
+          "status": "done",
+          "detail": "Tools later cherry-picked into Beat 2."
+        },
+        {
+          "id": "beat-1_2",
+          "title": "U2 repro-check",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "beat-1_3",
+          "title": "U3 plan-check",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "beat-1_4",
+          "title": "U4 pr-precheck",
+          "status": "done",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "label": "Beat 2 real repo (U5-U8)",
+      "status": "open",
+      "summary": "Cherry-picks: rubric to U5, voice-guide to U6, repro/plan + pr-precheck to U7.",
+      "nodes": [
+        {
+          "id": "beat-2_1",
+          "title": "U5 issue-scout",
+          "status": "done",
+          "detail": "Cherry-picks: rubric to U5, voice-guide to U6, repro/plan + pr-precheck to U7."
+        },
+        {
+          "id": "beat-2_2",
+          "title": "U6 Claim Day Oct21 (T)",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "beat-2_3",
+          "title": "U7 ship-gate Oct28 (T)",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "beat-2_4",
+          "title": "U8 pr-monitor Nov4 (T)",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "label": "Beat 3 portfolio (U9-U10)",
+      "status": "open",
+      "summary": "Toolkit entries become the Arc.",
+      "nodes": [
+        {
+          "id": "beat-3_1",
+          "title": "U9 portfolio Nov11 (T)",
+          "status": "open",
+          "detail": "Toolkit entries become the Arc."
+        },
+        {
+          "id": "beat-3_2",
+          "title": "U10 Demo Day Nov18 (T)",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    }
+  ]
+}

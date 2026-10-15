@@ -1,0 +1,115 @@
+{
+  "title": "AI301 Unit 5 homework (steps 1-10)",
+  "caption": "Conceptual workstreams, not literal git history. T = TENTATIVE (pre-release pages, as of 2026-10-14). NEXT = open.",
+  "mermaid": "gitGraph\n  commit id: \"U5 lecture + activity\"\n  commit id: \"1: gh logged in (10-14)\"\n  branch hw-unit5\n  checkout hw-unit5\n  commit id: \"Simulated run (b623dd6)\" type: HIGHLIGHT\n  commit id: \"NEXT 2: save fit profile\"\n  commit id: \"NEXT 3: install scout (cp/mv)\"\n  commit id: \"NEXT 4: profile\"\n  commit id: \"NEXT 5: search-strategy.md\"\n  commit id: \"NEXT 6: run one scan\"\n  commit id: \"NEXT 7: scan-output.md\"\n  commit id: \"NEXT 8: 2-3 site picks\"\n  commit id: \"NEXT 9: grade picks\"\n  commit id: \"NEXT 10: U5 Toolkit entry\"\n  checkout main\n  merge hw-unit5 id: \"Unit 5 homework done\"\n  branch side-explore\n  checkout side-explore\n  commit id: \"LATER: Vue/full-stack profile #2\"",
+  "branches": [
+    {
+      "id": "main",
+      "label": "Unit 5 main",
+      "status": "done",
+      "summary": "Lecture, activity, step 1, merge point.",
+      "nodes": [
+        {
+          "id": "main_1",
+          "title": "U5 lecture + activity",
+          "status": "done",
+          "detail": "Lecture, activity, step 1, merge point."
+        },
+        {
+          "id": "main_2",
+          "title": "1: gh logged in (10-14)",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_3",
+          "title": "Unit 5 homework done",
+          "status": "done",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "hw-unit5",
+      "label": "Homework steps 2-10",
+      "status": "open",
+      "summary": "Checklist in the guide (activity-today.md) and the simulated walkthrough.",
+      "nodes": [
+        {
+          "id": "hw-unit5_1",
+          "title": "Simulated run (b623dd6)",
+          "status": "done",
+          "detail": "Checklist in the guide (activity-today.md) and the simulated walkthrough."
+        },
+        {
+          "id": "hw-unit5_2",
+          "title": "NEXT 2: save fit profile",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_3",
+          "title": "NEXT 3: install scout (cp/mv)",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_4",
+          "title": "NEXT 4: profile",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_5",
+          "title": "NEXT 5: search-strategy.md",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_6",
+          "title": "NEXT 6: run one scan",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_7",
+          "title": "NEXT 7: scan-output.md",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_8",
+          "title": "NEXT 8: 2-3 site picks",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_9",
+          "title": "NEXT 9: grade picks",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "hw-unit5_10",
+          "title": "NEXT 10: U5 Toolkit entry",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "side-explore",
+      "label": "Side: exploratory profile",
+      "status": "open",
+      "summary": "Vue / full-stack profile #2, later.",
+      "nodes": [
+        {
+          "id": "side-explore_1",
+          "title": "LATER: Vue/full-stack profile #2",
+          "status": "open",
+          "detail": "Vue / full-stack profile #2, later."
+        }
+      ]
+    }
+  ]
+}

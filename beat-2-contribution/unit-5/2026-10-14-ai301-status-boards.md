@@ -2,6 +2,8 @@
 
 Reuses the AI201 `docs/status` workstream-board pattern (zimmnotes `ai201-lab6-grocerylist-starter/docs/status`): one overview **gitGraph** per board, one **branch per workstream**, commit ids as milestone titles, states `done` / `open` (NEXT) / `blocked`. Like the AI201 boards, these are **conceptual workstreams, not repo commit history**. The older single board stays in [`2026-10-14-unit5-fit-profiles-and-status.md`](2026-10-14-unit5-fit-profiles-and-status.md#status-board-update-by-adding-commitsbranches).
 
+**Live page (after push + Pages):** https://speculaas.github.io/ai301-coursework-trilogy-preview/status/ (`?board=unit5-homework`, `?board=beat2-a5`, `?board=roadmap-gitgraph`). Source: [`docs/status/`](../../docs/status/).
+
 `T` = TENTATIVE (pre-release pages, as of 2026-10-14; may change). `NEXT` = open.
 
 **How to update:**

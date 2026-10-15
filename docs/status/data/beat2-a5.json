@@ -1,0 +1,167 @@
+{
+  "title": "AI301 Beat 2 / Assignment 5 (U5-U8)",
+  "caption": "Conceptual workstreams, not literal git history. T = TENTATIVE (pre-release pages, as of 2026-10-14). NEXT = open. A5 due Mon Nov 9, 12:59 AM MST.",
+  "mermaid": "gitGraph\n  commit id: \"A5 opens (U5)\"\n  branch u5-scout\n  checkout u5-scout\n  commit id: \"NEXT U5 scan + grades\"\n  commit id: \"NEXT U5 Toolkit\"\n  checkout main\n  merge u5-scout id: \"U5 merged\"\n  branch u6-claim\n  checkout u6-claim\n  commit id: \"T U6 Oct21 fresh scan\"\n  commit id: \"T U6 claim same hour\"\n  commit id: \"T U6 rubric scope patch\"\n  commit id: \"T U6 voice-guard + CLAUDE.local.md\"\n  commit id: \"T U6 Why I Chose + Toolkit\"\n  checkout main\n  merge u6-claim id: \"U6 merged\" tag: \"claim link\"\n  branch u7-ship\n  checkout u7-ship\n  commit id: \"T U7 Oct28 ship-manifest.md\"\n  commit id: \"T U7 ship-gate run\"\n  commit id: \"T U7 PR from fork\" type: HIGHLIGHT\n  commit id: \"T U7 Toolkit\"\n  checkout main\n  merge u7-ship id: \"U7 merged\" tag: \"PR link\"\n  branch u8-monitor\n  checkout u8-monitor\n  commit id: \"T U8 Nov4 pr-monitor\"\n  commit id: \"T U8 playbook.md\"\n  commit id: \"T U8 Toolkit + Learnings\"\n  checkout main\n  merge u8-monitor id: \"U8 merged\"\n  commit id: \"NEXT A5 submit repo link (due Mon Nov 9 12:59AM MST)\" type: HIGHLIGHT",
+  "branches": [
+    {
+      "id": "main",
+      "label": "A5 main line",
+      "status": "open",
+      "summary": "Merges per unit; one repo-link submission after U8.",
+      "nodes": [
+        {
+          "id": "main_1",
+          "title": "A5 opens (U5)",
+          "status": "done",
+          "detail": "Merges per unit; one repo-link submission after U8."
+        },
+        {
+          "id": "main_2",
+          "title": "U5 merged",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_3",
+          "title": "U6 merged",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_4",
+          "title": "U7 merged",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_5",
+          "title": "U8 merged",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_6",
+          "title": "NEXT A5 submit repo link (due Mon Nov 9 12:59AM MST)",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "u5-scout",
+      "label": "U5 issue-scout",
+      "status": "open",
+      "summary": "This week's homework.",
+      "nodes": [
+        {
+          "id": "u5-scout_1",
+          "title": "NEXT U5 scan + grades",
+          "status": "open",
+          "detail": "This week's homework."
+        },
+        {
+          "id": "u5-scout_2",
+          "title": "NEXT U5 Toolkit",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "u6-claim",
+      "label": "U6 Claim Day (Oct 21)",
+      "status": "open",
+      "summary": "Claim in U6, not before.",
+      "nodes": [
+        {
+          "id": "u6-claim_1",
+          "title": "T U6 Oct21 fresh scan",
+          "status": "open",
+          "detail": "Claim in U6, not before."
+        },
+        {
+          "id": "u6-claim_2",
+          "title": "T U6 claim same hour",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u6-claim_3",
+          "title": "T U6 rubric scope patch",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u6-claim_4",
+          "title": "T U6 voice-guard + CLAUDE.local.md",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u6-claim_5",
+          "title": "T U6 Why I Chose + Toolkit",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "u7-ship",
+      "label": "U7 Shipping It (Oct 28)",
+      "status": "open",
+      "summary": "ship-gate before PR.",
+      "nodes": [
+        {
+          "id": "u7-ship_1",
+          "title": "T U7 Oct28 ship-manifest.md",
+          "status": "open",
+          "detail": "ship-gate before PR."
+        },
+        {
+          "id": "u7-ship_2",
+          "title": "T U7 ship-gate run",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u7-ship_3",
+          "title": "T U7 PR from fork",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u7-ship_4",
+          "title": "T U7 Toolkit",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "u8-monitor",
+      "label": "U8 Keeping It Alive (Nov 4)",
+      "status": "open",
+      "summary": "pr-monitor after PR.",
+      "nodes": [
+        {
+          "id": "u8-monitor_1",
+          "title": "T U8 Nov4 pr-monitor",
+          "status": "open",
+          "detail": "pr-monitor after PR."
+        },
+        {
+          "id": "u8-monitor_2",
+          "title": "T U8 playbook.md",
+          "status": "open",
+          "detail": ""
+        },
+        {
+          "id": "u8-monitor_3",
+          "title": "T U8 Toolkit + Learnings",
+          "status": "open",
+          "detail": ""
+        }
+      ]
+    }
+  ]
+}

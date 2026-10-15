@@ -1,6 +1,21 @@
 {
-  "default": "ai301-unit3",
+  "default": "unit5-homework",
   "boards": [
+    {
+      "id": "unit5-homework",
+      "file": "unit5-homework.json",
+      "label": "Unit 5 homework"
+    },
+    {
+      "id": "beat2-a5",
+      "file": "beat2-a5.json",
+      "label": "Beat 2 / A5 (U5-U8)"
+    },
+    {
+      "id": "roadmap-gitgraph",
+      "file": "roadmap-gitgraph.json",
+      "label": "Roadmap (gitGraph)"
+    },
     {
       "id": "ai301-unit3",
       "file": "workstream.json",

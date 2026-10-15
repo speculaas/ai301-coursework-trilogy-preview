@@ -1,4 +1,4 @@
-# AI301 Unit 3 — workstream board
+# AI301 status boards (Unit 3 + Unit 5 / Beat 2)
 
 Personal coach board for the **Unit 3 Plan & Build homework arc**: Mermaid overview plus expand/collapse branch cards.
 
@@ -53,3 +53,29 @@ DEST="/Users/watney/git/zimmnotes/chat/codepath/ai301/ai301-coursework-trilogy-p
 mkdir -p "$DEST/data"
 cp -v "$SRC/app.js" "$SRC/styles.css" "$SRC/index.html" "$SRC/.nojekyll" "$DEST/"
 ```
+
+## Unit 5 / Beat 2 boards (added 2026-10-14)
+
+Boards: `unit3` stays (`?board=ai301-unit3`); default is now `unit5-homework`. Light theme only (the `dark` Mermaid theme was dropped from the cycle).
+
+Static workstream-board viewer reused from the AI201 `docs/status` board (ai201-lab6-grocerylist-starter). Conceptual workstreams only, **not** repo commit history. Light theme only.
+
+**Expected URL** (after push + Pages from `main` `/docs`): https://speculaas.github.io/ai301-coursework-trilogy-preview/status/  
+Direct board: `?board=unit5-homework`, `?board=beat2-a5`, `?board=roadmap-gitgraph`.
+
+### Run locally
+
+```bash
+cd docs/status
+python3 -m http.server 8766   ## file:// cannot fetch the JSON
+```
+
+### Update rules
+
+- Each board = `data/<id>.json` with `title`, `caption`, `mermaid` (gitGraph), `branches[]` (cards; `status`: `done` | `open` | `blocked`).
+- Card `nodes[].title` must equal the gitGraph commit `id` exactly (click-to-focus matches on it). Commit ids must be unique.
+- Step finished: drop the `NEXT`/`T` prefix, add date or hash, in **both** the mermaid line and the node title; set `status: "done"`.
+- New work = new `commit` line + node; side thread = new `branch` + new card.
+- Blocked: `BLOCKED: ...` + `type: REVERSE` in mermaid, `status: "blocked"` on the node.
+- New board: add the JSON and register `id`/`file`/`label` in `data/boards.json`.
+- Keep the Markdown copy in `beat-2-contribution/unit-5/2026-10-14-ai301-status-boards.md` in sync.
