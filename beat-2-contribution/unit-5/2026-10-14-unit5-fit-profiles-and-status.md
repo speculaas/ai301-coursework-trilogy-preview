@@ -79,6 +79,8 @@ Ranking may only use fields the search returns (labels, comments, updated, assig
 
 ## Status board (update by adding commits/branches)
 
+Split boards (Unit 5 homework, Beat 2 / A5): [`2026-10-14-ai301-status-boards.md`](2026-10-14-ai301-status-boards.md).
+
 `T` commits are TENTATIVE (pre-release pages, as of 2026-10-14; may change).
 
 > **Note for future updates:** To update the board, drop a step's `NEXT` prefix and add the date or commit hash. New work goes in as new `commit` lines, and side threads, like a rubric patch, as new `branch` lines.
