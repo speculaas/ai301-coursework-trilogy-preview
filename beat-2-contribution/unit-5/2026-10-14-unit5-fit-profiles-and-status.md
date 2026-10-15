@@ -52,6 +52,24 @@ gh search issues --language typescript --label "good first issue" --state open -
 gh search issues --language python --label "good first issue" --state open --no-assignee --limit 100 -- -linked:pr api frontend
 ```
 
+### Exploratory profile #2: more searchable sentences (added 2026-10-14)
+
+Each sentence can become a query, so keep queries traced to these exact lines:
+
+| Sentence | Query idea (keywords unquoted after `--`) |
+|---|---|
+| "I'd like Vue issues about how components fetch or show data, like state, forms, tables or API calls." | `--language vue -- state OR pinia OR fetch OR table` |
+| "I'm interested in Python issues about packaging, CI, Docker or deployment." | `--language python -- ci OR docker OR packaging` |
+| "…and Vue/Node build and deploy issues, like Vite config or CI." | `--language typescript -- vite OR build OR ci` |
+
+## Learning goals (not fit-profile lines: no search can check them)
+
+- Vue: why it was made (approachable, progressive, design-led) and its strengths vs. React/Angular; how it evolved (Vue 2 Options API to Vue 3 Composition API, TypeScript, Vite); its idioms (single-file components, reactivity, `ref`/`computed`, Pinia); and how it handles data (props/emits, stores, fetching from APIs).
+- Python: the same questions about its idioms and data handling.
+- DevOps behaviour of both: Python packaging/venv/uv, CI, Docker images; Node/Vite build output, bundling, deploys.
+- Starting points: Vue's official docs and design notes; Evan You's v-conf Taiwan 2026 keynote (Oct 17, Taipei).
+- These feed the profile: once a goal turns into a concrete kind of work, write it as a searchable sentence above.
+
 ## Status board (update by adding commits/branches)
 
 > **Note for future updates:** To update the board, drop a step's `NEXT` prefix and add the date or commit hash. New work goes in as new `commit` lines, and side threads, like a rubric patch, as new `branch` lines.
