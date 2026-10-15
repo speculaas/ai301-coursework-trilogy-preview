@@ -25,8 +25,8 @@ Tighter version: add `in:title`. For gh, see the gotcha in section 4. Quoting `"
 | 5 | Write `search-strategy.md` | **Done 2026-10-15.** Section 3 queries and filters in `~/.claude/skills/issue-scout/search-strategy.md` (template comments kept; `From:` line above each query). Re-run 10-15 ~1:30 AM MDT: each query returned 100 (cap); 397 unique, 259 after filters |
 | 6 | `claude "issue-scout: run a scan"` → `scan-output.md` (~$1) | Done 2026-10-15 (Sonnet 5): 397 unique → 255 → top 5, 4 accept / 1 reject. Copy: [`2026-10-15-scan-output-snapshot.md`](2026-10-15-scan-output-snapshot.md). Earlier web dry run: [`2026-10-15-unit5-web-dry-run.md`](2026-10-15-unit5-web-dry-run.md) |
 | 7 | Fix rubric/strategy, log it in `scan-notes.md` | To do. Draft lines from the web dry run in [`2026-10-15-unit5-web-dry-run.md`](2026-10-15-unit5-web-dry-run.md) |
-| 8 | Pick 2–3 on the Issue Selection site | To do. Candidates from the site scan in [`2026-10-15-unit5-site-scan.md`](2026-10-15-unit5-site-scan.md); web dry run v3 picks (primary opengris-scaler#235) in [`2026-10-15-unit5-site-dry-run-v3.md`](2026-10-15-unit5-site-dry-run-v3.md) |
-| 9 | `claude "issue-scout: grade <URL> <URL>"` (~$0.20 each) | To do |
+| 8 | Pick 2–3 on the Issue Selection site | Done 2026-10-15: opengris-scaler #235 (held with site Claim) and HHS/simpler-grants-gov #5289 (not held; site warned against a 2nd claim). Candidates: [`2026-10-15-unit5-site-scan.md`](2026-10-15-unit5-site-scan.md) |
+| 9 | `claude "issue-scout: grade <URL> <URL>"` (~$0.20 each) | Done 2026-10-15 (Sonnet 5.5): HHS #5289 accept; opengris #235 reject (blocked on open prerequisites #233/#951; queue_size spans 8+ files). Read-out appended in [`2026-10-15-scan-output-snapshot.md`](2026-10-15-scan-output-snapshot.md) |
 | 10 | Unit 5 Toolkit entry in `contribution-story.md` | Draft in section 7 |
 
 ## 2. Proposed scope.md fit profile (paste under "Your fit profile")

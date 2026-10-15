@@ -77,3 +77,59 @@
   }
 ]
 ```
+
+---
+
+<!-- Step 9 grade: claude "issue-scout: grade <opengris-scaler#235> <simpler-grants-gov#5289>", 2026-10-15 ~1:12 PM MDT, model claude-sonnet-5-5 -->
+
+## Graded picks
+
+Direct mode, so no search or ranking stage ran. Both repos are active. I accept simpler-grants-gov #5289 and reject opengris-scaler #235, which is blocked on unfinished prerequisite work.
+
+**1. HHS/simpler-grants-gov#5289 "Update browserlist": accept** (surfaced by: direct)
+- **maintainer-alive: pass.** Default-branch commits landed 2026-10-15 and 2026-10-14. A maintainer replied to #12802 within 3 minutes and to #12779 within about 2 hours.
+- **repo-in-use: pass.** Not archived, last push 2026-10-15, latest release 2026.10.14-1.
+- **scope-fits-newcomer: pass.** The issue is one bounded config change, with three acceptance criteria: update browserslist, no build warning, and the app still works.
+- **not-already-taken: pass.** No assignees, no linked PRs, no comments.
+- **ai-policy-ok: pass.** CONTRIBUTING.md says "it's fine to use AI tools to work on issues".
+- **good-first-signal (preferred): yes.** It has the `good first issue` label and was filed by a team member (doug-s-nava).
+- **Caveat:** the issue is from June 2025, and I did not check whether `caniuse-lite` has since been updated. Run `npx update-browserslist-db@latest` and check that the warning still appears on a frontend build before claiming it.
+
+**2. finos/opengris-scaler#235 "Replace worker queue size with a new numerical capability": reject** (surfaced by: direct)
+- **maintainer-alive: pass.** Commits landed 2026-10-15 and v2.9.0 was released 2026-10-08.
+- **repo-in-use: pass.** Not archived, last push 2026-10-15.
+- **scope-fits-newcomer: fail.** The body opens with "Once numerical capabilities are supported (#233)", and #233 is still open. On 2026-06-03 the maintainer said of #233 "No, it's not implemented yet". On 2026-08-20 another maintainer said #951 (open) "should be done before this". The `queue_size` field also appears in at least 8 files, including the worker, heartbeat manager, ray compat and the symphony and oci workers. This is a judgment call: no single fail condition in the rubric is literally stated about #235, so I applied unsettled design and cross-cutting work from the prerequisite chain. The `good first issue` label doesn't override it.
+- **not-already-taken: pass.** No assignees and no linked PRs. The only cross-reference is issue #233.
+- **ai-policy-ok: pass.** CONTRIBUTING.md has no AI terms. AGENTS.md does set a condition: commits must have a human author and no agent `Co-authored-by` trailer.
+- **good-first-signal (preferred): yes.** It has the `good first issue` and `python` labels and was filed by a maintainer. This doesn't affect the verdict.
+- **Friction note for `scan-notes.md`:** the rubric has no check for a dependency on an unfinished issue, so this reject rests on a loose reading of the scope check. Consider adding a "blocked on an open prerequisite" fail condition.
+- **Commit trailer:** the Co-Authored-By trailer I'm told to add to commits would violate opengris's rule, so strip it if you ever contribute there.
+
+```json
+[
+  {
+    "item": "https://github.com/HHS/simpler-grants-gov/issues/5289",
+    "checks": [
+      {"name": "maintainer-alive", "grade": "pass", "evidence": "default-branch commits 2026-10-15 and 2026-10-14; maintainer replies within minutes to hours on #12802 and #12779"},
+      {"name": "repo-in-use", "grade": "pass", "evidence": "archived=false; pushed 2026-10-15; release 2026.10.14-1"},
+      {"name": "scope-fits-newcomer", "grade": "pass", "evidence": "single browserslist update with 3 acceptance criteria"},
+      {"name": "not-already-taken", "grade": "pass", "evidence": "assignees empty; no linked or mentioned PRs; no comments"},
+      {"name": "ai-policy-ok", "grade": "pass", "evidence": "CONTRIBUTING.md: \"it's fine to use AI tools to work on issues\""},
+      {"name": "good-first-signal", "grade": "pass", "evidence": "labeled good first issue; opened by team member doug-s-nava"}
+    ],
+    "verdict": "accept"
+  },
+  {
+    "item": "https://github.com/finos/opengris-scaler/issues/235",
+    "checks": [
+      {"name": "maintainer-alive", "grade": "pass", "evidence": "commits 2026-10-15 and 2026-10-13; v2.9.0 released 2026-10-08"},
+      {"name": "repo-in-use", "grade": "pass", "evidence": "archived=false; pushed 2026-10-15; release v2.9.0 on 2026-10-08"},
+      {"name": "scope-fits-newcomer", "grade": "fail", "evidence": "depends on #233, which a maintainer says is \"not implemented yet\" and which another maintainer says should wait on #951 (open); queue_size spans 8+ files"},
+      {"name": "not-already-taken", "grade": "pass", "evidence": "assignees empty; closedByPullRequestsReferences empty; no PRs mention #235"},
+      {"name": "ai-policy-ok", "grade": "pass", "evidence": "no AI ban in CONTRIBUTING.md; AGENTS.md only requires human commit authors and no agent Co-authored-by trailer"},
+      {"name": "good-first-signal", "grade": "pass", "evidence": "labeled good first issue and python; opened by maintainer sharpener6"}
+    ],
+    "verdict": "reject"
+  }
+]
+```

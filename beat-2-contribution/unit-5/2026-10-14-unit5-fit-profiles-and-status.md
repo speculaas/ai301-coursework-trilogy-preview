@@ -99,7 +99,7 @@ gitGraph
   commit id: "4-5: profile + strategy (10-15)"
   commit id: "6: scan + scan-output.md (10-15)"
   commit id: "NEXT 7: scan-notes.md fixes"
-  commit id: "NEXT 8-9: 2-3 site picks graded"
+  commit id: "8-9: picks graded, HHS accept, #235 reject (10-15)"
   commit id: "NEXT 10: Toolkit entry"
   checkout main
   merge homework id: "Unit 5 done"
