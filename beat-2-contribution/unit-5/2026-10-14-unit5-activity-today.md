@@ -223,7 +223,7 @@ Pre-filled mock worksheet with real counts and issues: [2026-10-14-unit5-workshe
 
 **The same search in gh (homework form):**
 ```
-gh search issues "csv OR json" --match title --language python --label "good first issue" --state open --limit 30
+gh search issues --match title --language python --label "good first issue" --state open --limit 30 -- csv OR json   # keywords unquoted: a quoted "csv OR json" is searched as one exact phrase and returns 0
 ```
 
 ## Homework rehearsal (simulated)
