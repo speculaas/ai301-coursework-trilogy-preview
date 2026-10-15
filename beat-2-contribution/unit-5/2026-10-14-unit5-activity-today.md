@@ -233,3 +233,7 @@ See [2026-10-14-unit5-homework-simulated.md](2026-10-14-unit5-homework-simulated
 ## Fit profiles + status board
 
 See [2026-10-14-unit5-fit-profiles-and-status.md](2026-10-14-unit5-fit-profiles-and-status.md): Vue/TypeScript/Node/full-stack notes, an exploratory profile diagram, and a gitGraph status board.
+
+## Course roadmap
+
+See [2026-10-14-ai301-roadmap.md](2026-10-14-ai301-roadmap.md).

@@ -70,6 +70,13 @@ Each sentence can become a query, so keep queries traced to these exact lines:
 - Starting points: Vue's official docs and design notes; Evan You's v-conf Taiwan 2026 keynote (Oct 17, Taipei).
 - These feed the profile: once a goal turns into a concrete kind of work, write it as a searchable sentence above.
 
+## Using "why and how it evolved" (it can't be a ranking rule)
+
+Ranking may only use fields the search returns (labels, comments, updated, assignees, repo), so "evolution" can't be ranked on directly. Two honest ways to use it:
+
+1. **Label/keyword stand-in for ranking:** "prefer `docs`, `refactor` or `migration` labels first", or search keywords like `migration`, `deprecat`, `composition api`. These issues often touch how a project's design changed.
+2. **Preferred rubric check** (lives in `rubric.md`, which already reads the issue page): *"Working on this issue would teach me something about why or how the project's design evolved."* Mark it **preferred**, not required, so it can't block a good pick.
+
 ## Status board (update by adding commits/branches)
 
 > **Note for future updates:** To update the board, drop a step's `NEXT` prefix and add the date or commit hash. New work goes in as new `commit` lines, and side threads, like a rubric patch, as new `branch` lines.
