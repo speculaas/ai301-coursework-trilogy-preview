@@ -103,3 +103,21 @@ The re-run is saved as `evidence-raw-site-2026-10-15.json`.
 - **mahout:** maintainers replied in 8 and 20.8 days, so a claim question there may wait a week or more.
 
 Web Claude's read of these picks: [2026-10-15-unit5-site-dry-run-v3.md](2026-10-15-unit5-site-dry-run-v3.md).
+
+### Upgrade 2 (2026-10-15 ~1:30 PM MDT): full thread + referenced issues + prerequisite flags
+
+Prompted by the #235 bundle gap (see [web dry run note](2026-10-15-unit5-web-dry-run.md), "Why the web run missed it"). `ev_site.py` was upgraded; the previous version is kept as `ev_site.py.bak2`, and all existing fields are kept. The script now takes `ev_site.py <input.json> [output.json]` and adds these fields per issue:
+
+- `body_full`, and `comments_full` (each comment's author, association, date and text up to 2,000 characters).
+- `refs`: up to 8 deduplicated `#N` / `owner/repo#N` / issue and PR URL references from the body and comments, each with type, state, title, merged, and the last OWNER/MEMBER/COLLABORATOR comment and its date.
+- `prerequisite_flags`: matches of "once … #N", "depends on", "blocked by/on", "after #N", "#N … should be done before", and "requires #N". Each records where it was found, the matched text, the ref and that ref's state. The script follows flagged refs one level deeper (depth 2).
+- `blocked_on_open_prereq`: true if any flagged ref is open.
+
+Test results (`evidence-prereq-test-2026-10-15.json`):
+
+| Issue | blocked_on_open_prereq | Flags |
+|---|---|---|
+| finos/opengris-scaler#235 | **true** | Depth 1, in the body: "Once numerical capabilities are supported (#233" → #233, open (last maintainer comment 2026-06-03: "No, it's not implemented yet."). Depth 2, in #233's thread: "…/issues/951 should be done before" (e117649, 2026-08-20) → #951, open |
+| HHS/simpler-grants-gov#5289 | false | none (0 refs, 0 comments) |
+
+**Where #951 comes from:** it appears only in #233's thread, not in #235's, so only the depth-2 follow finds it. GitHub tags its author e117649 as CONTRIBUTOR, even though e117649 is a recent committer, which is the private-membership caveat again.

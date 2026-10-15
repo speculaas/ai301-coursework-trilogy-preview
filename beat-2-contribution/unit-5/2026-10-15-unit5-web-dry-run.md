@@ -77,6 +77,31 @@ Takeaway for the Toolkit entry: the free web runs were good at criticizing the s
 | HHS/simpler-grants-gov#5289 | accept (fallback); 3 acceptance criteria | accept, with caveat: confirm the warning still appears before claiming (issue from 2025-06) | Agree. The CLI also found maintainer replies within minutes to hours, where my sampler had shown 0/5 |
 | Both, ai-policy-ok | pass | pass; CLI also flagged opengris AGENTS.md "no agent Co-authored-by trailer" and said to strip the scout's own trailer | Same verdict, more practical detail live |
 
+### Why the web run missed it: bundle gap
+
+The v3 bundle's evidence for each issue included:
+
+- a **1,500-character body excerpt**
+- labels, assignees and the comment count
+- timeline-linked PRs
+
+It did **not** include the comment thread or any issue the body referred to.
+
+#235's body begins "Once numerical capabilities are supported (#233)", but the rest of the story lived outside the bundle:
+
+- In #233's thread, a maintainer says "No, it's not implemented yet" (2026-06-03).
+- Also in #233's thread, a comment (2026-08-20) says #951 "should be done before this".
+
+Web Claude could only grade the text it was handed, so it saw a concrete proposed change and accepted. The CLI scout followed the `#233` link itself, read the thread, and found the chain.
+
+**Lesson:** a bundle is only as good as its evidence. **Fix:**
+
+- pack the full comment thread
+- follow `#N` / `owner/repo#N` / issue and PR URL references and record each one's state and its last maintainer comment
+- flag prerequisite wording ("once #N", "depends on", "blocked by", "should be done before")
+
+`ev_site.py` now does this (see the site-scan note).
+
 **Model info:** the CLI transcript records `"model": "claude-sonnet-5-5"` (with `advisorModel: claude-opus-5-5`). The web dialogue export (`dialogue-dlg-m365-04920039-turn32.json`) has no model field (keys: id, question, answer, reasoning, timestamps). It was Claude web per my run, but the export doesn't record which model.
 
 **Lesson:** a dry run grades only the evidence it's handed. The prerequisite chain sat in the linked issues, which my evidence bundle never fetched. The real scout caught it, so the paid grade was worth its $0.40.
