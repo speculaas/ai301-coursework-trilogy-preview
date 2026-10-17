@@ -1,63 +1,137 @@
 {
   "title": "Japan Shinkansen map as gitGraph (fun)",
-  "caption": "Fun twist, not course work: Shinkansen lines as gitGraph branches, stations as commits in geographic order. main = Tokaido trunk from Tokyo; branches diverge at their real junctions (Omiya/Takasaki area, Shin-Aomori, Shin-Osaka, Hakata). NEXT + REVERSE = not yet open (Hokkaido Sapporo extension, Chuo maglev). Conceptual map only, not to scale and not every station.",
-  "mermaid": "gitGraph LR:\n  commit id: \"Tokyo\" tag: \"Tokaido + Tohoku hub\" type: HIGHLIGHT\n  branch tohoku\n  checkout tohoku\n  commit id: \"Ueno\"\n  commit id: \"Omiya\" tag: \"Joetsu + Hokuriku junction\"\n  branch joetsu\n  checkout joetsu\n  commit id: \"Echigo-Yuzawa\"\n  commit id: \"Nagaoka\"\n  commit id: \"Niigata\" tag: \"Joetsu Shinkansen\"\n  checkout tohoku\n  branch hokuriku\n  checkout hokuriku\n  commit id: \"Karuizawa\"\n  commit id: \"Nagano\"\n  commit id: \"Toyama\"\n  commit id: \"Kanazawa\"\n  commit id: \"Tsuruga\" tag: \"Hokuriku Shinkansen\"\n  checkout tohoku\n  commit id: \"Fukushima\"\n  commit id: \"Sendai\"\n  commit id: \"Morioka\"\n  commit id: \"Shin-Aomori\" tag: \"Tohoku Shinkansen\"\n  branch hokkaido\n  checkout hokkaido\n  commit id: \"Shin-Hakodate-Hokuto\" tag: \"Hokkaido Shinkansen\"\n  commit id: \"NEXT Sapporo\" type: REVERSE tag: \"extension under construction\"\n  checkout main\n  branch chuo-maglev\n  checkout chuo-maglev\n  commit id: \"NEXT Shinagawa (Chuo maglev)\" type: REVERSE\n  commit id: \"NEXT Nagoya (Chuo maglev)\" type: REVERSE tag: \"Chuo Shinkansen maglev\"\n  checkout main\n  commit id: \"Shin-Yokohama\"\n  commit id: \"Shizuoka\"\n  commit id: \"Hamamatsu\"\n  commit id: \"Nagoya\" tag: \"Tokaido Shinkansen\"\n  commit id: \"Kyoto\"\n  commit id: \"Shin-Osaka\" tag: \"Sanyo junction\"\n  branch sanyo\n  checkout sanyo\n  commit id: \"Shin-Kobe\"\n  commit id: \"Himeji\"\n  commit id: \"Okayama\"\n  commit id: \"Hiroshima\"\n  commit id: \"Shin-Yamaguchi\"\n  commit id: \"Hakata\" tag: \"Sanyo Shinkansen\"\n  branch kyushu\n  checkout kyushu\n  commit id: \"Shin-Tosu\"\n  commit id: \"Kumamoto\"\n  commit id: \"Kagoshima-Chuo\" tag: \"Kyushu Shinkansen\"",
+  "caption": "Fun conceptual map, not to scale and not every station. Re-rooted south-to-north from Kagoshima-Chuo through Tokyo, with northern and regional lines branching at their real junctions. Stations are commit bubbles; the two Joetsu window-view entries are intentionally non-station video bubbles. NEXT + REVERSE means not yet open.",
+  "mermaid": "gitGraph LR:\n  commit id: \"Kagoshima-Chuo\" tag: \"Kyushu Shinkansen\"\n  commit id: \"Kumamoto\"\n  commit id: \"Shin-Tosu\"\n  commit id: \"Hakata\" tag: \"Kyushu + Sanyo boundary\"\n  commit id: \"Shin-Yamaguchi\"\n  commit id: \"Hiroshima\"\n  commit id: \"Okayama\"\n  commit id: \"Himeji\"\n  commit id: \"Shin-Kobe\"\n  commit id: \"Shin-Osaka\" tag: \"Sanyo + Tokaido boundary\"\n  commit id: \"Kyoto\"\n  commit id: \"Nagoya\" tag: \"Tokaido Shinkansen\"\n  commit id: \"Hamamatsu\"\n  commit id: \"Shizuoka\"\n  commit id: \"Shin-Yokohama\"\n  commit id: \"Tokyo\" tag: \"Tokaido + Tohoku hub\" type: HIGHLIGHT\n  branch chuo-maglev\n  checkout chuo-maglev\n  commit id: \"NEXT Shinagawa (Chuo maglev)\" type: REVERSE\n  commit id: \"NEXT Nagoya (Chuo maglev)\" type: REVERSE tag: \"Chuo Shinkansen maglev\"\n  checkout main\n  branch tohoku\n  checkout tohoku\n  commit id: \"Ueno\"\n  commit id: \"Omiya\" tag: \"Joetsu + Hokuriku junction\"\n  branch joetsu\n  checkout joetsu\n  commit id: \"Echigo-Yuzawa\"\n  commit id: \"Nagaoka\"\n  commit id: \"Niigata\" tag: \"Joetsu Shinkansen\"\n  branch window-views\n  checkout window-views\n  commit id: \"VIDEO E7 Toki window view\"\n  commit id: \"VIDEO E4 Max Toki upper deck\" tag: \"4K60 upper-deck view\"\n  checkout joetsu\n  checkout tohoku\n  branch hokuriku\n  checkout hokuriku\n  commit id: \"Karuizawa\"\n  commit id: \"Nagano\"\n  commit id: \"Toyama\"\n  commit id: \"Kanazawa\"\n  commit id: \"Tsuruga\" tag: \"Hokuriku Shinkansen\"\n  checkout tohoku\n  commit id: \"Fukushima\" tag: \"Yamagata junction\"\n  branch yamagata\n  checkout yamagata\n  commit id: \"Yonezawa\"\n  commit id: \"Akayu\"\n  commit id: \"Yamagata\" tag: \"prefectural capital\"\n  commit id: \"Sakuranbo-Higashine\"\n  commit id: \"Murayama\"\n  commit id: \"Tendo\"\n  commit id: \"Shinjo\" tag: \"Yamagata Shinkansen\"\n  checkout tohoku\n  commit id: \"Sendai\"\n  commit id: \"Morioka\" tag: \"Akita junction\"\n  branch akita\n  checkout akita\n  commit id: \"Tazawako\"\n  commit id: \"Kakunodate\"\n  commit id: \"Omagari\"\n  commit id: \"Akita\" tag: \"Akita Shinkansen\"\n  checkout tohoku\n  commit id: \"Shin-Aomori\" tag: \"Tohoku Shinkansen\"\n  branch hokkaido\n  checkout hokkaido\n  commit id: \"Shin-Hakodate-Hokuto\" tag: \"Hokkaido Shinkansen\"\n  commit id: \"NEXT Sapporo\" type: REVERSE tag: \"extension under construction\"",
   "branches": [
     {
       "id": "main",
-      "label": "main — Tokaido Shinkansen",
+      "label": "main — Kyushu / Sanyo / Tokaido south-to-north trunk",
       "status": "done",
-      "summary": "Honshu trunk: Tokyo west along the Tokaido line to Shin-Osaka, where the Sanyo line continues.",
+      "summary": "Kagoshima-Chuo north through Hakata and Shin-Osaka to Tokyo; the geographic trunk is re-rooted south-to-north so Tokyo sits near the visual center before northern branches continue.",
       "nodes": [
         {
           "id": "main_1",
-          "title": "Tokyo",
+          "title": "Kagoshima-Chuo",
           "status": "done",
-          "detail": "Capital hub: Tokaido, Tohoku, Joetsu and Hokuriku services all start here."
+          "detail": "Kyushu Shinkansen southern terminus and the start of this south-to-north conceptual trunk."
         },
         {
           "id": "main_2",
-          "title": "Shin-Yokohama",
+          "title": "Kumamoto",
           "status": "done",
           "detail": ""
         },
         {
           "id": "main_3",
-          "title": "Shizuoka",
+          "title": "Shin-Tosu",
           "status": "done",
           "detail": ""
         },
         {
           "id": "main_4",
-          "title": "Hamamatsu",
+          "title": "Hakata",
+          "status": "done",
+          "detail": "Boundary where Kyushu services meet the Sanyo Shinkansen in Fukuoka."
+        },
+        {
+          "id": "main_5",
+          "title": "Shin-Yamaguchi",
           "status": "done",
           "detail": ""
         },
         {
-          "id": "main_5",
-          "title": "Nagoya",
-          "status": "done",
-          "detail": "Tokaido Nagoya; the future Chuo maglev will also terminate here (see chuo-maglev branch)."
-        },
-        {
           "id": "main_6",
-          "title": "Kyoto",
+          "title": "Hiroshima",
           "status": "done",
           "detail": ""
         },
         {
           "id": "main_7",
+          "title": "Okayama",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_8",
+          "title": "Himeji",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_9",
+          "title": "Shin-Kobe",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_10",
           "title": "Shin-Osaka",
           "status": "done",
-          "detail": "Junction: Sanyo Shinkansen continues west from here."
+          "detail": "Boundary where the Sanyo Shinkansen meets the Tokaido Shinkansen."
+        },
+        {
+          "id": "main_11",
+          "title": "Kyoto",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_12",
+          "title": "Nagoya",
+          "status": "done",
+          "detail": "Tokaido hub; the future Chuo maglev will also serve Nagoya."
+        },
+        {
+          "id": "main_13",
+          "title": "Hamamatsu",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_14",
+          "title": "Shizuoka",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_15",
+          "title": "Shin-Yokohama",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "main_16",
+          "title": "Tokyo",
+          "status": "done",
+          "detail": "Capital hub where the northern Tohoku branch and future Chuo maglev branch diverge."
+        }
+      ]
+    },
+    {
+      "id": "chuo-maglev",
+      "label": "chuo-maglev — Chuo Shinkansen (L0 maglev, future)",
+      "status": "open",
+      "summary": "Future maglev from Shinagawa in Tokyo to Nagoya; both displayed milestones are not yet open.",
+      "nodes": [
+        {
+          "id": "chuo-maglev_1",
+          "title": "NEXT Shinagawa (Chuo maglev)",
+          "status": "open",
+          "detail": "Planned Tokyo maglev terminus at Shinagawa; not yet open."
+        },
+        {
+          "id": "chuo-maglev_2",
+          "title": "NEXT Nagoya (Chuo maglev)",
+          "status": "open",
+          "detail": "Planned first-phase maglev terminus at Nagoya; not yet open."
         }
       ]
     },
     {
       "id": "tohoku",
-      "label": "tohoku — Tohoku Shinkansen",
+      "label": "tohoku — Tohoku Shinkansen (E5 and related series)",
       "status": "done",
-      "summary": "North from Tokyo via Omiya, Sendai and Morioka to Shin-Aomori; Joetsu and Hokuriku diverge at Omiya/Takasaki.",
+      "summary": "North from Tokyo via Omiya, Fukushima, Sendai and Morioka to Shin-Aomori; Joetsu, Hokuriku, Yamagata and Akita diverge at their junctions.",
       "nodes": [
         {
           "id": "tohoku_1",
@@ -69,13 +143,13 @@
           "id": "tohoku_2",
           "title": "Omiya",
           "status": "done",
-          "detail": "Junction station: Joetsu (via Takasaki to Niigata) and Hokuriku (via Takasaki/Nagano) services diverge in this area."
+          "detail": "Junction area for Joetsu and Hokuriku services via Takasaki."
         },
         {
           "id": "tohoku_3",
           "title": "Fukushima",
           "status": "done",
-          "detail": ""
+          "detail": "Yamagata mini-Shinkansen trains split from Tohoku services here."
         },
         {
           "id": "tohoku_4",
@@ -87,7 +161,7 @@
           "id": "tohoku_5",
           "title": "Morioka",
           "status": "done",
-          "detail": ""
+          "detail": "Akita mini-Shinkansen trains split from Tohoku services here."
         },
         {
           "id": "tohoku_6",
@@ -99,9 +173,9 @@
     },
     {
       "id": "joetsu",
-      "label": "joetsu — Joetsu Shinkansen",
+      "label": "joetsu — Joetsu Shinkansen (E7)",
       "status": "done",
-      "summary": "From Omiya/Takasaki across the mountains to Niigata on the Sea of Japan coast.",
+      "summary": "From the Omiya/Takasaki area across the mountains to Niigata on the Sea of Japan coast.",
       "nodes": [
         {
           "id": "joetsu_1",
@@ -119,15 +193,35 @@
           "id": "joetsu_3",
           "title": "Niigata",
           "status": "done",
-          "detail": "Joetsu Shinkansen terminus."
+          "detail": "Joetsu Shinkansen terminus; Shinjō is instead the Yamagata Shinkansen terminus."
+        }
+      ]
+    },
+    {
+      "id": "window-views",
+      "label": "window-views — Joetsu / Max Toki videos",
+      "status": "open",
+      "summary": "Two non-station video bubbles attached at Niigata: one E7 Toki placeholder and one confirmed historic E4 Max Toki upper-deck view.",
+      "nodes": [
+        {
+          "id": "window-views_1",
+          "title": "VIDEO E7 Toki window view",
+          "status": "open",
+          "detail": "Modern E7 Toki window-view slot; exact YouTube URL intentionally pending selection."
+        },
+        {
+          "id": "window-views_2",
+          "title": "VIDEO E4 Max Toki upper deck",
+          "status": "done",
+          "detail": "Historic E4-series Max Toki second-floor window view, Tokyo to Niigata, 4K60fps: https://www.youtube.com/watch?v=_yvTkWhkLC8"
         }
       ]
     },
     {
       "id": "hokuriku",
-      "label": "hokuriku — Hokuriku Shinkansen",
+      "label": "hokuriku — Hokuriku Shinkansen (E7 / W7)",
       "status": "done",
-      "summary": "From the Omiya/Takasaki area via Nagano and Kanazawa to Tsuruga (opened to Tsuruga in 2024).",
+      "summary": "From the Omiya/Takasaki area via Nagano and Kanazawa to Tsuruga.",
       "nodes": [
         {
           "id": "hokuriku_1",
@@ -157,117 +251,109 @@
           "id": "hokuriku_5",
           "title": "Tsuruga",
           "status": "done",
-          "detail": "Hokuriku Shinkansen current terminus (2024 extension)."
+          "detail": "Current Hokuriku Shinkansen terminus after the 2024 extension."
+        }
+      ]
+    },
+    {
+      "id": "yamagata",
+      "label": "yamagata — Yamagata Shinkansen (E8)",
+      "status": "done",
+      "summary": "Mini-Shinkansen toward Shinjo; trains split from the Tohoku service at Fukushima and continue over converted conventional track.",
+      "nodes": [
+        {
+          "id": "yamagata_1",
+          "title": "Yonezawa",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "yamagata_2",
+          "title": "Akayu",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "yamagata_3",
+          "title": "Yamagata",
+          "status": "done",
+          "detail": "Prefectural capital and principal intermediate hub."
+        },
+        {
+          "id": "yamagata_4",
+          "title": "Sakuranbo-Higashine",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "yamagata_5",
+          "title": "Murayama",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "yamagata_6",
+          "title": "Tendo",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "yamagata_7",
+          "title": "Shinjo",
+          "status": "done",
+          "detail": "Northern terminus of the Yamagata Shinkansen."
+        }
+      ]
+    },
+    {
+      "id": "akita",
+      "label": "akita — Akita Shinkansen (E6)",
+      "status": "done",
+      "summary": "Mini-Shinkansen toward Akita; trains split from the Tohoku service at Morioka and continue over converted conventional track.",
+      "nodes": [
+        {
+          "id": "akita_1",
+          "title": "Tazawako",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "akita_2",
+          "title": "Kakunodate",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "akita_3",
+          "title": "Omagari",
+          "status": "done",
+          "detail": ""
+        },
+        {
+          "id": "akita_4",
+          "title": "Akita",
+          "status": "done",
+          "detail": "Terminus of the Akita Shinkansen."
         }
       ]
     },
     {
       "id": "hokkaido",
-      "label": "hokkaido — Hokkaido Shinkansen",
+      "label": "hokkaido — Hokkaido Shinkansen (H5 / E5)",
       "status": "open",
-      "summary": "Through the Seikan Tunnel to Shin-Hakodate-Hokuto (open); Sapporo extension is under construction.",
+      "summary": "Through the Seikan Tunnel to Shin-Hakodate-Hokuto; the Sapporo extension remains under construction.",
       "nodes": [
         {
           "id": "hokkaido_1",
           "title": "Shin-Hakodate-Hokuto",
           "status": "done",
-          "detail": "Current northern terminus, gateway to Hakodate."
+          "detail": "Current northern terminus and gateway to Hakodate."
         },
         {
           "id": "hokkaido_2",
           "title": "NEXT Sapporo",
           "status": "open",
-          "detail": "Sapporo extension under construction, not yet open — marked NEXT / REVERSE."
-        }
-      ]
-    },
-    {
-      "id": "chuo-maglev",
-      "label": "chuo-maglev — Chuo Shinkansen (maglev, future)",
-      "status": "open",
-      "summary": "Future maglev: Shinagawa (Tokyo) to Nagoya, branching conceptually from Tokyo on main before the Tokaido run west.",
-      "nodes": [
-        {
-          "id": "chuo-maglev_1",
-          "title": "NEXT Shinagawa (Chuo maglev)",
-          "status": "open",
-          "detail": "Planned Tokyo maglev terminus at Shinagawa; not yet open."
-        },
-        {
-          "id": "chuo-maglev_2",
-          "title": "NEXT Nagoya (Chuo maglev)",
-          "status": "open",
-          "detail": "Planned first-phase maglev terminus at Nagoya; not yet open."
-        }
-      ]
-    },
-    {
-      "id": "sanyo",
-      "label": "sanyo — Sanyo Shinkansen",
-      "status": "done",
-      "summary": "Continuation of the Tokaido line west from Shin-Osaka to Hakata (Fukuoka).",
-      "nodes": [
-        {
-          "id": "sanyo_1",
-          "title": "Shin-Kobe",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "sanyo_2",
-          "title": "Himeji",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "sanyo_3",
-          "title": "Okayama",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "sanyo_4",
-          "title": "Hiroshima",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "sanyo_5",
-          "title": "Shin-Yamaguchi",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "sanyo_6",
-          "title": "Hakata",
-          "status": "done",
-          "detail": "Sanyo terminus in Fukuoka; Kyushu Shinkansen continues south from here."
-        }
-      ]
-    },
-    {
-      "id": "kyushu",
-      "label": "kyushu — Kyushu Shinkansen",
-      "status": "done",
-      "summary": "South from Hakata via Kumamoto to Kagoshima-Chuo.",
-      "nodes": [
-        {
-          "id": "kyushu_1",
-          "title": "Shin-Tosu",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "kyushu_2",
-          "title": "Kumamoto",
-          "status": "done",
-          "detail": ""
-        },
-        {
-          "id": "kyushu_3",
-          "title": "Kagoshima-Chuo",
-          "status": "done",
-          "detail": "Kyushu Shinkansen southern terminus."
+          "detail": "Sapporo extension under construction and not yet open; marked NEXT / REVERSE."
         }
       ]
     }
