@@ -20,6 +20,11 @@
       "id": "ai301-unit3",
       "file": "workstream.json",
       "label": "AI301 Unit 3 Plan and Build"
+    },
+    {
+      "id": "shinkansen",
+      "file": "shinkansen.json",
+      "label": "🚄 Shinkansen map (fun)"
     }
   ]
 }

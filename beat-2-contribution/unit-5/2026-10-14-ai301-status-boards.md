@@ -87,3 +87,63 @@ gitGraph
   merge u8-monitor id: "U8 merged"
   commit id: "NEXT A5 submit repo link (due Mon Nov 9 12:59AM MST)" type: HIGHLIGHT
 ```
+
+## Fun twist: Japan Shinkansen map as gitGraph
+
+Same viewer, no course content: Shinkansen lines as branches, stations as commits in geographic order. `main` is the Tokaido trunk from Tokyo; Tohoku diverges at Tokyo (Joetsu/Hokuriku at Omiya/Takasaki), Hokkaido at Shin-Aomori, the future Chuo maglev at Tokyo/Shinagawa, Sanyo continues from Shin-Osaka, and Kyushu from Hakata. `NEXT` + `type: REVERSE` = not yet open (Sapporo extension, Chuo maglev). Live board: `?board=shinkansen` (data: `docs/status/data/shinkansen.json`). Not to scale; not every station.
+
+```mermaid
+gitGraph
+  commit id: "Tokyo" tag: "Tokaido + Tohoku hub" type: HIGHLIGHT
+  branch tohoku
+  checkout tohoku
+  commit id: "Ueno"
+  commit id: "Omiya" tag: "Joetsu + Hokuriku junction"
+  branch joetsu
+  checkout joetsu
+  commit id: "Echigo-Yuzawa"
+  commit id: "Nagaoka"
+  commit id: "Niigata" tag: "Joetsu Shinkansen"
+  checkout tohoku
+  branch hokuriku
+  checkout hokuriku
+  commit id: "Karuizawa"
+  commit id: "Nagano"
+  commit id: "Toyama"
+  commit id: "Kanazawa"
+  commit id: "Tsuruga" tag: "Hokuriku Shinkansen"
+  checkout tohoku
+  commit id: "Fukushima"
+  commit id: "Sendai"
+  commit id: "Morioka"
+  commit id: "Shin-Aomori" tag: "Tohoku Shinkansen"
+  branch hokkaido
+  checkout hokkaido
+  commit id: "Shin-Hakodate-Hokuto" tag: "Hokkaido Shinkansen"
+  commit id: "NEXT Sapporo" type: REVERSE tag: "extension under construction"
+  checkout main
+  branch chuo-maglev
+  checkout chuo-maglev
+  commit id: "NEXT Shinagawa (Chuo maglev)" type: REVERSE
+  commit id: "NEXT Nagoya (Chuo maglev)" type: REVERSE tag: "Chuo Shinkansen maglev"
+  checkout main
+  commit id: "Shin-Yokohama"
+  commit id: "Shizuoka"
+  commit id: "Hamamatsu"
+  commit id: "Nagoya" tag: "Tokaido Shinkansen"
+  commit id: "Kyoto"
+  commit id: "Shin-Osaka" tag: "Sanyo junction"
+  branch sanyo
+  checkout sanyo
+  commit id: "Shin-Kobe"
+  commit id: "Himeji"
+  commit id: "Okayama"
+  commit id: "Hiroshima"
+  commit id: "Shin-Yamaguchi"
+  commit id: "Hakata" tag: "Sanyo Shinkansen"
+  branch kyushu
+  checkout kyushu
+  commit id: "Shin-Tosu"
+  commit id: "Kumamoto"
+  commit id: "Kagoshima-Chuo" tag: "Kyushu Shinkansen"
+```
