@@ -108,9 +108,9 @@ SIMULATED — Scan 2026-10-xx: 4 queries, 397 unique, 256 after filters, graded 
 3. Sentient#355 — REJECT. Flaky Windows-only CI; can't reproduce on macOS.
 4. dataquality#190 — ACCEPT. Bounded caching fix; matches storage profile.
 5. automatos-ai#1059 — CHECK. Fit good; check CONTRIBUTING / maintainer activity.
+```
 ```json
 {"simulated": true, "candidates": [{"url": "...", "verdict": "accept", "checks": {...}}]}
-```
 ```
 
 ## 6. Picking 2–3 on the Issue Selection site (not yet seen)
