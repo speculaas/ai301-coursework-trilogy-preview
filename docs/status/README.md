@@ -63,6 +63,8 @@ Static workstream-board viewer reused from the AI201 `docs/status` board (ai201-
 **Expected URL** (after push + Pages from `main` `/docs`): https://speculaas.github.io/ai301-coursework-trilogy-preview/status/  
 Direct board: `?board=unit5-homework`, `?board=beat2-a5`, `?board=roadmap-gitgraph`, `?board=shinkansen` (fun: Japan Shinkansen map as gitGraph, data `data/shinkansen.json`).
 
+Sibling page (not a board): [🪐 Aurum System (Copilot v1)](../orbit/) — fictional clickable orbital model at https://speculaas.github.io/ai301-coursework-trilogy-preview/orbit/ (source in `docs/orbit/`, see its README).
+
 ### Run locally
 
 ```bash

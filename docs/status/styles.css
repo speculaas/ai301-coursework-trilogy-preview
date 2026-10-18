@@ -104,6 +104,12 @@ header h1 {
   font: inherit;
 }
 
+.orbit-link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

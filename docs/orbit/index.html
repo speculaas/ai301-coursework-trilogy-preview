@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f1e5">
+  <title>Aurum System (Copilot v1) | Dynamic Model</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">INTERACTIVE ORBITAL SKETCH · COPILOT V1 · FICTIONAL SYSTEM</p>
+        <h1>Aurum System (Copilot v1)</h1>
+      </div>
+      <button id="themeButton" type="button" aria-label="Toggle dark mode">Ink / Night</button>
+    </header>
+
+    <section class="stage" aria-label="Interactive orbital model">
+      <canvas id="systemCanvas"></canvas>
+      <div class="hint">Drag to pan · wheel/pinch to zoom · select a body</div>
+      <aside id="infoPanel" class="info" aria-live="polite">
+        <strong id="infoName">AURUM</strong>
+        <span id="infoType">Central star</span>
+        <small id="infoData">Select an object to inspect it.</small>
+      </aside>
+    </section>
+
+    <section class="controls" aria-label="Simulation controls">
+      <button id="playButton" type="button">Pause</button>
+      <label>Speed <input id="speedInput" type="range" min="0" max="3" value="1" step="0.05"></label>
+      <label><input id="labelsInput" type="checkbox" checked> Labels</label>
+      <label><input id="trailsInput" type="checkbox" checked> Orbits</label>
+      <button id="resetButton" type="button">Reset view</button>
+    </section>
+
+    <noscript>This interactive model requires JavaScript.</noscript>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
