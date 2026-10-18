@@ -7,6 +7,8 @@ that later design, kept next to the orbit notes so it is not lost.
 Related: [`docs/orbit/`](../../docs/orbit/) (the Pages orbit explorer, Solar/Aurum/Animorphs),
 `watch6-core.html?graph=work-threads` in the local bib-citation-graph app (`:8000`).
 
+Copy also in bib-citation-graph at `docs/NOTE_watch7_orbit_plan_2026-10-18.md` (impl-repo copy, canonical for implementation; edit there and refresh this course copy).
+
 ## What "orbits" would imply for a citation graph
 
 Orbits are **rings by graph distance**, not decoration:
