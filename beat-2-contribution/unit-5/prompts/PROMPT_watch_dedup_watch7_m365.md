@@ -1,6 +1,7 @@
 > Extracted from `BUNDLE_watch_dedup_watch7_m365_v2.txt` SECTION 1 (v2, supersedes v1 bundle; source files not included here; paste into M365 together with the v2 bundle or regenerate bundle).
 > Verbatim Section 1 extract — prompt wording matches v2 bundle SECTION 1; bundle = this prompt + source context (Sections 2-7 incl. 6H watch.html / 6I watch3.html). Redundancy check: 0 copied source blocks in this file; only filenames/identifiers/storage keys are repeated from repo sources (no watch*.js/html source duplicated) — standalone file is paste-text only, without the bundle Copilot lacks Sections 2+ context.
 > v2 changes (2026-10-18, per Copilot turn4): Step 0 constraints added (watch1 no-op history hooks, watch3 migration adapter + DECISION/data-safety, watch5 clean port); watch.html/watch3.html now in bundle, no extra uploads.
+> Outcome (2026-10-18): Copilot v2 implemented in bib repo — see `bib-citation-graph/docs/NOTE_copilot_watch_dedup_v2_2026-10-18.md` (watch1/3/5-core installed, Watch 7 design only).
 
 # PROMPT — watch de-duplication (1/3/5 → -core) + watch 7 design, for M365 Copilot — v2 (prompt extract)
 
