@@ -174,3 +174,13 @@ One-line Toolkit seed: *"Free dry runs before paying for the scout showed my rub
 4. Log your fixes in `scan-notes.md` (dated lines).
 5. Pick 2–3 on the Issue Selection site and grade them.
 6. Write the real Unit 5 Toolkit entry in `ai301-coursework/beat-2-contribution/contribution-story.md`, commit it, and submit the repo link.
+
+## 9. Debug note: GitHub rendering rule (2026-10-18)
+
+Symptom: raw file showed `## 7. Draft Unit 5 Toolkit entry`, but the GitHub blob view put §7 inside a code block after `claude "issue-scout: grade ..."`.
+
+Cause: in §5 the simulated block opened with a plain ` ``` ` fence and later had a ` ```json ` line. On GitHub/CommonMark, a fence *with* an info string (`json`) opens a block; it does not close a plain fence. Counting backticks looked even, but open/close parity flipped, so §§6–8 alternated in/out of code blocks.
+
+Rule: close a plain fence with a plain ` ``` ` line first, then open the next block with ` ```json `. Never use a language-tagged fence as a closer.
+
+Fix: `de62bfe` inserted the missing plain closer before the ` ```json ` block and removed the stray extra fence. Verify by checking fences semantically (no fence open at EOF, headings outside fences), not by counting ` ``` ` lines.
