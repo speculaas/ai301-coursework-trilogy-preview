@@ -1,0 +1,59 @@
+> Extracted from `BUNDLE_orbit_m365.txt` (source files not included; paste into M365 together with the bundle or regenerate bundle).
+> Verbatim Section 1 extract — 100% match vs `BUNDLE_orbit_m365.txt` checked 2026-10-18 (America/Denver); bundle = this prompt + source context.
+> Standalone reuse is paste-text only: without the bundle, Copilot lacks the Sections 2+ source context.
+
+# PROMPT — orbit M365 bundle (extracted)
+
+> Extracted verbatim (Section 1) from `BUNDLE_orbit_m365.txt` (built 2026-10-18, America/Denver) so this prompt can be reused without opening the bundle. To use with M365 Copilot: upload `BUNDLE_orbit_m365.txt` (1 file) and paste: "Follow SECTION 1 PROMPT in the attached file. First choose Option A or B and justify it, then return the full implementation files and research section exactly in the order specified."
+
+---
+
+You are designing AND implementing an orbit / planet visualization for an existing static GitHub Pages site, and researching comparable packages. Return COMPLETE files, no placeholders, no "TODO", no truncated code.
+
+CONTEXT YOU MUST RESPECT (full sources in SECTIONS 4-6):
+- Existing site: GitHub Pages, source = main branch /docs folder, of repo speculaas/ai301-coursework-trilogy-preview.
+  Live: https://speculaas.github.io/ai301-coursework-trilogy-preview/status/  (e.g. ?board=shinkansen, ?board=ai301-unit3)
+  Inside docs/ there is ONLY status/ (index.html, app.js ~27KB, styles.css, .nojekyll, README.md, data/boards.json + board JSONs). There is NO docs/index.html landing page.
+- The status viewer is a Mermaid gitGraph board viewer and an EXACT copy of an AI201 lab pattern (only title/storage keys/theme list differ). Its contract: boards.json -> board JSON {title,caption,mermaid (must start `gitGraph LR:`),branches[]}, every Mermaid commit id == a branches[].nodes[].title exactly, controls are LR/TB orientation, Mermaid theme cycle, zoom, header board dropdown + search. app.js imports Mermaid 11 from CDN and renders with mermaid.render(). It has NO canvas/orbit renderer, NO generic board-type field.
+- A previous Copilot (see dlg summary, SECTION 6) converted a Python/Matplotlib sketch of a FICTIONAL "Aurum System" (bodies: CHAR, FORTUNE, CRAG, SOLITAIRE/SOLACE, AUGUST, WISP, THE MOTHERSHIP, central star AURUM, off-screen centre at (-3,-3)) into a dependency-free JS Canvas zip: index.html (1,598 B), app.js (6,160 B), style.css (2,093 B), README.md (817 B). Sources are IN FULL in SECTION 5. It already has: animated orbits, play/pause ("Pause"/"Play"), speed slider 0-3x, drag-pan, wheel zoom, click-a-body -> info panel (name/type/orbital radius/relative angular rate), labels/orbits toggles, reset view, light/dark ink theme, responsive, ResizeObserver+DPR, no npm/build/external libs. NO LICENSE file in the zip. It was (wrongly for this repo) packaged for docs/status/ — installing it there would OVERWRITE the status viewer. Do not do that.
+- User's new question: "can this be integrated into the boards? (planets clickable; bundle to upload to m365 copilot for it to design implement and also maybe look up similar packages if any?) or better as another independent path under docs/?"
+  Note ambiguity to resolve in your answer: is the wanted visualization (a) the fictional Aurum system as-is, (b) a REAL solar-system (Sun + 8 planets) clickable visualization, or (c) Aurum bodies re-skinned as planets? State YOUR assumption explicitly at top, design for (b) real planets as primary (that is what "planets clickable" most plausibly means) while REUSING the Aurum zip's engine/controls/interaction patterns, and show how to swap the bodies array back to Aurum in <10 lines. If you think (a)/(c) is better, say why — but deliver the real-planet version.
+
+RETURN EXACTLY THESE PARTS, IN THIS ORDER:
+
+PART A — DECISION: A vs B, justified (1 page max, with a small table)
+  A) Integrate into boards: add e.g. ?board=orbit — a new board TYPE rendered not as gitGraph but as orbit canvas/SVG inside the same viewer. Analyse honestly: this requires (i) extending boards.json/board JSON schema beyond mermaid+branches, (ii) adding a second renderer branch in app.js (destroying the exact-AI201-copy property + its README credit), (iii) LR/TB + Mermaid-theme + zoom controls become meaningless/misleading for orbit, (iv) board search/click-to-focus assume commit-id == node.title, so planets would have to masquerade as "commits" with fake gitGraph, or search/focus must be special-cased, (v) canvas sizing inside the fixed 100vh two-panel layout + mobile. State effort (S/M/L), regression risk to the 5 existing boards (unit5-homework, beat2-a5, roadmap-gitgraph, ai301-unit3, shinkansen), and what breaks.
+  B) Independent path under docs/, e.g. docs/orbit/ (sibling of docs/status/), linked from status page header + docs/status/README.md (+ optionally repo README). Keeps viewer untouched, separate CSS/JS, own URL. State effort, risks, URL.
+  RECOMMEND ONE. (Our prior leaning is B unless the zip were already board-shaped JSON — it is not; it is HTML/JS/CSS. If you still recommend A, you must design the schema+renderer changes in Part C-A instead of C-B and price the regression testing of all 5 boards.)
+  Include URLs in your table exactly:
+    A: https://speculaas.github.io/ai301-coursework-trilogy-preview/status/?board=orbit
+    B: https://speculaas.github.io/ai301-coursework-trilogy-preview/orbit/
+  Also answer: should there be a docs/index.html landing page linking both /status/ and /orbit/? (Currently none.) Recommend yes/no + if yes give its full content in Part C as an extra file — keep it minimal, light-theme, no redirect hack.
+
+PART B — DESIGN SPEC (short, before code)
+  - Bodies: Sun + Mercury..Neptune (8 planets). For EACH: name, type/class, colour (muted, light-theme-friendly), relative size (px logic), orbital radius, relative orbital period/rate, 2-4 click-panel facts (distance AU, period, day length / moons / one distinctive fact — mark any value you are UNSURE of with [verify]).
+  - Toggles requested: (1) clickable planets: click -> info panel with facts, selected highlight ring; hover (pointer) highlight + cursor + tooltip/label emphasis, touch equivalent (tap = click, no hover assumption). (2) Play/pause, (3) speed slider, (4) labels on/off, (5) orbit paths on/off, (6) REALISTIC-ish vs READABLE toggle: realistic relative sizes/distances makes planets invisible / distances huge — implement as two explicit scale modes ("Readable" default: compressed/log-ish radii, enlarged planets; "Realistic-ish": true relative orbital radii + planet radii to a common scale, with a caption warning planets will be tiny dots and outer orbits huge). Do NOT claim true realism if you clamp. Show the exact scale formulas.
+  - Keep: drag-pan, wheel/pinch zoom, reset view (adapt zip code). Light theme CONSISTENT with status page (palette in SECTION 4: --bg #f6f4ef, --ink #1c1b19, --muted #5c574f, --panel #fffdf8, --line #d9d2c4, --accent #245b6b, sans Source Sans 3/Segoe UI). Dark theme optional ONLY if cheap — status board is effectively light ("Light theme only" per its README) — do not make dark the default.
+  - Mobile/responsive: canvas resizes (ResizeObserver, DPR<=2 as in zip), info panel moves below/overlay on <600px, controls wrap, touch pan/pinch does not scroll the page away (touch-action), min touch target. Accessibility: keyboard-focusable planet list as an alternative to canvas clicking (a <select> or list of buttons that selects the same planet), aria-live info panel, prefers-reduced-motion (start paused or slow), noscript note.
+  - Performance/file size: dependency-free vanilla Canvas preferred (zip is ~10.7 KB total). Justify if you propose SVG or Three.js instead (CDN, weight, offline failure). No build step, relative paths only (./style.css, ./app.js), works under project-Pages subpath.
+
+PART C — FULL IMPLEMENTATION FILES (complete, paste-ready, no placeholders)
+  If you recommended B, deliver exactly:
+    C1. docs/orbit/index.html  (complete)
+    C2. docs/orbit/style.css   (complete — note: status uses styles.css plural; orbit may use style.css as in zip, but be consistent inside your files)
+    C3. docs/orbit/app.js      (complete, syntax-checked mentally, DEFINE all DOM ids you reference, bodies array data complete for Sun+8 planets)
+    C4. docs/orbit/README.md   (short: what it is, fictional-vs-real note, local preview, how to edit bodies/scales, credit to Aurum zip engine)
+    C5. LINK SNIPPET for docs/status/index.html header: exact minimal HTML to add ONE link "🪐 Orbit" -> ../orbit/ (relative, works from /status/), placed near the board picker, WITHOUT changing any existing id/app.js behaviour; plus exact one-line addition for docs/status/README.md (Expected URL list) and, if Part A said yes to a landing page, C6 docs/index.html (complete, minimal links to ./status/ and ./orbit/).
+  If you recommended A (against prior leaning), deliver instead: C-A1 full boards.json + orbit board JSON schema, C-A2 the exact app.js diff/branch (full replacement functions, not fragments), C-A3 regression test checklist for the 5 existing boards. (Still also give C1-C3 orbit renderer code it would call.)
+  Every file in its own fenced code block with the target path as heading. No "...rest unchanged", no elisions. Keep total size reasonable (aim <40 KB) — Canvas vanilla, no framework.
+
+PART D — RESEARCH: "look up similar packages if any" (name comparable OSS, with URLs, license cautions, borrow vs build)
+  Name comparable open-source solar-system / orbit visualizations, e.g. (verify each; do not invent): pure-CSS solar systems (e.g. "Solar System" CSS demos / CodePen collections), JS/Canvas solar system simulators, Three.js planet examples (three.js examples webgl / solar system community demos), Kepler / orbital-mechanics viz libs (e.g. kepler.gl is geospatial — say if NOT applicable), astronomy libs (e.g. astronomy.js / suncalc for positions), D3 orbit examples. For EACH: name, URL, what it does, tech (CSS/Canvas/SVG/Three.js), license IF YOU KNOW IT (MIT/BSD/Apache/GPL — if unsure write "license: [verify on repo]" — NEVER guess a license), borrow-vs-build verdict for THIS dependency-free static Pages page.
+  IMPORTANT — OFFLINE/KNOWLEDGE LIMITS: M365 Copilot in this tenant may not browse the live web. If you cannot verify a URL/license/claim live, mark it [unverified — check before borrowing] and prefer well-known repos you are confident about over obscure ones. Do NOT fabricate repo names, star counts, or licenses. End with a clear recommendation: borrow code / borrow data-ideas only / build vanilla (our leaning: build vanilla Canvas reusing the Aurum engine, borrow only data/scale ideas — say if you agree).
+  Also address the Aurum zip's license position: zip has NO LICENSE/README license line; it was generated in a prior Copilot chat for this same user from their own Python sketch — state whether reusing it is a problem and what attribution/readme note to add.
+
+PART E — INTEGRATION + VERIFICATION STEPS (for the human / Grok Bot, after Copilot returns)
+  Exact file placement (paths in ai301-coursework-trilogy-preview), git add/commit/push commands (direct to main is this repo's pattern for these boards; do not create a PR unless asked), local preview commands:
+    python3 -m http.server 8766 --directory docs    then http://127.0.0.1:8766/orbit/ and /status/?board=shinkansen
+  Verification checklist: JS syntax, click each of Sun+8 planets (canvas AND keyboard list), hover highlight, play/pause, speed, labels/orbits toggles, readable-vs-realistic toggle, reset, zoom/pan, mobile width 390px, light theme matches status, existing 5 boards unaffected, Pages URL after push+1 min + hard refresh (Cmd+Shift+R / Ctrl+Shift+R).
+  What Copilot must NOT do: overwrite docs/status/*, rename board ids, add a build step/framework, hotlink planet textures, or use absolute /orbit/ paths (must be relative for project Pages).

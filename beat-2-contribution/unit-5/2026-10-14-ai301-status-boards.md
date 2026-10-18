@@ -92,6 +92,8 @@ gitGraph
 
 Same viewer, no course content: Shinkansen lines are branches and stations are commits in geographic order. The conceptual trunk is re-rooted south-to-north from Kagoshima-Chuo through Hakata, Shin-Osaka, and Tokyo, placing Tokyo nearer the visual center in both LR and TB views. Joetsu/Hokuriku diverge at Omiya, Yamagata at Fukushima, Akita at Morioka, Hokkaido at Shin-Aomori, and the future Chuo maglev at Tokyo. The `window-views` branch adds two intentionally non-station video bubbles at Niigata. `NEXT` + `type: REVERSE` means not yet open. Live board: `?board=shinkansen` (data: `docs/status/data/shinkansen.json`). Not to scale; not every station.
 
+Orbit prompts (verbatim M365 bundle extracts, reusable paste-text): [`prompts/PROMPT_orbit_m365.md`](prompts/PROMPT_orbit_m365.md) · [`prompts/PROMPT_orbit_followup_m365.md`](prompts/PROMPT_orbit_followup_m365.md) — paste into M365 together with the corresponding `BUNDLE_*.txt`, or regenerate the bundle.
+
 ```mermaid
 gitGraph
   commit id: "Kagoshima-Chuo" tag: "Kyushu Shinkansen"
