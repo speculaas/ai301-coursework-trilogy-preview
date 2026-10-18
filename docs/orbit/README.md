@@ -1,28 +1,35 @@
-# Solar System Orbit Explorer (Copilot turn 2) — docs/orbit/
+# Orbit Explorer v3
 
-Dependency-free Canvas page at `docs/orbit/`, sibling of `docs/status/` (NOT a board; do not put it in `docs/status/`).
+Three modes share one dependency-free Canvas engine:
 
-## Version history
+- `?system=solar`: Sun and eight planets, Kepler-style elliptical approximation.
+- `?system=aurum`: intact Aurum v1 names and extras. Fictional eccentricities are explicitly invented.
+- `?system=animorphs`: Earth plus selected alien homeworlds. These canonically belong to different systems; the shared diagram is explicitly non-canon. Uncertain facts are marked `[unverified]` and should be checked against the books or a reliable reference. No copyrighted prose or images are included.
 
-- **v2 (current, 2026-10-18, M365 Copilot turn 2, dlg-m365-40265e47-turn2):** real Solar System — Sun + Mercury…Neptune, values rounded from NASA/NSSDCA Planetary Fact Sheet. Replaces the fictional data in the live page. Package: `orbit-page-package.zip` (7 files, 18 KB uncompressed, gitignored pack stays uncommitted). Copilot chose Option B (`docs/orbit/`) itself in INTEGRATION.md.
-- **v1 (git 83a0596, in history):** fictional "Aurum System (Copilot v1)" — CHAR, FORTUNE, CRAG, SOLITAIRE / SOLACE, AUGUST, WISP, THE MOTHERSHIP around AURUM. Preserved in git history; bodies must be restored intact if a multi-mode page (follow-up v2 prompt) is built.
+## Versions
 
-## Modes / features (v2)
+- v1: Aurum fictional system.
+- v2: real Solar System.
+- v3: multimode architecture, elliptical motion, eccentricity exaggeration, apsides, approximate equal-area sweep, ellipse construction, and schematic Lagrange points.
 
-Single mode only: **Solar System**. No `?system=` switcher yet — Aurum and Animorphs modes are follow-up work (see `beat-2-contribution/unit-5/prompts/PROMPT_orbit_followup_m365.md` v2).
+Feature inspiration: Mordechai Ben-Ari, *The Geometry of Ellipses and Planetary Orbits*, Springer (2026), Open Access, DOI: https://doi.org/10.1007/978-3-032-26272-1. The implementation and diagrams are original and do not reproduce the book.
 
-- Click/tap + hover highlight + tooltip, selected ring, keyboard-accessible body buttons, aria-live details panel
-- Play/pause, speed, labels toggle, orbit-path toggle, drag-pan, wheel + pinch zoom, reset view
-- Scale: **Readable** (default, log-compressed distances, enlarged sqrt body sizes) vs **Realistic-ish** (linear AU, common linear body scale, 1.5 px floor — explicitly not fully true-to-scale; note text in page explains)
-- `prefers-reduced-motion` starts paused; DPR capped at 2; ResizeObserver; responsive to ~390 px
-
-## Preview
+The L1–L5 overlay is intentionally schematic, not a numerical restricted three-body calculation. Solar motion solves Kepler's equation iteratively from mean anomaly to eccentric anomaly. This remains educational, not an ephemeris.
 
 ```bash
-python3 -m http.server 8766 --directory docs   # from preview-repo root
+python3 -m http.server 8766 --directory docs
 ```
 
-Open http://127.0.0.1:8766/orbit/ (status: http://127.0.0.1:8766/status/)
-Live after push: https://speculaas.github.io/ai301-coursework-trilogy-preview/orbit/
+Edit `systems`, `solar`, `aurum`, and `anim` near the top of `app.js`. Keep uncertainty labels visible.
 
-Edit the `bodies` array in `app.js` for facts/colours/angles; scale formulas in `orbitPx()` / `bodyPx()`. Illustrative, not an ephemeris. No license file in either Copilot zip; both generated for this user from their own sketch/data — add a repo-level license before redistribution.
+## Credit / provenance
+
+- v3 package: M365 Copilot, dialogue `dlg-m365-40265e47` turn 3 (`dialogue-dlg-m365-40265e47-turn3.json`, kept in the local copilot pack, not committed), delivered as `orbit-v3-followup.zip` in response to follow-up prompt v2 (`417a63a`). Installed 2026-10-18 (America/Denver).
+- Design rationale: see `DESIGN.md` in this folder (Copilot iteration-3 notes, Parts A-F).
+- Prior versions preserved in git history: v1 Aurum (`83a0596`), v2 Solar (`a6cabc1`).
+
+## Known limits (verified on install)
+
+- Central body is drawn at the selected orbit's focus offset; other orbits share the same centre, so only the selected orbit's focus is exact - illustrative, not a multi-focus diagram.
+- L1-L5 overlay and equal-area sweep are schematic/approximate (see above); Aurum eccentricities are invented and Animorphs layout is non-canon, both labelled in-page.
+- No watch-face cross-link was added in v3 (Part D recommended linked views, but no link was implemented in the page).
