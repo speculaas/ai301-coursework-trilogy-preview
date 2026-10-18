@@ -1,69 +1,29 @@
-
-const canvas = document.querySelector('#systemCanvas');
-const ctx = canvas.getContext('2d');
-const ui = {
-  play: document.querySelector('#playButton'), speed: document.querySelector('#speedInput'),
-  labels: document.querySelector('#labelsInput'), trails: document.querySelector('#trailsInput'),
-  reset: document.querySelector('#resetButton'), theme: document.querySelector('#themeButton'),
-  name: document.querySelector('#infoName'), type: document.querySelector('#infoType'), data: document.querySelector('#infoData')
-};
-
-// Angles evolve from their initial positions, making the original static sketch dynamic.
-const bodies = [
-  { name:'CHAR', radius:5.3, angle:40, rate:1.25, size:.18, type:'Rocky world' },
-  { name:'FORTUNE', radius:6.8, angle:30, rate:.85, size:.22, type:'Binary quarry world', extras:['Big Quarry','Little Quarry'] },
-  { name:'CRAG', radius:8.5, angle:18, rate:.58, size:.26, type:'Irregular rocky cluster' },
-  { name:'SOLITAIRE / SOLACE', radius:9.5, angle:45, rate:.45, size:.18, type:'Ringed world', extras:['Lodestone','Cypsela'] },
-  { name:'AUGUST', radius:11.5, angle:58, rate:.32, size:.35, type:'Ringed giant' },
-  { name:'WISP', radius:13.2, angle:64, rate:.24, size:.16, type:'Outer world' },
-  { name:'THE MOTHERSHIP', radius:10.2, angle:28, rate:.52, size:.10, type:'Active vessel' }
+const $=s=>document.querySelector(s), canvas=$('#systemCanvas'),ctx=canvas.getContext('2d');
+const ui={play:$('#playButton'),speed:$('#speedInput'),speedOut:$('#speedOutput'),labels:$('#labelsInput'),orbits:$('#orbitsInput'),scale:$('#scaleInput'),reset:$('#resetButton'),note:$('#scaleNote'),tip:$('#tooltip'),name:$('#infoName'),type:$('#infoType'),facts:$('#infoFacts'),buttons:$('#bodyButtons')};
+const bodies=[
+{name:'Sun',type:'G-type star',color:'#d99824',radiusKm:696340,au:0,period:0,angle:0,facts:['Contains about 99.8% of the solar system’s mass.','Diameter: about 1.39 million km.','Light reaches Earth in about 8 minutes 20 seconds.']},
+{name:'Mercury',type:'Terrestrial planet',color:'#777570',radiusKm:2439.7,au:.387,period:88,angle:15,facts:['Average distance: 0.39 AU.','Orbital period: 88.0 days.','Solar day: about 176 Earth days.','Moons: 0.']},
+{name:'Venus',type:'Terrestrial planet',color:'#aa793e',radiusKm:6051.8,au:.723,period:224.7,angle:60,facts:['Average distance: 0.72 AU.','Orbital period: 224.7 days.','Rotation is retrograde; solar day is about 117 Earth days.','Moons: 0.']},
+{name:'Earth',type:'Terrestrial planet',color:'#3f7188',radiusKm:6371,au:1,period:365.2,angle:112,facts:['Average distance: 1.00 AU.','Orbital period: 365.2 days.','Day length: about 24 hours.','Moons: 1.']},
+{name:'Mars',type:'Terrestrial planet',color:'#a75237',radiusKm:3389.5,au:1.524,period:687,angle:165,facts:['Average distance: 1.52 AU.','Orbital period: 687 days.','Day length: about 24.7 hours.','Moons: 2.']},
+{name:'Jupiter',type:'Gas giant',color:'#a58161',radiusKm:69911,au:5.203,period:4331,angle:215,facts:['Average distance: 5.20 AU.','Orbital period: 4,331 days.','Day length: about 9.9 hours.','Largest planet in the solar system.']},
+{name:'Saturn',type:'Gas giant',color:'#b69a62',radiusKm:58232,au:9.537,period:10747,angle:260,facts:['Average distance: 9.54 AU.','Orbital period: 10,747 days.','Day length: about 10.7 hours.','Its extensive ring system is made mostly of ice particles.']},
+{name:'Uranus',type:'Ice giant',color:'#67a7aa',radiusKm:25362,au:19.191,period:30589,angle:305,facts:['Average distance: 19.19 AU.','Orbital period: 30,589 days.','Day length: about 17.2 hours.','Rotates on its side with an axial tilt near 98°.']},
+{name:'Neptune',type:'Ice giant',color:'#496caa',radiusKm:24622,au:30.069,period:59800,angle:342,facts:['Average distance: 30.07 AU.','Orbital period: 59,800 days.','Day length: about 16.1 hours.','The farthest of the eight major planets.']}
 ];
-const initial = { zoom:56, panX:0, panY:0 };
-const view = {...initial};
-let running=true, elapsed=0, last=performance.now(), dragging=false, previous=null, selected=null;
-let cssWidth=0, cssHeight=0, dpr=1;
-
-function colors(){ const s=getComputedStyle(document.documentElement); return {paper:s.getPropertyValue('--paper').trim(),ink:s.getPropertyValue('--ink').trim(),line:s.getPropertyValue('--line').trim()}; }
-function resize(){
-  const r=canvas.getBoundingClientRect(); dpr=Math.min(devicePixelRatio||1,2); cssWidth=r.width; cssHeight=r.height;
-  canvas.width=Math.round(cssWidth*dpr); canvas.height=Math.round(cssHeight*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-new ResizeObserver(resize).observe(canvas);
-function worldToScreen(x,y){ return {x:cssWidth*.16+view.panX+x*view.zoom, y:cssHeight*.82+view.panY-y*view.zoom}; }
-function bodyPosition(body){ const a=(body.angle+elapsed*body.rate)*Math.PI/180; return {x:-3+body.radius*Math.cos(a),y:-3+body.radius*Math.sin(a)}; }
-function circle(x,y,r,fill=false){ ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);fill?ctx.fill():ctx.stroke(); }
-function ellipse(x,y,rx,ry,rotation=0){ctx.beginPath();ctx.ellipse(x,y,rx,ry,rotation,0,Math.PI*2);ctx.stroke();}
-function label(text,x,y,align='center'){ctx.textAlign=align;ctx.fillText(text,x,y);}
-
-function draw(){
-  const c=colors(); ctx.clearRect(0,0,cssWidth,cssHeight); ctx.fillStyle=c.paper;ctx.fillRect(0,0,cssWidth,cssHeight);
-  ctx.strokeStyle=c.ink;ctx.fillStyle=c.ink;ctx.lineWidth=1.25; ctx.font='bold 11px ui-monospace, monospace';
-  const center=worldToScreen(-3,-3);
-  // Aurum's organic edge
-  ctx.beginPath(); for(let i=0;i<=120;i++){const a=i/120*Math.PI/2,r=(4.2+.04*Math.sin(a*60))*view.zoom,p=worldToScreen(-3+(r/view.zoom)*Math.cos(a),-3+(r/view.zoom)*Math.sin(a));i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y);} ctx.stroke();
-  const aurumLabel=worldToScreen(1.2,1.2); label('AURUM',aurumLabel.x,aurumLabel.y,'left');
-  for(const b of bodies){
-    if(ui.trails.checked){ctx.save();ctx.setLineDash([5,6]);ctx.strokeStyle=c.line;circle(center.x,center.y,b.radius*view.zoom);ctx.restore();}
-    const p=worldToScreen(...Object.values(bodyPosition(b))); b.screen=p; const s=Math.max(4,b.size*view.zoom);
-    ctx.strokeStyle=c.ink;ctx.fillStyle=c.paper;ctx.lineWidth=selected===b?2.7:1.3;
-    if(b.name==='CRAG'){
-      [[0,0],[.38,-.35],[-.45,.25],[.3,.5],[-.2,-.55],[.62,.05]].forEach(([dx,dy],i)=>circle(p.x+dx*s,p.y+dy*s,Math.max(2,s*(.18+(i%3)*.07)),true));
-    } else if(b.name==='THE MOTHERSHIP'){ctx.fillStyle=c.ink;circle(p.x,p.y,3,true);}
-    else {circle(p.x,p.y,s,true); if(b.name.includes('SOLITAIRE')) ellipse(p.x,p.y,s*2.2,s*.55,.35); if(b.name==='AUGUST') ellipse(p.x,p.y,s*2.3,s*.58,-.42);}
-    if(b.name==='FORTUNE'){circle(p.x-s*2,p.y,3.5);circle(p.x+s*2,p.y,3);}
-    if(b.name.includes('SOLITAIRE')){circle(p.x-s*3.3,p.y-s*1.4,3);circle(p.x+s*3,p.y+s*.7,2.5);}
-    if(ui.labels.checked){ctx.fillStyle=c.ink; label(b.name,p.x,p.y+s+15);}
-  }
-}
-function animate(now){ const dt=Math.min((now-last)/1000,.05); last=now;if(running)elapsed+=dt*18*Number(ui.speed.value);draw();requestAnimationFrame(animate); }
-requestAnimationFrame(animate);
-
-function point(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
-canvas.addEventListener('pointerdown',e=>{dragging=true;previous=point(e);canvas.setPointerCapture(e.pointerId);canvas.classList.add('dragging');});
-canvas.addEventListener('pointermove',e=>{if(!dragging)return;const p=point(e);view.panX+=p.x-previous.x;view.panY+=p.y-previous.y;previous=p;});
-canvas.addEventListener('pointerup',e=>{const p=point(e),moved=previous&&Math.hypot(p.x-previous.x,p.y-previous.y)>4;dragging=false;canvas.classList.remove('dragging');if(!moved)selectAt(p);});
-canvas.addEventListener('wheel',e=>{e.preventDefault();const before=point(e),factor=Math.exp(-e.deltaY*.001);const old=view.zoom;view.zoom=Math.min(130,Math.max(24,view.zoom*factor));view.panX=(view.panX+before.x-cssWidth*.16)*(view.zoom/old)-before.x+cssWidth*.16;view.panY=(view.panY+before.y-cssHeight*.82)*(view.zoom/old)-before.y+cssHeight*.82;},{passive:false});
-function selectAt(p){selected=bodies.find(b=>b.screen&&Math.hypot(p.x-b.screen.x,p.y-b.screen.y)<22)||null;if(selected){ui.name.textContent=selected.name;ui.type.textContent=selected.type;ui.data.textContent=`Orbital radius: ${selected.radius.toFixed(1)} units · Relative angular rate: ${selected.rate.toFixed(2)}`;}else{ui.name.textContent='AURUM';ui.type.textContent='Central star';ui.data.textContent='Select an object to inspect it.';}}
-ui.play.addEventListener('click',()=>{running=!running;ui.play.textContent=running?'Pause':'Play';});
-ui.reset.addEventListener('click',()=>Object.assign(view,initial));
-ui.theme.addEventListener('click',()=>document.documentElement.classList.toggle('dark'));
+let W=0,H=0,dpr=1,last=performance.now(),days=0,running=!matchMedia('(prefers-reduced-motion: reduce)').matches,selected=bodies[0],hovered=null,drag=false,moved=false,lastP=null,pinchDistance=0;const pointers=new Map(),view={zoom:1,panX:0,panY:0};
+function resize(){const r=canvas.getBoundingClientRect();W=r.width;H=r.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}new ResizeObserver(resize).observe(canvas);
+function orbitPx(b){if(!b.au)return 0;const base=Math.min(W,H)*.075;return ui.scale.value==='readable'?base*(1.05+1.45*Math.log1p(b.au)):base*b.au}
+function bodyPx(b){if(b===bodies[0])return ui.scale.value==='readable'?20:Math.max(8,b.radiusKm/696340*20);if(ui.scale.value==='readable')return 4+10*Math.sqrt(b.radiusKm/69911);return Math.max(1.5,b.radiusKm/696340*20)}
+function center(){return{x:W/2+view.panX,y:H/2+view.panY}}
+function pos(b){if(!b.au)return center();const a=(b.angle+days/b.period*360)*Math.PI/180,r=orbitPx(b)*view.zoom,c=center();return{x:c.x+r*Math.cos(a),y:c.y+r*Math.sin(a)}}
+function circle(x,y,r){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2)}
+function draw(){ctx.clearRect(0,0,W,H);const c=center();ctx.font='600 11px "Segoe UI",sans-serif';ctx.textAlign='center';for(const b of bodies.slice(1)){const r=orbitPx(b)*view.zoom;if(ui.orbits.checked){ctx.strokeStyle='#d9d2c4';ctx.lineWidth=1;circle(c.x,c.y,r);ctx.stroke()}const p=pos(b),size=bodyPx(b)*view.zoom;b.screen=p;b.hit=Math.max(12,size+5);ctx.fillStyle=b.color;circle(p.x,p.y,size);ctx.fill();if(b.name==='Saturn'){ctx.strokeStyle='#887550';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(p.x,p.y,size*1.8,size*.52,-.25,0,Math.PI*2);ctx.stroke()}highlight(b,p,size);if(ui.labels.checked){ctx.fillStyle='#1c1b19';ctx.font=`${hovered===b||selected===b?'700':'600'} 11px "Segoe UI",sans-serif`;ctx.fillText(b.name,p.x,p.y+size+14)}}const sun=bodies[0],p=pos(sun),size=bodyPx(sun)*view.zoom;sun.screen=p;sun.hit=Math.max(18,size+5);ctx.fillStyle=sun.color;circle(p.x,p.y,size);ctx.fill();highlight(sun,p,size);if(ui.labels.checked){ctx.fillStyle='#1c1b19';ctx.fillText('Sun',p.x,p.y+size+14)}}
+function highlight(b,p,size){if(b!==selected&&b!==hovered)return;ctx.strokeStyle=b===selected?'#245b6b':'#5c574f';ctx.lineWidth=b===selected?3:2;circle(p.x,p.y,Math.max(size+5,9));ctx.stroke()}
+function tick(now){const dt=Math.min((now-last)/1000,.05);last=now;if(running)days+=dt*45*Number(ui.speed.value);draw();requestAnimationFrame(tick)}requestAnimationFrame(tick);
+function point(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function hit(p){return [...bodies].reverse().find(b=>b.screen&&Math.hypot(p.x-b.screen.x,p.y-b.screen.y)<=b.hit)||null}
+function select(b){selected=b;ui.name.textContent=b.name;ui.type.textContent=b.type;ui.facts.replaceChildren(...b.facts.map(x=>{const li=document.createElement('li');li.textContent=x;return li}));ui.buttons.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.name===b.name)))}
+for(const b of bodies){const x=document.createElement('button');x.type='button';x.textContent=b.name;x.dataset.name=b.name;x.addEventListener('click',()=>select(b));ui.buttons.append(x)}select(bodies[0]);ui.play.textContent=running?'Pause':'Play';
+canvas.addEventListener('pointerdown',e=>{const p=point(e);pointers.set(e.pointerId,p);drag=true;moved=false;lastP=p;canvas.setPointerCapture(e.pointerId);canvas.classList.add('dragging');if(pointers.size===2){const a=[...pointers.values()];pinchDistance=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}});canvas.addEventListener('pointermove',e=>{const p=point(e);pointers.set(e.pointerId,p);if(pointers.size===2){const a=[...pointers.values()],d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(pinchDistance)view.zoom=Math.min(12,Math.max(.08,view.zoom*d/pinchDistance));pinchDistance=d;moved=true;ui.tip.hidden=true;return}hovered=hit(p);canvas.style.cursor=hovered?'pointer':drag?'grabbing':'grab';if(hovered&&!drag){ui.tip.hidden=false;ui.tip.textContent=hovered.name;ui.tip.style.left=`${p.x+12}px`;ui.tip.style.top=`${p.y+10}px`}else ui.tip.hidden=true;if(drag){const dx=p.x-lastP.x,dy=p.y-lastP.y;if(Math.hypot(dx,dy)>1)moved=true;view.panX+=dx;view.panY+=dy;lastP=p}});canvas.addEventListener('pointerleave',()=>{hovered=null;ui.tip.hidden=true});function endPointer(e){const p=point(e),wasTap=!moved&&pointers.size===1;pointers.delete(e.pointerId);pinchDistance=0;drag=pointers.size>0;canvas.classList.toggle('dragging',drag);if(wasTap){const b=hit(p);if(b)select(b)}}canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);canvas.addEventListener('wheel',e=>{e.preventDefault();view.zoom=Math.min(12,Math.max(.08,view.zoom*Math.exp(-e.deltaY*.001)))},{passive:false});
+ui.play.addEventListener('click',()=>{running=!running;ui.play.textContent=running?'Pause':'Play'});ui.speed.addEventListener('input',()=>ui.speedOut.value=`${Number(ui.speed.value).toFixed(2)}×`);ui.scale.addEventListener('change',()=>{view.zoom=ui.scale.value==='readable'?1:.18;view.panX=view.panY=0;ui.note.textContent=ui.scale.value==='readable'?'Readable mode: orbit radius = base × (1.05 + 1.45 × ln(1 + AU)); bodies use enlarged square-root sizing.':'Realistic-ish mode: orbit radius is linear in AU and body radius uses one common linear scale, with a 1.5 px visibility floor. It is not a fully true-to-scale astronomical model.'});ui.reset.addEventListener('click',()=>{view.zoom=ui.scale.value==='readable'?1:.18;view.panX=view.panY=0;days=0});
