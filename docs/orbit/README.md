@@ -28,6 +28,41 @@ Edit `systems`, `solar`, `aurum`, and `anim` near the top of `app.js`. Keep unce
 - Design rationale: see `DESIGN.md` in this folder (Copilot iteration-3 notes, Parts A-F).
 - Prior versions preserved in git history: v1 Aurum (`83a0596`), v2 Solar (`a6cabc1`).
 
+## Controls layout & Static view (2026-10-18, edited here, not Copilot)
+
+- The animation controls (play/pause, **Static**, speed, labels/orbits toggles, scale,
+  reset, plus the ellipse/math overlay controls and scale note) now live in a
+  **scrollable fixed-height panel (`.anim-panel`, 210px, `overflow-y:auto`) directly
+  below the SELECTED BODY panel** in the sidebar, instead of under the canvas.
+  All element ids are unchanged; the canvas/stage is untouched. On narrow screens the
+  sidebar stacks below the stage, so the panel still follows SELECTED BODY.
+- **Static** (button, `?static=1`, and the default when `prefers-reduced-motion`
+  is set): freezes time at a fixed epoch (day 0, each body's starting angle),
+  stops the animation advance, and uses the **quarter-circle framing** below.
+  Pressing Play exits static. Pause alone is *not* static — pause keeps the
+  current epoch and the centred framing.
+
+### What "original quarter circle view" was interpreted as
+
+Aurum v1 (`83a0596`, `docs/orbit/app.js` in git history) drew the system from a
+hand sketch: `worldToScreen` placed the centre at **16% of the width, 82% of the
+height** (lower-left), at a fixed initial zoom, and drew a decorative
+**quarter arc (0–90°)** as "Aurum's organic edge". Bodies started at fixed angles
+(18–64°) in that quarter. So "quarter circle view" here means: **centre near the
+lower-left, orbits opening up-and-to-the-right like the original sketch, at a
+fixed epoch** — not "show only 90° of each orbit". Static mode therefore sets the
+centre to `(0.16·W, 0.82·H)` (plus any user pan) and day 0. *Uncertainty flagged:*
+if the intent was instead cropping to a 90° wedge, that is a different feature;
+the framing interpretation was chosen because it matches v1's actual code.
+
+## Watch 7
+
+A plan/design note for a possible orbital *citation-graph* renderer
+(`watch7-core.html`, BFS rings around a focus paper, `?static=1`, option-C linked
+hosting) lives at
+[`beat-2-contribution/unit-5/2026-10-18-watch7-orbit-plan.md`](../../beat-2-contribution/unit-5/2026-10-18-watch7-orbit-plan.md).
+Plan only — not implemented; the orbit page and the watch faces stay separate views.
+
 ## Known limits (verified on install)
 
 - Central body is drawn at the selected orbit's focus offset; other orbits share the same centre, so only the selected orbit's focus is exact - illustrative, not a multi-focus diagram.
