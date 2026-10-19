@@ -50,20 +50,13 @@ Edit `systems`, `solar`, `aurum`, and `anim` near the top of `app.js`. Keep unce
   labels/orbits, scale, reset, eccentricity, apsides, equal-area,
   construction, Lagrange, scale note) are unchanged and live in the
   Animation tab.
-- **Panel height = left (display) column height:** the left main viewport
-  column (`.display-col`) contains only the stage/canvas (canvas +
-  tooltip + hint) — there is no caption or controls strip under the
-  canvas, so the column's height is the stage's height
-  (`--display-h: min(64vh, 650px)`). The side panel no longer sets its own
-  height from that variable: `.layout` stretches both grid items and
-  `.side-panel` uses `align-self:stretch; height:auto`, so the panel box
-  is exactly the grid-row height established by the left column. The
-  panel is a flex column whose tab panels (`flex:1; min-height:0;
-  overflow-y:auto`) scroll internally, so the SELECTED BODY box is
-  fixed-size and selection changes cannot shift the layout. At a
-  1280x800 viewport both boxes are 512px tall. (Under 760px, where the
-  panel stacks below the stage in its own row, it keeps an explicit
-  `--display-h` height instead.)
+- **Panel height = display height:** both the stage and the side panel use
+  the same `--display-h: min(64vh, 650px)` token (`.stage` and
+  `.side-panel`), with the same 450px floor (460px under 760px, matching
+  the stage). The panel is a flex column whose tab panels
+  (`flex:1; min-height:0; overflow-y:auto`) scroll internally, so the
+  SELECTED BODY box is fixed-size and selection changes cannot shift the
+  layout. At a 1280x800 viewport both boxes are 512px tall.
 - **Static** (button, `?static=1`, and the default when
   `prefers-reduced-motion` is set): freezes time at day 0, stops the
   animation advance, and uses the v1 framing below. Pressing Play exits
