@@ -27,7 +27,7 @@
 </header>
 <p id="modeNotice" class="notice"></p>
 <section class="layout">
-  <div>
+  <div class="display-col">
     <section class="stage">
       <canvas id="systemCanvas" tabindex="0" aria-label="Interactive orbit canvas. Left and right arrows cycle bodies; Enter selects."></canvas>
       <div id="tooltip" class="tooltip" hidden></div>
@@ -35,10 +35,7 @@
     </section>
   </div>
   <aside class="info side-panel">
-    <div class="panel-tabs" role="tablist" aria-label="Body and animation panels">
-      <button id="panelTabSelected" type="button" role="tab" aria-selected="true" aria-controls="panelSelected">Selected body</button>
-      <button id="panelTabAnimation" type="button" role="tab" aria-selected="false" aria-controls="panelAnimation" tabindex="-1">Animation</button>
-    </div>
+    <div class="panel-tabs" role="tablist" aria-label="Body and animation panels"><button id="panelTabSelected" type="button" role="tab" aria-selected="true" aria-controls="panelSelected">Selected Body</button><span class="tab-sep" aria-hidden="true"> | </span><button id="panelTabAnimation" type="button" role="tab" aria-selected="false" aria-controls="panelAnimation" tabindex="-1">Animation</button></div>
     <section id="panelSelected" class="tab-panel" role="tabpanel" aria-labelledby="panelTabSelected" aria-live="polite">
       <p class="eyebrow">SELECTED BODY</p>
       <h2 id="infoName"></h2>

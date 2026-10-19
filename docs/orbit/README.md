@@ -39,26 +39,36 @@ Edit `systems`, `solar`, `aurum`, and `anim` near the top of `app.js`. Keep unce
   Status boards navigates to `../status/` (the previous header link's href)
   after restoring the select to the active system. The select always shows
   the active system (`ui.system.value = key` in `setSystem`).
-- **Tabbed side panel:** "SELECTED BODY" and "ANIMATION" are now tabs
-  (`#panelTabSelected` / `#panelTabAnimation`, `role=tab`, arrow-key
-  switching) over one panel box (`#panelSelected` / `#panelAnimation`,
-  `role=tabpanel`). Selected Body is the default. Switching tabs only
-  toggles `hidden`/`aria-selected` — it never touches simulation time,
-  running/static state, or the selected body. All pre-existing control ids
-  and handlers (play/pause, Static, speed, labels/orbits, scale, reset,
-  eccentricity, apsides, equal-area, construction, Lagrange, scale note)
-  are unchanged and live in the Animation tab.
-- **Panel height = display height:** both the stage and the side panel use
-  the same `--display-h: min(64vh, 650px)` token (`.stage` and
-  `.side-panel`), with the same 450px floor (460px under 760px, matching
-  the stage). The panel is a flex column whose tab panels
-  (`flex:1; min-height:0; overflow-y:auto`) scroll internally, so the
-  SELECTED BODY box is fixed-size and selection changes cannot shift the
-  layout. At a 1280x800 viewport both boxes are 512px tall.
+- **Tabbed side panel:** "SELECTED BODY" and "ANIMATION" are slim one-line
+  text tabs (`#panelTabSelected` / `#panelTabAnimation`, `role=tab`,
+  arrow-key switching, rendered as "Selected Body | Animation" with no
+  tall button boxes) over one panel box (`#panelSelected` /
+  `#panelAnimation`, `role=tabpanel`). Selected Body is the default.
+  Switching tabs only toggles `hidden`/`aria-selected` — it never touches
+  simulation time, running/static state, or the selected body. All
+  pre-existing control ids and handlers (play/pause, Static, speed,
+  labels/orbits, scale, reset, eccentricity, apsides, equal-area,
+  construction, Lagrange, scale note) are unchanged and live in the
+  Animation tab.
+- **Panel height = left (display) column height:** the left main viewport
+  column (`.display-col`) contains only the stage/canvas (canvas +
+  tooltip + hint) — there is no caption or controls strip under the
+  canvas, so the column's height is the stage's height
+  (`--display-h: min(64vh, 650px)`). The side panel no longer sets its own
+  height from that variable: `.layout` stretches both grid items and
+  `.side-panel` uses `align-self:stretch; height:auto`, so the panel box
+  is exactly the grid-row height established by the left column. The
+  panel is a flex column whose tab panels (`flex:1; min-height:0;
+  overflow-y:auto`) scroll internally, so the SELECTED BODY box is
+  fixed-size and selection changes cannot shift the layout. At a
+  1280x800 viewport both boxes are 512px tall. (Under 760px, where the
+  panel stacks below the stage in its own row, it keeps an explicit
+  `--display-h` height instead.)
 - **Static** (button, `?static=1`, and the default when
   `prefers-reduced-motion` is set): freezes time at day 0, stops the
   animation advance, and uses the v1 framing below. Pressing Play exits
-  static. Pause alone is *not* static.
+  static (for Solar/Animorphs that means the fit-to-viewport framing
+  below; for Aurum, the v1 framing). Pause alone is *not* static.
 
 ### Static view now follows Aurum v1 at 83a0596 (corrected)
 
@@ -77,11 +87,21 @@ Reading `git show 83a0596:docs/orbit/app.js` directly:
 
 Deliberate deviations, because v1 was Aurum-only:
 
-- **Solar / Animorphs static** have no v1 counterpart. They reuse the same
-  anchor, centre offset, Y flip, day-0 freeze — but keep the shared engine's
-  readable/realistic orbit scaling and eccentricities (a literal
-  56 px-per-AU Solar view would put Neptune ~1680px out). Their static
-  view is "v1 framing, shared-engine scale", not a claim about v1.
+- **Solar / Animorphs static** have no v1 counterpart. They keep the
+  day-0 freeze and Y flip, but are re-centred on the viewport centre and
+  **fit-to-viewport** (`staticFit()` in `app.js`, recomputed on every
+  draw, so it tracks resize): the outermost orbit's semi-major axis is
+  scaled to `0.96 x min(W,H)/2`, i.e. its edge sits ~2% of the viewport
+  height from the nearest edge, under both the readable (log-spaced) and
+  realistic-ish (linear) settings — only the relative spacing of the
+  inner orbits differs between the settings, and the ellipse/foci
+  geometry scales through the same `axis()` value, so overlays stay
+  consistent. Outermost bodies: Solar = Neptune (30.069 AU), Animorphs
+  = Leera (slot 5). At a 900x512 canvas the fitted radius is 245.8px in
+  both systems/settings (before: Solar 200.0px readable / 180.1px
+  realistic-ish; Animorphs 98.7px readable / 30.0px realistic-ish).
+  A literal 56 px-per-AU Solar view would put Neptune ~1680px out, so
+  the v1 pixel scale itself is not reused outside Aurum.
 - **Multi-mode scale controls:** in Aurum static the Scale select and Reset
   no longer shrink the view to the readable scale's zoom (that would break
   the 56 px/unit derivation); they keep the system initial zoom. Ellipse
