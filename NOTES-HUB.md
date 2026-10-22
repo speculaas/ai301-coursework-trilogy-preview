@@ -13,6 +13,8 @@
 
 ## Unit 6: Claim Day (current, Oct 21)
 
+Folder overview with a gitGraph of today's topics: [unit-6/README.md](beat-2-contribution/unit-6/README.md)
+
 | Note | Purpose |
 |---|---|
 | [2026-10-21-unit6-homework-path.md](beat-2-contribution/unit-6/2026-10-21-unit6-homework-path.md) | **Start here.** The 12 Assignment steps with my status, the commands, where each output goes, a slide → artifact → chapter table, and what changed since last week |
