@@ -142,6 +142,16 @@ Draft for `beat-2-contribution/contribution-story.md` → Toolkit → the Unit 5
 My four gh queries returned 397 unique issues, my free ranking rules kept 255, and the scout graded the top five (four accepted). Before paying for that scan I ran free web-Claude dry runs plus read-only gh evidence as practice, which showed my rubric couldn't see claim comments, setup feasibility, or CLA/DCO costs. When I graded my Issue Selection picks, the scout accepted HHS/simpler-grants-gov#5289 but rejected finos/opengris-scaler#235, my favorite, because it depends on open issues #233 and #951. No rubric check covered that, so the reject rested on a loose reading of scope, and I added a "blocked on an open prerequisite" fail condition to scope-fits-newcomer and logged it in scan-notes.md.
 ```
 
+### Three-beat version (2026-10-21, follows lecture rule 1)
+
+Same facts, arranged as the lecture's three beats (produced, fought me, changed). See the [lecture-to-story map](2026-10-21-unit5-lecture-to-story-map.md).
+
+```
+**Unit 5: turned my Unit 1 grader into issue-scout with a four-query search strategy traced to my fit profile**
+
+My four gh queries returned 397 unique issues, my free ranking rules kept 255, and the scout graded the top five, accepting four. What fought me was the rubric itself: free dry runs beforehand showed it couldn't see claim comments, setup feasibility or CLA/DCO costs, and when I graded my Issue Selection picks it rejected my favorite, finos/opengris-scaler#235, only on a loose reading of scope, because no check covered an issue blocked on open #233 and #951. So I added a sixth fail condition, "blocked on an open prerequisite", to scope-fits-newcomer and logged it in scan-notes.md, while HHS/simpler-grants-gov#5289 passed every check and became my lead pick for Claim Day.
+```
+
 (The older draft below is kept for comparison.)
 
 ### 7a. Earlier draft (2026-10-14)
